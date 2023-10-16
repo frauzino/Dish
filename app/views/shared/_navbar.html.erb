@@ -1,0 +1,18 @@
+<div class="navbar">
+  <div class="logo-container">
+    <%= link_to image_tag("logo.svg", class: "logo"), root_path %>
+  </div>
+  <div class="links-container">
+    <ul class="nav-links">
+      <li clas="nav-link">
+        <%= link_to "Survey", survey_path %>
+      </li>
+      <li clas="nav-link">
+        <%= link_to "Leaderboard", leaderboard_path %>
+      </li>
+      <li clas="nav-link">
+        <%= link_to "Project", project_path %>
+      </li>
+    </ul>
+  </div>
+</div>
