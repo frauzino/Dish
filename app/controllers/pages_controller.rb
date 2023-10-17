@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index survey leaderboard project]
+
   def index
   end
 
@@ -9,5 +11,8 @@ class PagesController < ApplicationController
   end
 
   def project
+  end
+
+  def account
   end
 end

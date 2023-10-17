@@ -22,8 +22,8 @@
   gap: 2rem;
 }
 
-.nav-link {
-  a {
+.nav-item {
+  .nav-link {
     text-decoration: none;
     color: $safedate-red;
   }
