@@ -1,7 +1,15 @@
 require 'faker'
 
+puts "cleaning database"
+
+SurveyQuestion.destroy_all
 User.destroy_all
 Question.destroy_all
+Survey.destroy_all
+
+puts "Database clean"
+
+puts "Creating admin user"
 
 User.create(
   email: "a@a.a",
@@ -12,7 +20,13 @@ User.create(
   gender: "male"
 )
 
+puts "Admin ser email: a@a.a passcode: 123456 created"
+
+puts "Creating questions"
+
 10.times do Question.create(
-  body: Faker::Quotes::Shakespeare.romeo_and_juliet_quote
+  body: Faker::Quotes::Shakespeare.unique.romeo_and_juliet_quote
 )
 end
+
+puts "Created questions"

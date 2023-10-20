@@ -1,11 +1,12 @@
 <h1>Survey</h1>
 
-<h3>
+<div>
   <ul>
     <% @survey.questions.each do |question| %>
       <li>
         <%= question.body %>
+        <%= question.id %>
       </li>
     <% end %>
   </ul>
-</h3>
+</div>

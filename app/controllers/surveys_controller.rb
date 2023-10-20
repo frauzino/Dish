@@ -1,11 +1,13 @@
 class SurveysController < ApplicationController
   before_action :create, only: %i[show]
+  skip_before_action :authenticate_user!, only: %i[show]
 
   def create
     @survey = Survey.new
-    5.times do
-      SurveyQuestion.create!(survey: @survey, question: Question.all.sample)
+    Question.all.each do |question|
+      SurveyQuestion.create!(survey: @survey, question:)
     end
+    @survey.questions = @survey.questions.sample 5
     @survey.save
   end
 end
