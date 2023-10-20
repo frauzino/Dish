@@ -2,9 +2,9 @@
 
 <h3>
   <ul>
-    <% 5.times do %>
+    <% @survey.questions.each do |question| %>
       <li>
-        <%= Question.all.sample.body %>
+        <%= question.body %>
       </li>
     <% end %>
   </ul>

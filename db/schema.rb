@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_19_214417) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_20_205345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "questions", force: :cascade do |t|
+    t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "body"
   end
 
   create_table "rapidfire_answers", force: :cascade do |t|
@@ -64,6 +64,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_214417) do
     t.boolean "active"
   end
 
+  create_table "survey_questions", force: :cascade do |t|
+    t.bigint "survey_id"
+    t.bigint "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_survey_questions_on_question_id"
+    t.index ["survey_id"], name: "index_survey_questions_on_survey_id"
+  end
+
   create_table "surveys", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -86,4 +95,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_214417) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "survey_questions", "questions"
+  add_foreign_key "survey_questions", "surveys"
 end

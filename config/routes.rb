@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: 'pages#index'
 
-  get 'survey', to: 'pages#survey'
+  get 'survey', to: 'surveys#show'
   get 'leaderboard', to: 'pages#leaderboard'
   get 'project', to: 'pages#project'
   get 'account', to: 'pages#account'
