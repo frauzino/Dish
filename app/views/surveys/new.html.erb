@@ -1,0 +1,23 @@
+<div class="survey-container">
+  <div class="survey-question-container">
+
+    <%#= form_for @survey do |f| %>
+      <%# @survey_questions.each do |sq| %>
+        <%#= f.simple_fields_for sq do |p| %>
+          <%#= p.input :answer, label: sq.question.body, as: :radio_buttons, collection: sq.question.options, label_method: :body, input_html: { class: 'option' } %>
+        <%# end %>
+      <%# end %>
+      <%#= f.button :submit %>
+    <%# end %>
+
+    <%= simple_form_for @survey do |f| %>
+      <%= f.fields_for :survey_questions do |p| %>
+        <%= p.input :answer, label: p.object.question.body, as: :radio_buttons, collection: p.object.question.options, label_method: :body, value_method: :body %>
+      <% end %>
+      <%= f.submit %>
+    <% end %>
+
+  </div>
+  <div class="progress-bar">
+  </div>
+</div>
