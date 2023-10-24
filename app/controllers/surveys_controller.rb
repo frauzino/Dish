@@ -1,16 +1,30 @@
 class SurveysController < ApplicationController
-  before_action :create, only: %i[show]
-  skip_before_action :authenticate_user!, only: %i[show]
+  skip_before_action :authenticate_user!, only: %i[new create]
+
+  def new
+    @survey = Survey.new
+    @questions = Question.all.sample 5
+    @questions.each do |question|
+      @survey.survey_questions << SurveyQuestion.new(survey: @survey, question:)
+    end
+    @survey_questions = @survey.survey_questions
+  end
 
   def create
-    @survey = Survey.new
-    Question.all.each do |question|
-      SurveyQuestion.create!(survey: @survey, question:)
+    @survey = Survey.new(survey_params)
+    @survey.user_id = current_user.id if user_signed_in?
+    raise
+    if @survey.save
+      @survey.survey_questions.each(&:save)
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
     end
-    @survey.questions = @survey.questions.sample 5
-    @survey.save
+  end
+
+  private
+
+  def survey_params
+    params.require(:survey).permit(survey_questions_attributes: [:id, :answer])
   end
 end
-
-
-# each survey needs to have questions, not just quwestion text

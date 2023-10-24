@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :surveys
+
   def survey_name
     "#{last_name}, #{first_name}"
   end
