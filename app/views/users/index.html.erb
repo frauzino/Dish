@@ -1,10 +1,21 @@
-<div class="leaderboard-container">
-  <h1>Leaderboard</h1>
-  <ul class="leaderboard">
-    <% @users.each do |user| %>
-      <li>
-        <%= "#{user.username} - #{user.points}" %>
-      </li>
-    <% end %>
-  </ul>
+<div class="content-container">
+  <div class="content-container-inner">
+    <ul class="content-panel">
+      <%= image_tag "standings_icon", class: "content-icon" %>
+      <% @top10_users.each do |user| %>
+        <li class="user-row">
+          <% if user.image %>
+            <%= image_tag user.image, class: "user-avatar" %>
+          <% else %>
+            <%= image_tag "placeholder.jpg", class: "user-avatar" %>
+          <% end %>
+          <div class="user-stats">
+            <span class="user-username subheading"><%= user.username %></span>
+            <span class="user-surveys subheading"><%= user.surveys.length %> dates</span>
+            <span class="user-points subheading"><%= user.points %> pts</span>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>

@@ -2,6 +2,7 @@
 @import "config/fonts";
 @import "config/colors";
 @import "config/sizes";
+@import "config/shadows";
 
 // External libraries
 @import "font-awesome";
@@ -12,7 +13,7 @@
 
 // App wide CSS
 body {
-  background-color: #FAF6F4;
+  background-color: $background-offwhite;
   font-family: $body-font;
   color: $gray;
   margin: 0;
@@ -23,6 +24,43 @@ h1, h2, h3, h4, h5, h6 {
   color: #2C1A1D
 }
 
+.subheading {
+  font-size: 1.2rem;
+  color: $safedate-red
+}
+
 .master-container {
   padding: 0 $main-padding;
+}
+
+.content-container {
+  display: flex;
+  margin: 20vh 0 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.content-container-inner {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-panel {
+  background: $content-box-gray;
+  list-style: none;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: $content-box-shadow;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  gap: 1rem;
+}
+
+.content-icon {
+  width: 6rem;
+  position: absolute;
+  left: calc((100% - 6rem)/2);
+  top: 10rem;
 }
