@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index leaderboard project]
+  skip_before_action :authenticate_user!, only: %i[home leaderboard project]
 
-  def index
+  def home
   end
 
   def survey
