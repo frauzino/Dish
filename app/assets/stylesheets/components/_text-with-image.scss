@@ -1,0 +1,17 @@
+.text-with-image {
+  display: flex;
+  gap: 10rem;
+  padding: 2rem 6rem;
+}
+
+.text-container {
+  padding: 0 2rem;
+}
+
+.text {
+  margin-bottom: 2rem;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
