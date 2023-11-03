@@ -1,0 +1,13 @@
+.button-primary {
+  background: $safedate-red;
+  padding: .5rem 1rem;
+  color: white;
+  text-decoration: none;
+  border-radius: .75rem;
+
+  &:hover {
+    border: .15rem solid $safedate-red;
+    background-color: transparent;
+    color: $safedate-red;
+  }
+}

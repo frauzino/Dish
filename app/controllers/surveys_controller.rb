@@ -13,19 +13,23 @@ class SurveysController < ApplicationController
   def create
     @survey = Survey.new(survey_params)
     @survey.user_id = current_user.id if user_signed_in?
-    raise
     if @survey.save
       @survey.survey_questions.each(&:save)
+      add_user_points if user_signed_in?
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end
   end
 
+  def add_user_points
+    new_points = current_user.points += 10
+    current_user.update(points: new_points)
+  end
+
   private
 
   def survey_params
-    params.require(:survey).permit(survey_questions_attributes: [:id, :answer])
-    raise
+    params.require(:survey).permit(survey_questions_attributes: [:id, :answer, :question_id, { question_attributes: [:id, :body] }])
   end
 end

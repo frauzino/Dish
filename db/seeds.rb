@@ -15,14 +15,27 @@ puts 'Creating admin user'
 
 User.create(
   email: 'a@a.a',
+  username: 'Test User',
   password: '123456',
   first_name: 'Richard',
   last_name: 'Smith',
   is_admin: true,
-  gender: 'male'
+  gender: 'male',
+  points: 50
+)
+User.create(
+  email: 'b@b.b',
+  username: 'Another Test',
+  password: '123456',
+  first_name: 'Bob',
+  last_name: 'jones',
+  is_admin: false,
+  gender: 'male',
+  points: 109
 )
 
-puts 'Admin ser email: a@a.a passcode: 123456 created'
+puts 'Admin created email: a@a.a passcode: 123456'
+puts 'second test user created. email: b@b.b passcode 123456'
 
 puts 'Creating questions'
 
