@@ -5,9 +5,9 @@ puts 'cleaning database'
 SurveyQuestion.destroy_all
 Option.destroy_all
 
+Survey.destroy_all
 User.destroy_all
 Question.destroy_all
-Survey.destroy_all
 
 puts 'Database clean'
 
