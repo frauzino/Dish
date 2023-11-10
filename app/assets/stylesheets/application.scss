@@ -54,7 +54,7 @@ h1, h2, h3, h4, h5, h6 {
 .content-panel {
   background: $content-box-gray;
   list-style: none;
-  padding: 2rem;
+  padding: 3rem;
   border-radius: 1rem;
   box-shadow: $content-box-shadow;
   display: flex;
@@ -65,6 +65,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .content-icon {
   width: 6rem;
+  height: 7rem;
   position: absolute;
   left: calc((100% - 6rem)/2);
   top: 10rem;

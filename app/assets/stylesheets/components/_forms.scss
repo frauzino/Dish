@@ -1,0 +1,40 @@
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  input {
+    font-size: 1.4rem;
+    width: 99%;
+    background: white;
+    border: 1px solid $shadow-gray;
+    border-radius: .5rem;
+    padding: .5rem;
+  }
+}
+
+.boolean .optional {
+  width: fit-content;
+  font-size: 1rem;
+}
+
+.form-actions {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.devise-links {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1rem;
+
+  a {
+    color: $safedate-red;
+  }
+}
+
+.simple_form {
+  width: 80%;
+  align-self: center;
+}
