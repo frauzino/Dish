@@ -1,13 +1,18 @@
+.btn {
+  font-size: 1.4rem;
+}
+
 .button-primary {
   background: $safedate-red;
-  padding: .5rem 1rem;
+  padding: .5rem 2rem;
   color: white;
   text-decoration: none;
   border-radius: .75rem;
+  border: .15rem solid transparent;
 
   &:hover {
     border: .15rem solid $safedate-red;
-    background-color: transparent;
+    background-color: white;
     color: $safedate-red;
   }
 }

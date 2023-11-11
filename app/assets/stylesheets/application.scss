@@ -34,42 +34,6 @@ h1, h2, h3, h4, h5, h6 {
   color: $safedate-red
 }
 
-.master-container {
-  padding: 0 $main-padding;
-}
-
-.content-container {
-  display: flex;
-  margin: 20vh 0 0;
-  padding: 0;
-  justify-content: center;
-}
-
-.content-container-inner {
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-}
-
-.content-panel {
-  background: $content-box-gray;
-  list-style: none;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: $content-box-shadow;
-  display: flex;
-  flex-direction: column;
-  margin: 1rem;
-  gap: 1rem;
-}
-
-.content-icon {
-  width: 6rem;
-  position: absolute;
-  left: calc((100% - 6rem)/2);
-  top: 10rem;
-}
-
 .show {
   display: block;
 }
