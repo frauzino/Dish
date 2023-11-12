@@ -14,11 +14,16 @@
         <%= link_to "Project", project_path, class: "nav-link" %>
       </li>
       <% if user_signed_in? %>
-        <li class="nav-item">
-          <%= link_to "Account", account_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+        <li class="account-dropdown" data-controller="dropdown">
+          <div data-action="click->dropdown#openDropdown">
+            <%= image_tag "user_icon", class: "account-icon" %>
+          </div>
+          <div class="dropdown-content" data-dropdown-target="dropdownContent">
+            <%= link_to "Account", account_path, class: "nav-link" %>
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+          </div>
+          <div class="blocker" data-action="click->dropdown#closeDropdown" data-dropdown-target="dropdownBlocker">
+          </div>
         </li>
       <% else %>
         <li class="nav-item">

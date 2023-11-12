@@ -1,0 +1,16 @@
+<% images_array = ["heart-small.svg", "key-small.svg", "lock-small.svg", "rose-small.svg", "shield-small.svg"] %>
+<% images = [] %>
+<% 44.times do  %>
+  <% images << images_array.sample %>
+<% end %>
+
+<div class="banner">
+    <div class="banner-icons">
+      <% images.each do |image| %>
+        <div class="banner-icon-wrapper">
+          <%= image_tag image, class: "banner-icon" %>
+        </div>
+      <% end %>
+    </div>
+    <%= image_tag "logo.svg", class: "banner-logo" %>
+  </div>
