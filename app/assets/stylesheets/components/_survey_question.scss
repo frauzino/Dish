@@ -1,12 +1,18 @@
-.survey_survey_questions_answer {
+.survey-question-panel {
+  display: flex;
+  flex-direction: column;
   background: #EBE9ED;
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 2px 2px 5px #979797d4;
+  margin: 1rem;
+}
+
+.survey_survey_questions_answer {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
   gap: 1rem;
+  margin: 1rem 0 1rem;
 }
 
 .radio {

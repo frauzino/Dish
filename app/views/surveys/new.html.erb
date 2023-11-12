@@ -3,10 +3,13 @@
     <%= image_tag "survey_icon.svg", class: "content-icon" %>
     <%= simple_form_for @survey do |f| %>
       <%= f.fields_for :survey_questions do |sq| %>
-        <%= sq.input :answer, label: sq.object.question.body, as: :radio_buttons, collection: sq.object.question.options, label_method: :body, value_method: :body %>
-        <%= sq.hidden_field :question_id, value: sq.object.question.id %>
+        <div class="survey-question-panel">
+          <%= sq.input :answer, label: sq.object.question.body, as: :radio_buttons, collection: sq.object.question.options, label_method: :body, value_method: :body %>
+          <%= sq.hidden_field :question_id, value: sq.object.question.id %>
+          <button class="survey-next-button button-primary">Next</button>
+        </div>
       <% end %>
-      <%= f.submit %>
+      <%= f.submit class: "button-primary"%>
     <% end %>
 
   </div>
