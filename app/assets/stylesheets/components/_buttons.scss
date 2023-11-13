@@ -1,5 +1,7 @@
 .btn {
   font-size: 1.4rem;
+  width: fit-content;
+  display: inline-block;
 }
 
 .button-primary {
@@ -14,6 +16,10 @@
     border: .15rem solid $safedate-red;
     background-color: white;
     color: $safedate-red;
+  }
+
+  &:active {
+    transform: scale(.9);
   }
 }
 
