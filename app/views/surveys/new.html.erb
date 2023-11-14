@@ -2,25 +2,41 @@
   <div class="survey-question-container">
     <%= image_tag "survey_icon.svg", class: "content-icon" %>
 
-    <%= simple_form_for @survey do |f| %>
+    <%# <%= simple_form_for @survey do |f| %>
+    <%= simple_form_for(@survey, html: {"data-survey-target": "surveyElement"}) do |f| %>
       <%= f.fields_for :survey_questions do |sq| %>
         <div
-          data-survey-target="surveyElement"
+          data-survey-target="questionElement"
           <% if sq.index == 0 %>
-            class="survey-question-panel"
+            class="survey-question-panel animated"
           <% else %>
-            class="survey-question-panel hidden"
+            class="survey-question-panel animated hidden"
           <% end %>
         >
           <%= sq.input :answer, label: sq.object.question.body, as: :radio_buttons, collection: sq.object.question.options, label_method: :body, value_method: :body %>
           <%= sq.hidden_field :question_id, value: sq.object.question.id %>
-          <div class="btn survey-next-button button-primary" id="next<%= sq.index%>" data-action="click->survey#next">Next</div>
+          <div
+            id="next<%= sq.index%>"
+            class="btn survey-next-button button-primary"
+            <% if sq.index == @survey.survey_questions.length - 1 %>
+              data-action="click->survey#submit"
+            <% else %>
+              data-action="click->survey#next"
+            <% end %>
+          >
+            <% if sq.index == @survey.survey_questions.length - 1 %>
+              Finish
+            <% else %>
+              Next
+            <% end %>
+          </div>
         </div>
       <% end %>
-      <%= f.submit class: "button-primary"%>
+      <%= f.submit class: "btn button-primary hidden"%>
     <% end %>
 
   </div>
   <div class="progress-bar">
+    <div class="active-progress" data-survey-target="progressBarElement"></div>
   </div>
 </div>

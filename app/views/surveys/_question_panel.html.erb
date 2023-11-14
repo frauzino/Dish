@@ -1,0 +1,3 @@
+<%= sq.input :answer, label: sq.object.question.body, as: :radio_buttons, collection: sq.object.question.options, label_method: :body, value_method: :body %>
+<%= sq.hidden_field :question_id, value: sq.object.question.id %>
+<button class="survey-next-button button-primary">Next</button>

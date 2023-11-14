@@ -42,11 +42,9 @@
   position: relative;
   display: inline-block;
 
-  // &:hover {
-  //   .dropdown-content {
-  //   display: block;
-  //   }
-  // }
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .dropdown-content {

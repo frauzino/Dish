@@ -1,7 +1,16 @@
 .progress-bar {
   height: .75rem;
   background: white;
-  width: 100%;
+  width: 85%;
   border: 2px solid #B60809;
   border-radius: 1rem;
+  position: absolute;
+  bottom: 5rem;
+}
+
+.active-progress {
+  width: 1%;
+  max-width: 100%;
+  height: 100%;
+  background-color: $safedate-red;
 }
