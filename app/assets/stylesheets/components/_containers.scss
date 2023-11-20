@@ -1,5 +1,6 @@
 .master-container {
   padding: 0 $main-padding;
+  margin-bottom: 5rem;
 }
 
 .content-container {
@@ -18,7 +19,7 @@
 .content-panel {
   background: $content-box-gray;
   list-style: none;
-  padding: 3rem;
+  padding: 4rem 3rem 3rem;
   border-radius: 1rem;
   box-shadow: $content-box-shadow;
   display: flex;
@@ -27,16 +28,34 @@
   gap: 1rem;
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.column-small {
+  flex: .5;
+}
+
 .content-icon {
   width: 6rem;
   height: 7rem;
   position: absolute;
   left: calc((100% - 6rem)/2);
-  top: 10rem;
+  top: 12rem;
   z-index: 1;
 }
 
+.content-icon-small {
+  position: relative;
+  top: 6rem;
+  aspect-ratio: 1/1;
+  width: 4rem;
+  align-self: center;
+}
+
 .devise-panel {
-  padding: 3rem 5rem 1rem;
+  padding: 4rem 5rem 1rem;
   margin: 1rem 15%;
 }

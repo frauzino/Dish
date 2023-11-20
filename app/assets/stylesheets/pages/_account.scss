@@ -1,0 +1,18 @@
+.account-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-header {
+  margin: 0 1rem 1rem;
+}
+
+.account-detail {
+  background: white;
+  padding: .5rem 1rem;
+  border-radius: .5rem;
+}
+
+.reduced-margin {
+  margin-top: 5vh;
+}
