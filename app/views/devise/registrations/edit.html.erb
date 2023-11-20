@@ -2,7 +2,7 @@
   <div class="content-container-inner">
     <div class="content-panel devise-panel">
       <%# <h2>Edit <%= resource_name.to_s.humanize %></h2>
-
+      <%= image_tag "user_icon", class: "content-icon" %>
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.error_notification %>
 

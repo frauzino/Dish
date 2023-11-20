@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   background: #EBE9ED;
-  padding: 2rem;
+  padding: 3rem 2rem 2rem;
   border-radius: 1rem;
-  box-shadow: 2px 2px 5px #979797d4;
+  box-shadow: $content-box-shadow;
   margin: 1rem;
   min-width: -moz-available;
 }

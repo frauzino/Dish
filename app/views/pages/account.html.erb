@@ -1,2 +1,27 @@
-<h1>Account</h1>
-<%= link_to "Edit account details", edit_registration_path(current_user), class: "btn button-primary" %>
+<div class="content-container reduced-margin">
+  <div class="column">
+    <%= image_tag "stars_icon", class: "content-icon-small" %>
+    <h3 class="account-header">Survey Results</h3>
+    <div class="content-panel">
+    </div>
+
+    <%= image_tag "ribbon_icon", class: "content-icon-small" %>
+    <h3 class="account-header">Badges</h3>
+    <div class="content-panel">
+      <%= image_tag "badges/trophy", class: "badge" %>
+    </div>
+  </div>
+
+  <div class="column column-small">
+    <%= image_tag "user_icon", class: "content-icon-small" %>
+    <h3 class="account-header">Personal Information</h3>
+    <div class="content-panel account-info">
+      <span class="account-detail"><%= current_user.email %></span>
+      <span class="account-detail"><%= current_user.username %></span>
+      <span class="account-detail"><%= current_user.first_name %></span>
+      <span class="account-detail"><%= current_user.last_name %></span>
+      <span class="account-detail"><%= current_user.gender %></span>
+      <%= link_to "Edit account details", edit_registration_path(current_user), class: "btn button-primary" %>
+    </div>
+  </div>
+</div>
