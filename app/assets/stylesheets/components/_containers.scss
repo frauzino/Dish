@@ -38,23 +38,6 @@
   flex: .5;
 }
 
-.content-icon {
-  width: 6rem;
-  height: 7rem;
-  position: absolute;
-  left: calc((100% - 6rem)/2);
-  top: 12rem;
-  z-index: 1;
-}
-
-.content-icon-small {
-  position: relative;
-  top: 6rem;
-  aspect-ratio: 1/1;
-  width: 4rem;
-  align-self: center;
-}
-
 .devise-panel {
   padding: 4rem 5rem 1rem;
   margin: 1rem 15%;

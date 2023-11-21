@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :surveys
+  has_many :user_badges
+  has_many :badges, through: :user_badges
 
   def survey_name
     "#{last_name}, #{first_name}"

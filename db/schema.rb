@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_11_180109) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_21_174007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "badges", force: :cascade do |t|
+    t.string "name"
+    t.string "unlock_reqs"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "unlocked", default: false
+  end
 
   create_table "options", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -89,6 +98,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_11_180109) do
     t.index ["user_id"], name: "index_surveys_on_user_id"
   end
 
+  create_table "user_badges", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "badge_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["badge_id"], name: "index_user_badges_on_badge_id"
+    t.index ["user_id"], name: "index_user_badges_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -112,4 +130,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_11_180109) do
   add_foreign_key "survey_questions", "questions"
   add_foreign_key "survey_questions", "surveys"
   add_foreign_key "surveys", "users"
+  add_foreign_key "user_badges", "badges"
+  add_foreign_key "user_badges", "users"
 end
