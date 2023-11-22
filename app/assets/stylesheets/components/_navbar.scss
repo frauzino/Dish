@@ -1,8 +1,17 @@
 .navbar {
-  display: flex;
-  justify-content: space-between;
   border-bottom: 1.5px solid $safedate-red;
   box-shadow: 0 0px 10px $shadow-gray;
+}
+
+.home-nav {
+  position: absolute;
+  width: 100%;
+  background-color: rgba($background-offwhite, .6);
+}
+
+.navbar-inner {
+  display: flex;
+  justify-content: space-between;
   padding: 1rem $main-padding 0;
 }
 
