@@ -1,7 +1,11 @@
 .banner {
   width: calc(100% + 10rem);
   margin-left: -5rem;
-  height: 80vh;
+  height: 100vh;
+}
+
+.short-banner {
+  height: 70vh;
 }
 
 .banner-video {
@@ -17,16 +21,22 @@
   object-position: 50% 30%;
 }
 
+.image-lower {
+  object-position: 50% 25%;
+}
+
 .banner-content-box {
   background: rgba(250, 246, 244, 0.5);
   display: flex;
   flex-direction: column;
+  align-items: center;
   position: absolute;
-  width: 20rem;
-  top: 50%;
+  width: 17rem;
+  top: 70%;
   left: 5%;
   padding: 2rem;
   border-radius: 1rem;
+  word-break: break-word;
 
   .sub-header {
     margin: 0 0 1rem;

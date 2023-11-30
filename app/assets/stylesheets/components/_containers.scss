@@ -10,6 +10,13 @@
   justify-content: center;
 }
 
+.content-container-static {
+  display: flex;
+  margin: 10vh 0 0;
+  padding: 0;
+  justify-content: center;
+}
+
 .content-container-inner {
   width: 70%;
   display: flex;
