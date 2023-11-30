@@ -1,34 +1,36 @@
 <div class="home-page-container">
   <%= render "image_banner" %>
-  <div class="text-with-image">
-    <div class="text-container">
-      <h1 class="header">
-        Take the anxiety out of dating.
-      </h1>
-      <p class="text">
-        Help us reduce the number of catfishes and false accounts in online dating.
-        We want to ensure that all users can feel confident and safe with their
-        online dating match.
-      </p>
-      <%= link_to "Take our survey", new_survey_path, class: " btn button-primary" %>
+  <div class="content-container-static column">
+    <div class="text-with-image">
+      <div class="text-container">
+        <h1 class="header">
+          Curious about the SafeDate project?
+        </h1>
+        <p class="text">
+          We're currently collecting data from users of dating apps.
+          Our survey is designed by best-in-class Relationship Psychologists with objectivity in mind.
+        </p>
+        <%= link_to "Learn more", project_path, class: " btn button-primary" %>
+      </div>
+      <div class="image-container">
+        <%= image_tag "dark_haired_couple.jpg", class: "twi-image" %>
+      </div>
     </div>
-    <div class="image-container">
-      <%= image_tag "couple.svg", class: "twi-image" %>
-    </div>
-  </div>
-  <div class="text-with-image reverse">
-    <div class="text-container">
-      <h1 class="header">
-        Curious about the SafeDate project?
-      </h1>
-      <p class="text">
-        We're currently collecting data from users of dating apps.
-        Our survey is designed by a psychologist and her team with objectivity in mind.
-      </p>
-      <%= link_to "Learn more", project_path, class: " btn button-primary" %>
-    </div>
-    <div class="image-container">
-      <%= image_tag "question.svg", class: "twi-image" %>
+    <div class="text-with-image reverse">
+      <div class="text-container">
+        <h1 class="header">
+          Take the anxiety out of dating.
+        </h1>
+        <p class="text">
+          Help us reduce the number of catfishes and false accounts in online dating.
+          We strive to ensure that all users can feel confident and safe with their
+          online dating match.
+        </p>
+        <%= link_to "Take the survey", new_survey_path, class: " btn button-primary" %>
+      </div>
+      <div class="image-container">
+        <%= image_tag "hand_holding_tree", class: "twi-image" %>
+      </div>
     </div>
   </div>
 </div>

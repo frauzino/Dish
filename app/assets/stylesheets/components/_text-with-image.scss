@@ -6,6 +6,12 @@
 
 .text-container {
   padding: 0 2rem;
+  flex: 1;
+}
+
+.image-container {
+  flex: 1;
+  padding: 2rem;
 }
 
 .text {
@@ -14,4 +20,11 @@
 
 .reverse {
   flex-direction: row-reverse;
+}
+
+.twi-image {
+  object-fit: cover;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 5%;
 }

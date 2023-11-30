@@ -1,9 +1,13 @@
-<div class="banner">
-    <%= image_tag "couple_bar.jpg", class: "banner-image" %>
-    <div class="banner-content-box">
-      <h3 class="sub-header">
-        Take the anxiety out of dating.
-      </h3>
-      <%= link_to "Take our survey", new_survey_path, class: " btn button-primary" %>
-    </div>
+<div class="banner<% if current_page?(project_path) %> short-banner<% end %>">
+    <% if current_page?(root_path) %>
+      <%= image_tag "couple_bar.jpg", class: "banner-image" %>
+      <div class="banner-content-box">
+        <h3 class="sub-header">
+          Help create a safe dating environment.
+        </h3>
+        <%= link_to "Take the survey", new_survey_path, class: " btn button-primary" %>
+      </div>
+    <% else %>
+      <%= image_tag "couple_phones.jpg", class: "banner-image image-lower" %>
+    <% end %>
   </div>

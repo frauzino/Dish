@@ -21,7 +21,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $body-font !important;
+  font-family: $headers-font !important;
   color: #2C1A1D
 }
 
@@ -40,4 +40,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .hidden {
   display: none;
+}
+
+.center-align {
+  align-self: center;
 }
