@@ -2,6 +2,10 @@
   font-size: 1.2rem;
   width: fit-content;
   display: inline-block;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .button-primary {
