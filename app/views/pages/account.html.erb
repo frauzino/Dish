@@ -8,7 +8,9 @@
     <%= image_tag "ribbon_icon", class: "content-icon-small" %>
     <h3 class="account-header">Badges</h3>
     <div class="content-panel">
-      <%= image_tag "badges/trophy", class: "badge" %>
+      <% show_badges.each |badge| %>
+        <%= badge.icon %>
+      <% end %>
     </div>
   </div>
 
