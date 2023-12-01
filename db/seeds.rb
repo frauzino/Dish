@@ -8,6 +8,7 @@ Option.destroy_all
 Survey.destroy_all
 User.destroy_all
 Question.destroy_all
+Badge.destroy_all
 
 puts 'Database clean'
 

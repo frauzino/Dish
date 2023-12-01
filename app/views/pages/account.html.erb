@@ -8,8 +8,8 @@
     <%= image_tag "ribbon_icon", class: "content-icon-small" %>
     <h3 class="account-header">Badges</h3>
     <div class="content-panel">
-      <% show_badges.each |badge| %>
-        <%= badge.icon %>
+      <% show_badges.each do |badge| %>
+        <%= image_tag "#{badge.icon}" %>
       <% end %>
     </div>
   </div>
