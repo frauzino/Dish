@@ -35,6 +35,12 @@
   gap: 1rem;
 }
 
+.content-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
 .column {
   display: flex;
   flex-direction: column;

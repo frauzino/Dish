@@ -8,9 +8,14 @@
     <%= image_tag "ribbon_icon", class: "content-icon-small" %>
     <h3 class="account-header">Badges</h3>
     <div class="content-panel">
-      <% show_badges.each do |badge| %>
-        <%= image_tag "#{badge.icon}" %>
-      <% end %>
+      <div class="content-grid">
+        <% show_badges.each do |badge| %>
+          <div class="badge-wrapper tooltip">
+            <%= image_tag "#{badge.icon}", class: "badge" %>
+            <span class="tooltip-text"><%= badge.unlock_reqs %></span>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 
