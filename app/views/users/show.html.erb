@@ -1,0 +1,23 @@
+<div class="content-container reduced-margin">
+  <div class="column">
+    <%= image_tag "stars_icon", class: "content-icon-small" %>
+    <h3 class="account-header">Survey Results</h3>
+    <div class="content-panel">
+    </div>
+
+    <%= render "badges" %>
+  </div>
+
+  <div class="column column-small">
+    <%= image_tag "user_icon", class: "content-icon-small" %>
+    <h3 class="account-header">Personal Information</h3>
+    <div class="content-panel account-info">
+      <span class="account-detail"><%= @user.email %></span>
+      <span class="account-detail"><%= @user.username %></span>
+      <span class="account-detail"><%= @user.first_name %></span>
+      <span class="account-detail"><%= @user.last_name %></span>
+      <span class="account-detail"><%= @user.gender %></span>
+      <%= link_to "Edit account details", edit_registration_path(@user), class: "btn button-primary" %>
+    </div>
+  </div>
+</div>

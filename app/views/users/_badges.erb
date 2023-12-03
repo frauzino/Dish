@@ -1,0 +1,12 @@
+<%= image_tag "ribbon_icon", class: "content-icon-small" %>
+<h3 class="account-header">Badges</h3>
+<div class="content-panel" data-controller="badges">
+  <div class="content-grid">
+    <% @user.badges.each do |badge| %>
+      <div class="badge-wrapper tooltip" data-badges-target="badgeElement">
+        <%= image_tag "#{badge.icon}", class: "badge" %>
+        <span class="tooltip-text"><%= badge.unlock_reqs %></span>
+      </div>
+    <% end %>
+  </div>
+</div>

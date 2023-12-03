@@ -3,8 +3,9 @@ require 'faker'
 puts 'cleaning database'
 
 SurveyQuestion.destroy_all
-Option.destroy_all
+UserBadge.destroy_all
 
+Option.destroy_all
 Survey.destroy_all
 User.destroy_all
 Question.destroy_all
@@ -21,7 +22,7 @@ User.create(
   first_name: 'Richard',
   last_name: 'Smith',
   is_admin: true,
-  gender: 'male',
+  gender: 'Male',
   points: 50
 )
 User.create(
@@ -31,7 +32,7 @@ User.create(
   first_name: 'Bob',
   last_name: 'jones',
   is_admin: false,
-  gender: 'male',
+  gender: 'Female',
   points: 109
 )
 
@@ -148,14 +149,20 @@ Badge.create(
 )
 
 Badge.create(
-  name: 'Straight Date',
+  name: 'Queer Date',
   unlock_reqs: badge_unlock_reqs[12],
+  icon: 'queer_x_queer_badge.svg'
+)
+
+Badge.create(
+  name: 'Straight Date',
+  unlock_reqs: badge_unlock_reqs[13],
   icon: 'straight_badge.svg'
 )
 
 Badge.create(
   name: 'First Place',
-  unlock_reqs: badge_unlock_reqs[13],
+  unlock_reqs: badge_unlock_reqs[14],
   icon: 'trophy_badge.svg'
 )
 
