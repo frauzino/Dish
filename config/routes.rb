@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   resources :surveys, only: %i[new create]
   get 'leaderboard', to: 'users#index'
   get 'project', to: 'pages#project'
-  get 'account', to: 'pages#account'
+  get 'account', to: 'users#show'
 end
