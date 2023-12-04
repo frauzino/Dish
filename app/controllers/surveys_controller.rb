@@ -3,11 +3,22 @@ class SurveysController < ApplicationController
 
   def new
     @survey = Survey.new
-    @questions = Question.all.sample 5
+    # @questions = Question.all.sample 5
+    @questions = assign_questions
     @questions.each do |question|
       @survey.survey_questions << SurveyQuestion.new(survey: @survey, question:)
     end
     @survey_questions = @survey.survey_questions
+  end
+
+  def assign_questions
+    questions_array = if user_signed_in?
+                        [Question.second]
+                      else
+                        [Question.first, Question.second]
+                      end
+    questions_sample = Question.all[2..].sample 15
+    questions_array + questions_sample
   end
 
   def create
