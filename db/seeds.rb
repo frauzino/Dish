@@ -190,7 +190,7 @@ Question.create(
   ]
 )
 Question.create(
-  body: 'When you met in person did their dating profile picure match their actual physical appearance?',
+  body: 'When you met in person did their dating profile picture match their actual physical appearance?',
   options: [
     Option.create(body: 'Yes'),
     Option.create(body: 'No')
