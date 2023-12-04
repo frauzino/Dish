@@ -24,25 +24,34 @@ class UsersController < ApplicationController
   end
 
   def check_dates_badges
-    if @user.gender == 'Male' && Survey.where(user: @user, survey_questions: SurveyQuestion.where(answer: 'yes')).exists?
+    if @user.gender == 'Male' && Survey.where(user: @user, survey_questions: SurveyQuestion.where(answer: 'Male')).exists?
       create_badge('Gay Date')
     end
-    if @user.gender == 'Female' && Survey.where(user: @user, survey_questions: SurveyQuestion.where(answer: 'yes')).exists?
+    if @user.gender == 'Female' && Survey.where(user: @user, survey_questions: SurveyQuestion.where(answer: 'Female')).exists?
       create_badge('Lesbian Date')
     end
-    if @user.gender == 'Male' && Survey.where(user: @user, survey_questions: SurveyQuestion.where(answer: 'no')).exists?
+    if @user.gender == 'Male' && Survey.where(user: @user, survey_questions: SurveyQuestion.where(answer: 'Female')).exists?
       create_badge('Straight Date')
     end
-    if @user.gender == 'Nonbinary' || @user.gender == 'Other' && Survey.where(user: @user, survey_questions: SurveyQuestion.where(answer: 'no')).exists?
+    if @user.gender == 'Nonbinary' || @user.gender == 'Other' && Survey.where(user: @user, survey_questions: SurveyQuestion.where(answer: 'Nonbinary')).exists?
       create_badge('Queer Date')
     end
-    if @user.gender == 'Nonbinary' || @user.gender == 'Other' && Survey.where(user: @user, survey_questions: SurveyQuestion.where(answer: 'no')).exists?
+    if @user.gender == 'Nonbinary' || @user.gender == 'Other' && Survey.where(user: @user, survey_questions: SurveyQuestion.where(answer: 'Female')).exists?
+      create_badge('Queer x Female Date')
+    elsif @user.gender == 'Female' && Survey.where(user: @user, survey_questions: SurveyQuestion.where(answer: 'Nonbinary')).exists?
       create_badge('Queer x Female Date')
     end
-    if @user.gender == 'Nonbinary' || @user.gender == 'Other' && Survey.where(user: @user, survey_questions: SurveyQuestion.where(answer: 'no')).exists?
+    if @user.gender == 'Nonbinary' || @user.gender == 'Other' && Survey.where(user: @user, survey_questions: SurveyQuestion.where(answer: 'Male')).exists?
+      create_badge('Queer x Male Date')
+    elsif @user.gender == 'Male' && Survey.where(user: @user, survey_questions: SurveyQuestion.where(answer: 'Nonbinary')).exists?
       create_badge('Queer x Male Date')
     end
-    # create_badge('Pansexual') if @user.surveys.count >= 10
+    if @user.gender == 'Male' && @user.badges.where(name: ['Gay Date', 'Straight Date', 'Queer x Male Date'])
+      create_badge('Pansexual')
+    elsif @user.gender == 'Female' && @user.badges.where(name: ['Lesbian Date', 'Straight Date', 'Queer x Female Date'])
+        create_badge('Pansexual')
+    elsif @user.gender == 'Nonbinary' || @user.gender == 'Other' && @user.badges.where(name: ['Queer Date', 'Queer x Male Date', 'Queer x Female Date'])
+        create_badge('Pansexual')
   end
 
   def check_misc_badges
