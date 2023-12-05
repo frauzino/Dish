@@ -53,6 +53,7 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "devise"
 gem 'rapidfire'
 gem 'faker'
+gem "dotenv-rails"
 # gem 'jquery-rails'
 
 group :development, :test do
