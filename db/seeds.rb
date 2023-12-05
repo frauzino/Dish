@@ -22,6 +22,7 @@ User.create(
   first_name: 'Richard',
   last_name: 'Smith',
   is_admin: true,
+  school: 'Concordia',
   gender: 'Male',
   points: 50
 )
@@ -32,6 +33,7 @@ User.create(
   first_name: 'Bob',
   last_name: 'jones',
   is_admin: false,
+  school: 'McGill',
   gender: 'Female',
   points: 109
 )

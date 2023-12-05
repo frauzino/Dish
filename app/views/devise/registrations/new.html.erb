@@ -41,6 +41,12 @@
                       label: false,
                       placeholder: "Last Name",
                       input_html: { autocomplete: "last-name" }%>
+          <%= f.input :school,
+                      required: true,
+                      autofocus: true,
+                      label: false,
+                      placeholder: "School",
+                      input_html: { autocomplete: "school" }%>
           <% genders = ["Male", "Female", "Nonbinary", "Other"] %>
           <%= f.input :gender,
                       collection: genders,
