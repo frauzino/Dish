@@ -3,13 +3,21 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="survey"
 export default class extends Controller {
 
-  static targets = ["questionElement", "surveyElement", "progressBarElement"]
+  static targets = ["questionElement", "surveyElement", "progressBarElement", "buttonElement"]
 
   connect() {
   }
 
+  radioChecked() {
+    for (let i = 0; i < this.questionElementTargets.length; i++) {
+      if (event.target.dataset.index == i) {
+        this.buttonElementTargets[i].classList.remove("button-disabled")
+      }
+    }
+  }
+
   next() {
-    for(let i = 0; i < this.questionElementTargets.length; i++ ) {
+    for(let i = 0; i < this.questionElementTargets.length; i++) {
       if (event.target.id == `next${i}`) {
         this.questionElementTargets[i].classList.add("slide-out");
         this.questionElementTargets[i + 1].classList.add("slide-in");
@@ -19,8 +27,6 @@ export default class extends Controller {
           this.questionElementTargets[i + 1].classList.remove("hidden");
         }, 500);
 
-
-        console.log(i);
         this.progress(i);
         break;
       };

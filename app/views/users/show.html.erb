@@ -9,7 +9,11 @@
   </div>
 
   <div class="column column-small">
-    <%= image_tag "user_icon", class: "content-icon-small" %>
+    <% if @user.photo.key %>
+      <%= cl_image_tag @user.photo.key, class: "user-avatar content-icon-small" %>
+    <% else %>
+      <%= image_tag "user_icon", class: "content-icon-small" %>
+    <% end %>
     <h3 class="account-header">Personal Information</h3>
     <div class="content-panel account-info">
       <span class="account-detail"><%= @user.email %></span>

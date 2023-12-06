@@ -27,6 +27,11 @@
   }
 }
 
+.button-disabled {
+  opacity: .6;
+  pointer-events: none;
+}
+
 .survey-next-button {
   align-self: center;
 }
