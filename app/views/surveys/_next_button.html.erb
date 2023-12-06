@@ -1,0 +1,16 @@
+<div
+  id="next<%= index %>"
+  class="btn survey-next-button button-primary button-disabled"
+  data-survey-target="buttonElement"
+  <% if sq.index == @survey.survey_questions.length - 1 %>
+    data-action="click->survey#submit"
+  <% else %>
+    data-action="click->survey#next"
+  <% end %>
+>
+  <% if sq.index == @survey.survey_questions.length - 1 %>
+    Finish
+  <% else %>
+    Next
+  <% end %>
+</div>

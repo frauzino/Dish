@@ -17,7 +17,11 @@
         <% if user_signed_in? %>
           <li class="account-dropdown" data-controller="dropdown">
             <div data-action="click->dropdown#openDropdown">
-              <%= image_tag "user_icon", class: "account-icon" %>
+              <% if current_user.photo.key %>
+                <%= cl_image_tag current_user.photo.key, class: "user-avatar avatar-common" %>
+              <% else %>
+                <%= image_tag "user_icon", class: "account-icon" %>
+              <% end %>
             </div>
             <div class="dropdown-content" data-dropdown-target="dropdownContent">
               <%= link_to "Account", account_path, class: "nav-link" %>

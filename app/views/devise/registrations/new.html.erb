@@ -11,13 +11,13 @@
                       autofocus: true,
                       label: false,
                       placeholder: "Email",
-                      input_html: { autocomplete: "email" }%>
+                      input_html: { autocomplete: "email" } %>
           <%= f.input :username,
                       required: true,
                       autofocus: true,
                       label: false,
                       placeholder: "Username",
-                      input_html: { autocomplete: "username" }%>
+                      input_html: { autocomplete: "username" } %>
           <%= f.input :password,
                       required: true,
                       label: false,
@@ -34,19 +34,19 @@
                       autofocus: true,
                       label: false,
                       placeholder: "First Name",
-                      input_html: { autocomplete: "first-name" }%>
+                      input_html: { autocomplete: "first-name" } %>
           <%= f.input :last_name,
                       required: true,
                       autofocus: true,
                       label: false,
                       placeholder: "Last Name",
-                      input_html: { autocomplete: "last-name" }%>
+                      input_html: { autocomplete: "last-name" } %>
           <%= f.input :school,
                       required: true,
                       autofocus: true,
                       label: false,
                       placeholder: "School",
-                      input_html: { autocomplete: "school" }%>
+                      input_html: { autocomplete: "school" } %>
           <% genders = ["Male", "Female", "Nonbinary", "Other"] %>
           <%= f.input :gender,
                       collection: genders,
@@ -54,7 +54,9 @@
                       autofocus: true,
                       label: false,
                       include_blank: "Gender",
-                      input_html: { autocomplete: "gender" }%>
+                      input_html: { autocomplete: "gender" } %>
+          <%= f.input :photo,
+                      as: :file %>
         </div>
 
         <div class="form-actions">

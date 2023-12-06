@@ -12,7 +12,7 @@
 .navbar-inner {
   display: flex;
   justify-content: space-between;
-  padding: 1rem $main-padding 0;
+  padding: 0rem $main-padding 0;
 }
 
 .logo {
@@ -27,9 +27,11 @@
 }
 
 .nav-links {
+  align-items: center;
   display: flex;
   list-style: none;
   gap: 2rem;
+  height: 2rem;
 }
 
 .nav-item {
