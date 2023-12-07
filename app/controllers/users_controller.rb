@@ -57,7 +57,7 @@ class UsersController < ApplicationController
 
   def check_misc_badges
     create_badge('First Place') if rank_users.take(1).first == @user
-    create_badge('Profile Photo') if @user.image
+    create_badge('Profile Photo') if @user.photo.key
   end
 
   # def check_friends_badges
