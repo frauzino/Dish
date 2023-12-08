@@ -21,6 +21,9 @@
       <span class="account-detail"><%= @user.first_name %></span>
       <span class="account-detail"><%= @user.last_name %></span>
       <span class="account-detail"><%= @user.gender %></span>
+      <span class="account-detail">
+        Referral code: <%= @user.referral.code %>
+      </span>
       <%= link_to "Edit account details", edit_registration_path(@user), class: "btn button-primary" %>
     </div>
   </div>

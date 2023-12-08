@@ -5,6 +5,7 @@ puts 'cleaning database'
 SurveyQuestion.destroy_all
 UserBadge.destroy_all
 
+Referral.destroy_all
 Option.destroy_all
 Survey.destroy_all
 User.destroy_all
