@@ -34,7 +34,7 @@ class SurveysController < ApplicationController
   end
 
   def add_user_points
-    new_points = current_user.points += 10
+    new_points = current_user.points += 25
     current_user.update(points: new_points)
   end
 

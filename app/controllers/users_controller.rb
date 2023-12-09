@@ -7,20 +7,14 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    generate_referral_code unless @user.referral
     check_survey_badges
     check_dates_badges
     check_misc_badges
-    # check_friends_badges
+    check_friends_badges
   end
 
   def rank_users
     User.all.sort_by { |user| user[:points] }.reverse
-  end
-
-  def generate_referral_code
-    @referral = Referral.new(user: current_user)
-    @referral.code = SecureRandom.alphanumeric(8) until @referral.save
   end
 
   def check_survey_badges
@@ -66,11 +60,11 @@ class UsersController < ApplicationController
     create_badge('Profile Photo') if @user.photo.key
   end
 
-  # def check_friends_badges
-  #   create_badge('First Friend') if @user.surveys.count >= 1
-  #   create_badge('5x Friends') if @user.surveys.count >= 5
-  #   create_badge('10x Friends') if @user.surveys.count >= 10
-  # end
+  def check_friends_badges
+    create_badge('First Friend') if @user.referral.uses_count >= 1
+    create_badge('5x Friends') if @user.referral.uses_count >= 5
+    create_badge('10x Friends') if @user.referral.uses_count >= 10
+  end
 
   def create_badge(name)
     UserBadge.create(user: current_user, badge: Badge.find_by(name:))

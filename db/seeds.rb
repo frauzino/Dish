@@ -25,7 +25,8 @@ User.create(
   is_admin: true,
   school: 'Concordia',
   gender: 'Male',
-  points: 50
+  points: 50,
+  referral: Referral.new(code: SecureRandom.alphanumeric(8))
 )
 User.create(
   email: 'b@b.b',
@@ -36,7 +37,8 @@ User.create(
   is_admin: false,
   school: 'McGill',
   gender: 'Female',
-  points: 109
+  points: 109,
+  referral: Referral.new(code: SecureRandom.alphanumeric(8))
 )
 
 puts 'Admin created email: a@a.a passcode: 123456'
