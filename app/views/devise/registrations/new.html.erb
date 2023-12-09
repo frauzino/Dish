@@ -57,6 +57,9 @@
                       input_html: { autocomplete: "gender" } %>
           <%= f.input :photo,
                       as: :file %>
+          <%= f.input :referral_input,
+                      label: false,
+                      placeholder: "Referral code" %>
         </div>
 
         <div class="form-actions">
