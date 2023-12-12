@@ -1,0 +1,9 @@
+<div class="survey-container" data-controller="survey">
+  <div class="survey-question-container">
+    <%= image_tag "survey_icon.svg", class: "content-icon" %>
+    <div class="content-panel">
+      <%= @survey.total_value %>
+      <%= image_tag @survey.result.image %>
+    </div>
+  </div>
+</div>

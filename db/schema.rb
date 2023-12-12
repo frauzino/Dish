@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_09_181558) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_11_224916) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_09_181558) do
     t.datetime "updated_at", null: false
     t.string "body"
     t.bigint "question_id"
+    t.integer "value"
     t.index ["question_id"], name: "index_options_on_question_id"
   end
 
@@ -114,8 +115,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_09_181558) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "uses_count"
+    t.integer "uses_count", default: 0
     t.index ["user_id"], name: "index_referrals_on_user_id"
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.string "image"
+    t.bigint "survey_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["survey_id"], name: "index_results_on_survey_id"
   end
 
   create_table "survey_questions", force: :cascade do |t|
@@ -124,6 +133,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_09_181558) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "answer"
+    t.integer "answer_value"
     t.index ["question_id"], name: "index_survey_questions_on_question_id"
     t.index ["survey_id"], name: "index_survey_questions_on_survey_id"
   end
@@ -132,6 +142,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_09_181558) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.integer "total_value"
     t.index ["user_id"], name: "index_surveys_on_user_id"
   end
 
@@ -169,6 +180,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_09_181558) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "options", "questions"
   add_foreign_key "referrals", "users"
+  add_foreign_key "results", "surveys"
   add_foreign_key "survey_questions", "questions"
   add_foreign_key "survey_questions", "surveys"
   add_foreign_key "surveys", "users"

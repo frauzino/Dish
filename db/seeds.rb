@@ -7,6 +7,7 @@ UserBadge.destroy_all
 
 Referral.destroy_all
 Option.destroy_all
+Result.destroy_all
 Survey.destroy_all
 User.destroy_all
 Question.destroy_all
@@ -63,208 +64,208 @@ puts 'Creating questions'
 Question.create(
   body: 'Do you identify as',
   options: [
-    Option.create(body: 'Male'),
-    Option.create(body: 'Female'),
-    Option.create(body: 'Nonbinary'),
-    Option.create(body: 'Other')
+    Option.create(body: 'Male', value: 1),
+    Option.create(body: 'Female', value: 1),
+    Option.create(body: 'Nonbinary', value: 1),
+    Option.create(body: 'Other', value: 1)
   ]
 )
 Question.create(
   body: 'Was the person you went on a date with...',
   options: [
-    Option.create(body: 'Male'),
-    Option.create(body: 'Female'),
-    Option.create(body: 'Nonbinary'),
-    Option.create(body: 'Other')
+    Option.create(body: 'Male', value: 1),
+    Option.create(body: 'Female', value: 1),
+    Option.create(body: 'Nonbinary', value: 1),
+    Option.create(body: 'Other', value: 1)
   ]
 )
 Question.create(
   body: 'Did the person you went on a date with do anything to make you feel uncomfortable?',
   options: [
-    Option.create(body: 'Gave you lusty looks'),
-    Option.create(body: 'Too handsy'),
-    Option.create(body: 'Looking at others while on the date with you'),
-    Option.create(body: 'Other'),
-    Option.create(body: 'None of the above')
+    Option.create(body: 'Gave you lusty looks', value: 3),
+    Option.create(body: 'Too handsy', value: 1),
+    Option.create(body: 'Looking at others while on the date with you', value: 5),
+    Option.create(body: 'Other', value: 3),
+    Option.create(body: 'None of the above', value: 10)
   ]
 )
 Question.create(
   body: 'On your date, did you notice any immediate/obvious red flags?',
   options: [
-    Option.create(body: 'Arrived late'),
-    Option.create(body: 'Use of misogynistic/misandric language; ie. made sexually excplicit comments about your appearance'),
-    Option.create(body: 'Unable to contribute financially; ie. credit card declined'),
-    Option.create(body: 'use of vulgar or demeaning language'),
-    Option.create(body: 'Tried to get you to stay out on the date longer than you wanted'),
-    Option.create(body: 'other'),
-    Option.create(body: 'None of the above')
+    Option.create(body: 'Arrived late', value: 4),
+    Option.create(body: 'Use of misogynistic/misandric language; ie. made sexually excplicit comments about your appearance', value: 1),
+    Option.create(body: 'Unable to contribute financially; ie. credit card declined', value: 3),
+    Option.create(body: 'use of vulgar or demeaning language', value: 1),
+    Option.create(body: 'Tried to get you to stay out on the date longer than you wanted', value: 2),
+    Option.create(body: 'other', value: 2),
+    Option.create(body: 'None of the above', value: 10)
   ]
 )
 Question.create(
   body: 'Was the person you went on a date with funny/had a good sense of humour, or were they more intense and serious?',
   options: [
-    Option.create(body: 'Funny and had a good sense of humour'),
-    Option.create(body: 'intense and serious')
+    Option.create(body: 'Funny and had a good sense of humour', value: 9),
+    Option.create(body: 'intense and serious', value: 7)
   ]
 )
 Question.create(
   body: 'How would you describe their demeaner/personality type?',
   options: [
-    Option.create(body: 'Cocky - Bragged about job/money/possessions'),
-    Option.create(body: 'Confident - Open and honest, but without all the bravado'),
-    Option.create(body: 'Insecure - Appeared insecure and unsure')
+    Option.create(body: 'Cocky - Bragged about job/money/possessions', value: 5),
+    Option.create(body: 'Confident - Open and honest, but without all the bravado', value: 10),
+    Option.create(body: 'Insecure - Appeared insecure and unsure', value: 3)
   ]
 )
 Question.create(
   body: 'If your date was male, was he chivalrous? (For example; open doors, pull our chair, let you order first)',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No'),
-    Option.create(body: 'N/A')
+    Option.create(body: 'Yes', value: 8),
+    Option.create(body: 'No', value: 2),
+    Option.create(body: 'N/A', value: 5)
   ]
 )
 Question.create(
   body: 'Were they rude to the waitstaff/people who served or catered to you on your date?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 1),
+    Option.create(body: 'No', value: 10)
   ]
 )
 Question.create(
   body: 'Did they drink excessively on the date, to the point of becoming buzzed or intoxicated?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 3),
+    Option.create(body: 'No', value: 8)
   ]
 )
 Question.create(
   body: 'Did they respect your opinions, even if they differed from their own?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 9),
+    Option.create(body: 'No', value: 2)
   ]
 )
 Question.create(
   body: 'Did they avoid hot-button topics like religion, abortion and politics?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 4),
+    Option.create(body: 'No', value: 6)
   ]
 )
 Question.create(
   body: 'Did they dominate the conversation?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 4),
+    Option.create(body: 'No', value: 6)
   ]
 )
 Question.create(
   body: 'Did they appear to be genuinely happy and content with their life?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 8),
+    Option.create(body: 'No', value: 3)
   ]
 )
 Question.create(
   body: 'Did they seem honest and trustworthy?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 9),
+    Option.create(body: 'No', value: 1)
   ]
 )
 Question.create(
   body: 'Did they seem needy or clingy?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 3),
+    Option.create(body: 'No', value: 7)
   ]
 )
 Question.create(
   body: 'Did they seem entitled or arrogant?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 3),
+    Option.create(body: 'No', value: 7)
   ]
 )
 Question.create(
   body: 'How attractive was your date?',
   options: [
-    Option.create(body: 'Very attractive'),
-    Option.create(body: 'Moderately attractive'),
-    Option.create(body: 'Unattractive')
+    Option.create(body: 'Very attractive', value: 8),
+    Option.create(body: 'Moderately attractive', value: 5),
+    Option.create(body: 'Unattractive', value: 2)
   ]
 )
 Question.create(
   body: 'When you met in person did their dating profile picture match their actual physical appearance?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 8),
+    Option.create(body: 'No', value: 2)
   ]
 )
 Question.create(
   body: 'How did they respond when the bill came/it was time to pay for something?',
   options: [
-    Option.create(body: 'I paid'),
-    Option.create(body: 'They paid'),
-    Option.create(body: 'We split the cost'),
-    Option.create(body: 'Not applicable/no bill or payment needed')
+    Option.create(body: 'I paid', value: 3),
+    Option.create(body: 'They paid', value: 7),
+    Option.create(body: 'We split the cost', value: 8),
+    Option.create(body: 'Not applicable/no bill or payment needed', value: 5)
   ]
 )
 Question.create(
   body: 'Did they brag about their job/career, what car they drive, where they live, or other trappings of success?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 3),
+    Option.create(body: 'No', value: 7)
   ]
 )
 Question.create(
   body: 'Did they complain about spending money or discuss upcoming expenses?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 3),
+    Option.create(body: 'No', value: 7)
   ]
 )
 Question.create(
   body: 'Did they seem financially stable enough to travel abroad if they desired?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 8),
+    Option.create(body: 'No', value: 2)
   ]
 )
 Question.create(
   body: 'Do they have children?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 5),
+    Option.create(body: 'No', value: 5)
   ]
 )
 Question.create(
   body: 'Did they communicate a desire to date exclusively?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 5),
+    Option.create(body: 'No', value: 5)
   ]
 )
 Question.create(
   body: 'Do they read books, articles and/or follow the news?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 8),
+    Option.create(body: 'No', value: 4)
   ]
 )
 Question.create(
   body: 'Did they speak positively about their family?',
   options: [
-    Option.create(body: 'Yes'),
-    Option.create(body: 'No')
+    Option.create(body: 'Yes', value: 8),
+    Option.create(body: 'No', value: 4)
   ]
 )
 Question.create(
   body: 'How did you feel at the end of the date?',
   options: [
-    Option.create(body: 'Positive - It seems like we will keep in touch / go out again'),
-    Option.create(body: 'Negative - No positive outcome / doubtful for a future date'),
-    Option.create(body: 'We hooked up')
+    Option.create(body: 'Positive - It seems like we will keep in touch / go out again', value: 8),
+    Option.create(body: 'Negative - No positive outcome / doubtful for a future date', value: 2),
+    Option.create(body: 'We hooked up', value: 8)
   ]
 )
 
