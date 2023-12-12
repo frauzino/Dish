@@ -1,10 +1,6 @@
 <div class="content-container reduced-margin">
   <div class="column">
-    <%= image_tag "stars_icon", class: "content-icon-small" %>
-    <h3 class="account-header">Survey Results</h3>
-    <div class="content-panel">
-    </div>
-
+    <%= render "survey_results" %>
     <%= render "badges" %>
   </div>
 
@@ -23,6 +19,9 @@
       <span class="account-detail"><%= @user.gender %></span>
       <span class="account-detail">
         Referral code: <%= @user.referral.code %>
+      </span>
+      <span class="account-detail">
+        Points total: <%= @user.points %>
       </span>
       <%= link_to "Edit account details", edit_registration_path(@user), class: "btn button-primary" %>
     </div>
