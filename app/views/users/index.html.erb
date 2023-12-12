@@ -11,9 +11,21 @@
           <% end %>
           <div class="user-stats">
             <span class="user-username subheading"><%= user.username %></span>
-            <span class="user-surveys subheading"><%= user.school %></span>
+            <span class="user-surveys subheading"><%= user.school.name %></span>
             <span class="user-surveys subheading"><%= user.surveys.length %> Dates</span>
             <span class="user-points subheading"><%= user.points %> Pts</span>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+
+    <ul class="content-panel hidden">
+      <%= image_tag "school_icon", class: "content-icon" %>
+      <% @top10_schools.each do |school| %>
+        <li class="user-row">
+          <div class="user-stats">
+            <span class="user-username subheading"><%= school.name %></span>
+            <span class="user-points subheading"><%= school.points %> Pts</span>
           </div>
         </li>
       <% end %>
