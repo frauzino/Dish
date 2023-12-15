@@ -3,7 +3,6 @@ class SurveysController < ApplicationController
 
   def new
     @survey = Survey.new
-    # @questions = Question.all.sample 5
     @questions = assign_questions
     @questions.each do |question|
       @survey.survey_questions << SurveyQuestion.new(survey: @survey, question:)

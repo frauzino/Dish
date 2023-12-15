@@ -3,19 +3,51 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  before_action :school_names, only: %i[new update create]
   after_action :generate_referral_code, only: %i[create]
   after_action :check_referrals, only: %i[create]
 
   # POST /resource
   # def create
+  #   @school = set_school(params[:user][:school])
+  #   params[:user][:school] = @school
   #   super
-  #   generate_referral_code
-  #   check_referrals
+  #   resource.school = @school
+  #   if resource.save
+  #     redirect_to root_path
+  #   else
+  #     render :new, status: :unprocessable_entity
+  #   end
   # end
+
+  def create
+    new_params = sign_up_params
+    new_params['school'] = set_school(sign_up_params['school'])
+    build_resource(new_params)
+
+    resource.save
+    yield resource if block_given?
+    if resource.persisted?
+      if resource.active_for_authentication?
+        set_flash_message! :notice, :signed_up
+        sign_up(resource_name, resource)
+        respond_with resource, location: root_path
+      else
+        set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+        expire_data_after_sign_in!
+        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
+    end
+  end
 
   def generate_referral_code
     @referral = Referral.new(user: resource)
-    @referral.code = SecureRandom.alphanumeric(8) until @referral.save
+    @referral.code = SecureRandom.alphanumeric(8)
+    @referral.save!
   end
 
   def check_referrals
@@ -29,6 +61,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     reference_user.increment!(:points, 10)
     resource.increment!(:points, 5)
     Referral.find_by(code: referral_in).increment!(:uses_count)
+  end
+
+  def school_names
+    @school_names = Scraper.new.school_scraper
+  end
+
+  def set_school(name)
+    return School.find_by(name:) if School.find_by(name:)
+
+    School.create(name:)
   end
 
   # GET /resource/sign_up

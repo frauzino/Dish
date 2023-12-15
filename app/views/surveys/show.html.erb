@@ -1,9 +1,10 @@
 <div class="survey-container" data-controller="survey">
   <div class="survey-question-container">
     <%= image_tag "survey_icon.svg", class: "content-icon" %>
-    <div class="content-panel">
-      <%= @survey.total_value %>
-      <%= image_tag @survey.result.image %>
+    <div class="content-panel result-panel">
+      <%= image_tag @survey.result.image, class: 'result-avatar'%>
+      <span class="result-text"><%= "We think your date was a #{@survey.result.image.chomp('.svg')}!" %></span>
+      <%= link_to "Check the leaderboards", leaderboard_path, class: " btn button-primary" %>
     </div>
   </div>
 </div>

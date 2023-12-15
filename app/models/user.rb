@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  belongs_to :school
   has_many :surveys
   has_many :user_badges
   has_many :badges, through: :user_badges

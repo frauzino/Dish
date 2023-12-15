@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @top10_users = rank_users.take(10)
+    @top10_schools = index_schools
   end
 
   def show
@@ -16,6 +17,15 @@ class UsersController < ApplicationController
   def rank_users
     User.all.sort_by { |user| user[:points] }.reverse
   end
+
+  def index_schools
+    schools_controller = SchoolsController.new
+    schools_controller.request = request
+    schools_controller.response = response
+    schools_controller.index
+  end
+
+  # Badge Methods
 
   def check_survey_badges
     create_badge('First Survey') if @user.surveys.count >= 1
@@ -50,8 +60,8 @@ class UsersController < ApplicationController
       create_badge('Pansexual')
     elsif @user.gender == 'Female' && @user.badges.where(name: ['Lesbian Date', 'Straight Date', 'Queer x Female Date'])
       create_badge('Pansexual')
-    elsif @user.gender == 'Nonbinary' || @user.gender == 'Other' && @user.badges.where(name: ['Queer Date', 'Queer x Male Date', 'Queer x Female Date'])
-      create_badge('Pansexual')
+    # elsif @user.gender == 'Nonbinary' || @user.gender == 'Other' && @user.badges.where(name: ['Queer Date', 'Queer x Male Date', 'Queer x Female Date'])
+    #   create_badge('Pansexual')
     end
   end
 

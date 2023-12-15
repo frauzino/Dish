@@ -12,17 +12,38 @@
     <% end %>
     <h3 class="account-header">Personal Information</h3>
     <div class="content-panel account-info">
-      <span class="account-detail"><%= @user.email %></span>
-      <span class="account-detail"><%= @user.username %></span>
-      <span class="account-detail"><%= @user.first_name %></span>
-      <span class="account-detail"><%= @user.last_name %></span>
-      <span class="account-detail"><%= @user.gender %></span>
-      <span class="account-detail">
-        Referral code: <%= @user.referral.code %>
-      </span>
-      <span class="account-detail">
-        Points total: <%= @user.points %>
-      </span>
+      <div class="account-detail">
+        <span class="account-detail-title">E-mail:</span>
+        <span><%= @user.email %></span>
+      </div>
+      <div class="account-detail">
+        <span class="account-detail-title">Username:</span>
+        <span><%= @user.username %></span>
+      </div>
+      <div class="account-detail">
+        <span class="account-detail-title">First name:</span>
+        <span><%= @user.first_name %></span>
+      </div>
+      <div class="account-detail">
+        <span class="account-detail-title">Last name:</span>
+        <span><%= @user.last_name %></span>
+      </div>
+      <div class="account-detail">
+        <span class="account-detail-title">Gender:</span>
+        <span><%= @user.gender %></span>
+      </div>
+      <div class="account-detail">
+        <span class="account-detail-title">School:</span>
+        <span><%= @user.school.name %></span>
+      </div>
+      <div class="account-detail">
+        <span class="account-detail-title">Referral code:</span>
+        <span><%= @user.referral.code %></span>
+      </div>
+      <div class="account-detail">
+        <span class="account-detail-title">Points total:</span>
+        <span><%= @user.points %></span>
+      </div>
       <%= link_to "Edit account details", edit_registration_path(@user), class: "btn button-primary" %>
     </div>
   </div>

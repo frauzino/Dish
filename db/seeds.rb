@@ -12,8 +12,20 @@ Survey.destroy_all
 User.destroy_all
 Question.destroy_all
 Badge.destroy_all
+School.destroy_all
 
 puts 'Database clean'
+puts 'Creating Schools'
+
+School.create(
+  name: 'Concordia',
+  points: 0
+)
+
+School.create(
+  name: 'McGill',
+  points: 0
+)
 
 puts 'Creating admin user'
 
@@ -24,8 +36,8 @@ User.create(
   first_name: 'Richard',
   last_name: 'Smith',
   is_admin: true,
-  school: 'Concordia',
   gender: 'Male',
+  school: School.first,
   points: 50,
   referral: Referral.new(code: SecureRandom.alphanumeric(8))
 )
@@ -36,8 +48,8 @@ User.create(
   first_name: 'Bob',
   last_name: 'jones',
   is_admin: false,
-  school: 'McGill',
   gender: 'Female',
+  school: School.last,
   points: 109,
   referral: Referral.new(code: SecureRandom.alphanumeric(8))
 )
