@@ -25,3 +25,29 @@ gap: 1rem;
 .user-points {
   text-align: end;
 }
+
+.leaderboard-links {
+  position: absolute;
+  display: flex;
+  width: 50%;
+  justify-content: space-between;
+  top: 4.5rem;
+  span {
+    background: $safedate-red;
+    height: 100%;
+    display: flex;
+    align-items: end;
+    padding: 0 .5rem .5rem;
+    border-radius: 0 0 .75rem .75rem;
+    font-size: 1rem;
+    color: $background-offwhite;
+    height: 1.5rem;
+
+    &:hover {
+      cursor: pointer;
+      border-style: none solid solid;
+      color: $safedate-red;
+      background: $background-offwhite;
+    }
+  }
+}

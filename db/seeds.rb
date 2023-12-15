@@ -15,8 +15,7 @@ Badge.destroy_all
 School.destroy_all
 
 puts 'Database clean'
-
-puts 'Creating admin user'
+puts 'Creating Schools'
 
 School.create(
   name: 'Concordia',
@@ -27,6 +26,8 @@ School.create(
   name: 'McGill',
   points: 0
 )
+
+puts 'Creating admin user'
 
 User.create(
   email: 'a@a.a',

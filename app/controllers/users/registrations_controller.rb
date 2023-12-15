@@ -3,19 +3,23 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  before_action :school_names, only: %i[new update create]
   after_action :generate_referral_code, only: %i[create]
   after_action :check_referrals, only: %i[create]
 
   # POST /resource
-  # def create
-  #   super
-  #   generate_referral_code
-  #   check_referrals
-  # end
+  def create
+    @school = set_school(params[:user][:school])
+    params[:user][:school] = @school
+    super
+    raise
+    resource.school = @school
+  end
 
   def generate_referral_code
     @referral = Referral.new(user: resource)
     @referral.code = SecureRandom.alphanumeric(8) until @referral.save
+    raise
   end
 
   def check_referrals
@@ -29,6 +33,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     reference_user.increment!(:points, 10)
     resource.increment!(:points, 5)
     Referral.find_by(code: referral_in).increment!(:uses_count)
+  end
+
+  def school_names
+    @school_names = Scraper.new.school_scraper
+  end
+
+  def set_school(name)
+    return School.find_by(name:) if School.find_by(name:)
+
+    School.create(name:)
   end
 
   # GET /resource/sign_up

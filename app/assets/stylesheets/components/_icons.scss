@@ -3,7 +3,7 @@
   aspect-ratio: 1/1;
   position: absolute;
   left: calc((100% - 6rem)/2);
-  top: 12rem;
+  top: -3rem;
   z-index: 1;
 }
 
@@ -13,4 +13,5 @@
   aspect-ratio: 1/1;
   width: 4rem;
   align-self: center;
+  z-index: 1;
 }
