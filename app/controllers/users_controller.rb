@@ -60,8 +60,8 @@ class UsersController < ApplicationController
       create_badge('Pansexual')
     elsif @user.gender == 'Female' && @user.badges.where(name: ['Lesbian Date', 'Straight Date', 'Queer x Female Date'])
       create_badge('Pansexual')
-    elsif @user.gender == 'Nonbinary' || @user.gender == 'Other' && @user.badges.where(name: ['Queer Date', 'Queer x Male Date', 'Queer x Female Date'])
-      create_badge('Pansexual')
+    # elsif @user.gender == 'Nonbinary' || @user.gender == 'Other' && @user.badges.where(name: ['Queer Date', 'Queer x Male Date', 'Queer x Female Date'])
+    #   create_badge('Pansexual')
     end
   end
 
