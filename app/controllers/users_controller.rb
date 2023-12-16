@@ -56,13 +56,13 @@ class UsersController < ApplicationController
     elsif @user.gender == 'Male' && Survey.where(user: @user, survey_questions: SurveyQuestion.where(answer: 'Nonbinary')).exists?
       create_badge('Queer x Male Date')
     end
-    if @user.gender == 'Male' && @user.badges.where(name: ['Gay Date', 'Straight Date', 'Queer x Male Date'])
-      create_badge('Pansexual')
-    elsif @user.gender == 'Female' && @user.badges.where(name: ['Lesbian Date', 'Straight Date', 'Queer x Female Date'])
-      create_badge('Pansexual')
+    # if @user.gender == 'Male' && @user.badges.where(name: ['Gay Date', 'Straight Date', 'Queer x Male Date'])
+    #   create_badge('Pansexual')
+    # elsif @user.gender == 'Female' && @user.badges.where(name: ['Lesbian Date', 'Straight Date', 'Queer x Female Date'])
+    #   create_badge('Pansexual')
     # elsif @user.gender == 'Nonbinary' || @user.gender == 'Other' && @user.badges.where(name: ['Queer Date', 'Queer x Male Date', 'Queer x Female Date'])
     #   create_badge('Pansexual')
-    end
+    # end
   end
 
   def check_misc_badges
