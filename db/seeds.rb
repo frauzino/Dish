@@ -19,12 +19,12 @@ puts 'Creating Schools'
 
 School.create(
   name: 'Concordia',
-  points: 0
+  points: 50
 )
 
 School.create(
   name: 'McGill',
-  points: 0
+  points: 50
 )
 
 puts 'Creating admin user'
