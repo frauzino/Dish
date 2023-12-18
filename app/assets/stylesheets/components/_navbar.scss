@@ -1,13 +1,19 @@
-.navbar {
+.desktop-navbar {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+
+.navbar-border {
   border-bottom: 1.5px solid $safedate-red;
   box-shadow: 0 0px 10px $shadow-gray;
 }
 
-.home-nav {
-  position: absolute;
-  width: 100%;
-  background-color: rgba($background-offwhite, .6);
-}
+// .home-nav {
+//   position: absolute;
+//   width: 100%;
+//   background-color: rgba($background-offwhite, .6);
+// }
 
 .navbar-inner {
   display: flex;
@@ -34,10 +40,29 @@
   height: 2rem;
 }
 
+.nav-links-background {
+  align-items: center;
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  height: 2rem;
+  padding: .5rem 1rem;
+  background: $background-offwhite;
+  border-radius: 2rem;
+  margin-bottom: .25rem;
+}
+
 .nav-item {
+  font-weight: bold;
+
   .nav-link {
     text-decoration: none;
     color: $safedate-red;
+  }
+
+  .alt-nav-link {
+    text-decoration: none;
+    color: $background-offwhite;
   }
 
   :hover {
@@ -45,8 +70,12 @@
   }
 }
 
+.account-icon-wrapper {
+  display: flex;
+}
+
 .account-icon {
-  width: 1.75rem;
+  width: 2rem;
 }
 
 .account-dropdown {
@@ -87,4 +116,14 @@
   position: absolute;
   top: -3rem;
   right: -2rem;
+}
+
+@media screen and (max-width:749px) {
+  // .navbar-inner {
+  //   display: none;
+  // }
+
+  .desktop-navbar {
+    display: none;
+  }
 }

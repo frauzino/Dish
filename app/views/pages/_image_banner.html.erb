@@ -1,13 +1,10 @@
-<div class="banner<% if current_page?(project_path) %> short-banner<% end %>">
-    <% if current_page?(root_path) %>
-      <%= image_tag "couple_bar.jpg", class: "banner-image" %>
-      <div class="banner-content-box">
-        <h3 class="sub-header">
-          Our mission is to promote a safe dating culture.
-        </h3>
-        <%= link_to "Take the survey", new_survey_path, class: " btn button-primary" %>
-      </div>
-    <% else %>
-      <%= image_tag "couple_phones.jpg", class: "banner-image image-lower" %>
-    <% end %>
-  </div>
+<div class="banner<% if current_page?(project_path) %> short-banner<% else %> full-banner<% end %>">
+  <% if current_page?(root_path) %>
+    <div class="banner-content-box">
+      <h3 class="sub-header">
+        Promoting a safe dating culture on campus.
+      </h3>
+      <%= link_to "Take the survey", new_survey_path, class: " btn button-primary" %>
+    </div>
+  <% end %>
+</div>

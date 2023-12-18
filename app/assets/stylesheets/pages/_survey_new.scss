@@ -13,3 +13,9 @@
   width: 70%;
   position: relative;
 }
+
+@media screen and (max-width: 749px) {
+  .survey-question-container {
+    width: 100%;
+  }
+}

@@ -1,9 +1,9 @@
-// Survey Questions Fade in/out
-
 .animated {
   animation-duration: .5s;
   animation-timing-function: ease-in-out;
 }
+
+// Survey Questions Fade in/out
 
 .slide-in {
   animation-name: slideIn;
@@ -12,6 +12,7 @@
 .slide-out {
   animation-name: slideOut;
 }
+
 
 @keyframes slideIn {
   0% {
@@ -32,5 +33,65 @@
   100% {
     opacity: 0;
     transform: translateX(-50%);
+  }
+}
+
+// Mobile Menu Animations
+
+.drawer-open-left {
+  animation-name: drawerOpenLeft;
+}
+
+.drawer-close-left {
+  animation-name: drawerCloseLeft;
+}
+
+.drawer-open-right {
+  animation-name: drawerOpenRight;
+}
+
+.drawer-close-right {
+  animation-name: drawerCloseRight;
+}
+
+@keyframes drawerOpenLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes drawerCloseLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  99% {
+    display: none;
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes drawerOpenRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes drawerCloseRight {
+  0% {
+    transform: translateX(0%);
+  }
+  99% {
+    display: none;
+  }
+  100% {
+    transform: translateX(100%);
   }
 }

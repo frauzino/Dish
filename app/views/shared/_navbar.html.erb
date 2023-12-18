@@ -1,26 +1,26 @@
-<div class="navbar<% if current_page?(root_path) || current_page?(project_path) %> home-nav<% end %>">
+<div class="navbar<% unless current_page?(root_path) || current_page?(project_path) %> navbar-border<% end %>">
   <div class="navbar-inner">
     <div class="logo-container">
-      <%= link_to image_tag("logo.svg", class: "logo"), root_path %>
+      <%= link_to image_tag(current_page?(root_path) ? "logo_reverse.svg" : "logo.svg", class: "logo"), root_path %>
     </div>
     <div class="links-container">
-      <ul class="nav-links">
+      <ul class=<%= current_page?(project_path) ? "nav-links-background" : "nav-links" %>>
         <li class="nav-item">
-          <%= link_to "Survey", new_survey_path, class: "nav-link" %>
+          <%= link_to "Survey", new_survey_path, class: current_page?(root_path) ? "alt-nav-link" : "nav-link"  %>
         </li>
         <li class="nav-item">
-          <%= link_to "Leaderboard", leaderboard_path, class: "nav-link" %>
+          <%= link_to "Leaderboard", leaderboard_path, class: current_page?(root_path) ? "alt-nav-link" : "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Project", project_path, class: "nav-link" %>
+          <%= link_to "Project", project_path, class: current_page?(root_path) ? "alt-nav-link" : "nav-link" %>
         </li>
         <% if user_signed_in? %>
           <li class="account-dropdown" data-controller="dropdown">
-            <div data-action="click->dropdown#openDropdown">
+            <div class="account-icon-wrapper" data-action="click->dropdown#openDropdown">
               <% if current_user.photo.key %>
                 <%= cl_image_tag current_user.photo.key, class: "user-avatar avatar-common" %>
               <% else %>
-                <%= image_tag "user_icon", class: "account-icon" %>
+                <%= image_tag current_page?(root_path) ? "user_icon_white" : "user_icon", class: "account-icon" %>
               <% end %>
             </div>
             <div class="dropdown-content" data-dropdown-target="dropdownContent">
@@ -32,7 +32,7 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Login", new_user_session_path, class: current_page?(root_path) ? "alt-nav-link" : "nav-link" %>
           </li>
         <% end %>
       </ul>
