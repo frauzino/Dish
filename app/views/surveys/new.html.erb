@@ -1,6 +1,6 @@
 <div class="survey-container" data-controller="survey">
   <div class="survey-question-container">
-    <%= image_tag "survey_icon.svg", class: "content-icon" %>
+    <%= image_tag "survey_icon.svg", class: "content-icon survey-icon" %>
 
     <%= simple_form_for(@survey, html: {"data-survey-target": "surveyElement"}) do |f| %>
       <div data-survey-target="questionElement" class="survey-question-panel animated">

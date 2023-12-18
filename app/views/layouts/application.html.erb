@@ -18,7 +18,12 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
+    <div class="desktop-navbar">
+      <%= render "shared/navbar" %>
+    </div>
+    <div class="mobile-navbar">
+      <%= render "shared/mobile_navbar" %>
+    </div>
     <%= render "shared/flashes" %>
     <div class="master-container">
       <%= yield %>

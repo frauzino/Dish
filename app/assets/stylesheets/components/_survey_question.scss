@@ -47,3 +47,19 @@
   aspect-ratio: 1/1;
   width: 20rem;
 }
+
+@media screen and (max-width: 749px) {
+  .survey-question-panel {
+    margin: 0;
+  }
+
+  .survey-image {
+    width: 5rem;
+  }
+
+  .survey-photo-label {
+    i {
+      font-size: .7rem;
+    }
+  }
+}

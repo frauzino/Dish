@@ -35,3 +35,16 @@
 .survey-next-button {
   align-self: center;
 }
+
+.close-button {
+  display: flex;
+  img {
+    width: 3rem;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .btn {
+    font-size: 1rem;
+  }
+}

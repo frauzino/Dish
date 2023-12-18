@@ -28,3 +28,12 @@
   aspect-ratio: 1/1;
   border-radius: 5%;
 }
+
+@media screen and (max-width: 749px) {
+  .text-with-image {
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
+  }
+
+}

@@ -15,3 +15,18 @@
   align-self: center;
   z-index: 1;
 }
+
+@media screen and (max-width: 749px) {
+  .content-icon {
+    height: 4rem;
+    top: -3rem;
+  }
+
+  .survey-icon {
+    top: -2rem;
+  }
+
+  .content-icon-small {
+    top: 6rem;
+  }
+}
