@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :user_badges, dependant: :destroy
   has_many :badges, through: :user_badges, dependant: :destroy
   has_one_attached :photo
-  has_one :referral, dependant: : destroy
+  has_one :referral, dependant: :destroy
 
   def survey_name
     "#{last_name}, #{first_name}"
