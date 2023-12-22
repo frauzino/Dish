@@ -5,7 +5,7 @@
   </div>
   <div class="content-container-inner">
     <ul class="content-panel" data-leaderboard-target="indivPanelElement">
-      <%= image_tag "standings_icon", class: "content-icon" %>
+      <%= image_tag "standings_icon.svg", class: "content-icon" %>
       <% @top10_users.each do |user| %>
         <li class="user-row">
           <% if user.photo.key %>
@@ -24,7 +24,7 @@
     </ul>
 
     <ul class="content-panel hidden" data-leaderboard-target="schoolPanelElement">
-      <%= image_tag "school_icon", class: "content-icon" %>
+      <%= image_tag "school_icon.svg", class: "content-icon" %>
       <% @top10_schools.each do |school| %>
         <li class="user-row">
           <div class="user-stats">
