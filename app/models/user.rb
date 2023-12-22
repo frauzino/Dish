@@ -5,11 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :school
-  has_many :surveys
-  has_many :user_badges
-  has_many :badges, through: :user_badges
+  has_many :surveys, dependent: :destroy
+  has_many :user_badges, dependent: :destroy
+  has_many :badges, through: :user_badges, dependent: :destroy
   has_one_attached :photo
-  has_one :referral
+  has_one :referral, dependent: :destroy
 
   def survey_name
     "#{last_name}, #{first_name}"

@@ -2,3 +2,10 @@
   width: 5rem;
   aspect-ratio: 1/1;
 }
+
+@media screen and (max-width: 749px) {
+  .badge {
+    width: 4rem;
+    margin: 1rem 0;
+  }
+}
