@@ -67,9 +67,6 @@
   0% {
     transform: translateX(0%);
   }
-  99% {
-    display: none;
-  }
   100% {
     transform: translateX(-100%);
   }
@@ -87,9 +84,6 @@
 @keyframes drawerCloseRight {
   0% {
     transform: translateX(0%);
-  }
-  99% {
-    display: none;
   }
   100% {
     transform: translateX(100%);

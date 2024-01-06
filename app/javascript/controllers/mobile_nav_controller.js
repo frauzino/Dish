@@ -27,9 +27,9 @@ export default class extends Controller {
     this.mainMenuDrawerElementTarget.classList.add('drawer-close-left');
 
     setTimeout(() => {
-      this.mainMenuDrawerElementTarget.classList.add('hidden')
+      this.mainMenuDrawerElementTarget.classList.add('hidden');
       this.mainMenuDrawerElementTarget.classList.remove('drawer-close-left');
-    }, 500);
+    }, 400);
   }
 
   closeUserMenuDrawer() {
@@ -39,6 +39,6 @@ export default class extends Controller {
     setTimeout(() => {
       this.userMenuDrawerElementTarget.classList.add('hidden')
       this.userMenuDrawerElementTarget.classList.remove('drawer-close-right');
-    }, 500);
+    }, 400);
   }
 }
