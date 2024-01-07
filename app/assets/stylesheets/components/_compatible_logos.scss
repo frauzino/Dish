@@ -1,0 +1,20 @@
+.compatible-logos {
+  margin-top: 5rem;
+}
+
+.compatible-logos-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  align-items: center;
+}
+
+.comp-logo {
+  width: 8rem;
+}
+
+@media screen and (max-width: 749px) {
+  .compatible_logos-wrapper {
+    flex-wrap: wrap;
+  }
+}

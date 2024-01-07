@@ -1,10 +1,15 @@
 <div class="banner<% if current_page?(project_path) %> short-banner<% else %> full-banner<% end %>">
   <% if current_page?(root_path) %>
     <div class="banner-content-box">
-      <h3 class="sub-header">
-        Promoting a safe dating culture on campus.
-      </h3>
-      <%= link_to "Take the survey", new_survey_path, class: " btn button-primary" %>
+      <%# <h1 class="logo-text">Dish.</h1> %>
+      <%= image_tag "dish_logo_rev.svg", class: "banner-logo"  %>
+      <h4 class="sub-header">
+        Anonymous feedback for a better online dating experience
+      </h4>
+      <div class="banner-buttons">
+        <%= link_to "Let's Dish!", new_survey_path, class: " btn button-primary" %>
+        <%= link_to "Learn More", project_path, class: " btn button-secondary" %>
+      </div>
     </div>
   <% end %>
 </div>

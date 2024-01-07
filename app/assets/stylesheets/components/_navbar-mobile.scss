@@ -19,7 +19,7 @@
 }
 
 .mobile-logo {
-  width: 8rem;
+  width: 5rem;
 }
 
 .mobile-menu-drawer {
@@ -34,9 +34,16 @@
 .drawer-top-links {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem 1rem .5rem;
-  border-bottom: 1.5px solid $safedate-red;
-  box-shadow: 0 0px 10px $shadow-gray;
+}
+
+.drawer-lilac {
+  background: $lilac;
+}
+
+.drawer-blue {
+  background: $pale-blue;
 }
 
 .mobile-menu-links {

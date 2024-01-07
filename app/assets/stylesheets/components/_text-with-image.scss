@@ -1,17 +1,22 @@
 .text-with-image {
   display: flex;
-  gap: 10rem;
-  padding: 2rem 6rem;
+  gap: 5rem;
 }
 
 .text-container {
   padding: 0 2rem;
-  flex: 1;
+  flex: 1.5;
 }
 
 .image-container {
   flex: 1;
   padding: 2rem;
+}
+
+.twi-button-container {
+  display: flex;
+  gap: 2rem;
+  margin: .5rem;
 }
 
 .text {

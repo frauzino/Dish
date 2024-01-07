@@ -2,6 +2,12 @@
   font-size: 1.2rem;
   width: fit-content;
   display: inline-block;
+  padding: .65rem 1rem;
+  border-radius: .5rem;
+  text-decoration: none;
+  border: .15rem solid transparent;
+  font-size: 1rem;
+  font-weight: 700;
 
   &:hover {
     cursor: pointer;
@@ -9,21 +15,33 @@
 }
 
 .button-primary {
-  background: $safedate-red;
-  padding: .5rem 2rem;
-  color: white;
-  text-decoration: none;
-  border-radius: .75rem;
-  border: .15rem solid transparent;
+  background: white;
+  color: $english-violet;
 
   &:hover {
-    border: .15rem solid $safedate-red;
-    background-color: white;
-    color: $safedate-red;
+    border: .15rem solid $english-violet;
   }
 
   &:active {
     transform: scale(.9);
+  }
+}
+
+.button-secondary {
+  background: $english-violet;
+  color: white;
+
+  &:hover {
+    border: .15rem solid white;
+  }
+}
+
+.button-tertiary {
+  background: $button-gray;
+  color: $english-violet;
+
+  &:hover {
+    border: .15rem solid $english-violet;
   }
 }
 

@@ -5,10 +5,10 @@
         class="mobile-nav-item"
         data-action="click->mobile-nav#openMainMenuDrawer"
       >
-        <%= image_tag current_page?(root_path) ? "hamburger_menu_reverse.svg" : "hamburger_menu.svg", class: "mobile-nav-icon" %>
+        <%= image_tag "hamburger_menu.svg", class: "mobile-nav-icon" %>
       </div>
       <div class="mobile-nav-item">
-        <%= link_to image_tag(current_page?(root_path) ? "logo_reverse.svg" : "logo.svg", class: "mobile-logo"), root_path %>
+        <%= link_to image_tag("dish_logo.svg", class: "mobile-logo"), root_path %>
       </div>
       <div
         class="mobile-nav-item"
@@ -17,7 +17,7 @@
         <% if user_signed_in? and current_user.photo.key %>
           <%= cl_image_tag current_user.photo.key, class: "user-avatar avatar-common mobile-nav-icon" %>
         <% else %>
-          <%= image_tag current_page?(root_path) ? "user_icon_white.svg" : "user_icon.svg", class: "mobile-nav-icon" %>
+          <%= image_tag "user_icon.svg", class: "mobile-nav-icon" %>
         <% end %>
       </div>
     </div>
@@ -27,8 +27,8 @@
     class="mobile-menu-drawer main-menu animated hidden"
     data-mobile-nav-target="mainMenuDrawerElement"
   >
-    <div class="drawer-top-links">
-      <%= link_to image_tag("logo.svg", class: "mobile-logo"), root_path %>
+    <div class="drawer-top-links drawer-lilac">
+      <%= link_to image_tag("dish_logo.svg", class: "mobile-logo"), root_path %>
       <div
         class="close-button"
         data-action="click->mobile-nav#closeMainMenuDrawer"
@@ -53,8 +53,8 @@
     class="mobile-menu-drawer user-menu animated hidden"
     data-mobile-nav-target="userMenuDrawerElement"
   >
-    <div class="drawer-top-links">
-      <%= link_to image_tag("logo.svg", class: "mobile-logo"), root_path %>
+    <div class="drawer-top-links drawer-blue">
+      <%= link_to image_tag("dish_logo.svg", class: "mobile-logo"), root_path %>
       <div
         class="close-button"
         data-action="click->mobile-nav#closeUserMenuDrawer"

@@ -1,12 +1,8 @@
 .desktop-navbar {
-  position: absolute;
+  position: fixed;
   width: 100%;
   top: 0;
-}
-
-.navbar-border {
-  border-bottom: 1.5px solid $safedate-red;
-  box-shadow: 0 0px 10px $shadow-gray;
+  width: 100%;
 }
 
 // .home-nav {
@@ -19,6 +15,13 @@
   display: flex;
   justify-content: space-between;
   padding: 0rem $main-padding 0;
+}
+
+.logo-container {
+  position: absolute;
+  left: calc(50% - 5rem);
+  align-self: center;
+  height: 100%;
 }
 
 .logo {
@@ -53,16 +56,12 @@
 }
 
 .nav-item {
-  font-weight: bold;
+  font-weight: 500;
 
   .nav-link {
     text-decoration: none;
-    color: $safedate-red;
-  }
-
-  .alt-nav-link {
-    text-decoration: none;
-    color: $background-offwhite;
+    color: $english-violet;
+    font-weight: 600;
   }
 
   :hover {
@@ -80,7 +79,8 @@
 
 .account-dropdown {
   position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: center;
 
   &:hover {
     cursor: pointer;
