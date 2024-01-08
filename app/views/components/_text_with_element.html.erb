@@ -1,0 +1,16 @@
+<%= tag.div class: "page-width-container text-with-element #{"reverse" if reverse}" do %>
+  <div class="twe-text-container">
+    <%= tag.h1 header_text, class: "twe-header #{header_size} #{header_color}" %>
+    <p class="twe-text">
+      <%= content_text %>
+    </p>
+    <div class="twi-button-container">
+      <% buttons.each do |button| %>
+        <%= link_to button[:text], button[:path], class: button[:style] %>
+      <% end %>
+    </div>
+  </div>
+  <div class="twe-image-container">
+    <%= render "components/phone_element", image: image %>
+  </div>
+<% end %>

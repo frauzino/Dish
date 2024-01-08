@@ -1,4 +1,4 @@
-<div class="full-width-container text-with-image">
+<div class="page-width-container text-with-image">
   <div class="text-container">
     <h1 class="header">
       <%= header_text %>
@@ -7,8 +7,9 @@
       <%= content_text %>
     </p>
     <div class="twi-button-container">
-      <%= link_to button1[:text], button1[:path], class: button1[:style] %>
-      <%= link_to button2[:text], button2[:path], class: button2[:style] %>
+      <% buttons.each do |button| %>
+        <%= link_to button[:text], button[:path], class: button[:style] %>
+      <% end %>
     </div>
   </div>
   <div class="image-container">
