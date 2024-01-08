@@ -24,3 +24,17 @@
   color: $english-violet;
   text-shadow: 0px 0.4px 1px $shadow-gray;
 }
+
+@media screen and (max-width:749px) {
+  .small {
+    font-size: 1.4rem;
+  }
+
+  .medium {
+    font-size: 2rem;
+  }
+
+  .large {
+    font-size: 3rem;
+  }
+}
