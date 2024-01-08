@@ -56,13 +56,18 @@
 }
 
 @media screen and (max-width: 749px) {
+  .banner {
+    width: calc(100% + 2rem);
+    margin-left: -1rem;
+  }
+
   .short-banner {
     height: 40vh;
   }
 
   .banner-content-box {
     height: 23rem;
-    padding: 2rem 6rem;
+    padding: 2rem 5rem;
     justify-content: inherit;
 
     .sub-header {

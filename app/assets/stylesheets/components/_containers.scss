@@ -75,6 +75,11 @@
     min-height: 100vh;
   }
 
+  .full-width-container {
+    width: calc(100% + 2rem);
+    margin-left: -1rem;
+  }
+
   .page-width-container {
     padding: 0;
   }
