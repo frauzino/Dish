@@ -1,16 +1,15 @@
-<% images_array = ["heart-small.svg", "key-small.svg", "lock-small.svg", "rose-small.svg", "shield-small.svg"] %>
-<% images = [] %>
-<% 44.times do  %>
-  <% images << images_array.sample %>
-<% end %>
-
-<div class="banner">
-    <div class="banner-icons">
-      <% images.each do |image| %>
-        <div class="banner-icon-wrapper">
-          <%= image_tag image, class: "banner-icon" %>
-        </div>
-      <% end %>
+<div class="banner<% if current_page?(project_path) %> short-banner<% else %> full-banner<% end %>">
+  <% if current_page?(root_path) %>
+    <div class="banner-content-box">
+      <%# <h1 class="logo-text">Dish.</h1> %>
+      <%= image_tag "dish_logo_rev.svg", class: "banner-logo"  %>
+      <h4 class="sub-header">
+        Anonymous feedback for a better online dating experience
+      </h4>
+      <div class="banner-buttons">
+        <%= link_to "Let's Dish!", new_survey_path, class: "btn button-primary" %>
+        <%= link_to "Learn More", project_path, class: "btn button-secondary" %>
+      </div>
     </div>
-    <%= image_tag "logo.svg", class: "banner-logo" %>
-  </div>
+  <% end %>
+</div>

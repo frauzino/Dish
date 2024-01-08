@@ -1,0 +1,23 @@
+.multi-dots-container {
+  justify-content: center;
+  gap: 2rem;
+  display: none;
+  margin: 1rem;
+}
+
+.multi-dot {
+  background: $button-gray;
+  width: 1rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+.dark-dot {
+  background: $shadow-gray;
+}
+
+@media screen and (max-width: 749px) {
+  .multi-dots-container {
+    display: flex;
+  }
+}

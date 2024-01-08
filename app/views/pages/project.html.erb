@@ -2,14 +2,16 @@
   <div class="content-container-static">
     <div class="content-container-inner column">
 
-      <%= render "components/text_with_image",
-        reverse: false,
-        header_text: "Our Goal: Improve safety of online dating.",
-        header_color: "purple",
-        content_text: "",
-        image: "hand_holding_tree.jpg",
-        buttons: []
-      %>
+      <div class="alt-banner">
+        <div class="alt-banner-text-container">
+          <%= tag.h2 "Our Goal: Improve safety of online dating.", class: "header purple" %>
+        </div>
+        <div class="alt-banner-image-container">
+          <%= image_tag "hand_holding_tree.jpg", class: "alt-banner-image" %>
+        </div>
+      </div>
+
+      <%= render "components/banner" %>
 
       <%= render "components/text_with_image",
         reverse: true,

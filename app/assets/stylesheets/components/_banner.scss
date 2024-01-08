@@ -1,3 +1,5 @@
+// Home page banner
+
 .banner {
   width: calc(100% + 10rem);
   margin-left: -5rem;
@@ -11,9 +13,7 @@
 }
 
 .short-banner {
-  height: 70vh;
-  background-image: url("couple_phones.jpg");
-  background-position: 50% 30%;
+  height: 60vh;
 }
 
 .banner-image {
@@ -56,13 +56,8 @@
 }
 
 @media screen and (max-width: 749px) {
-  .banner {
-    height: 100vh;
-    background-position: 62%;
-  }
-
   .short-banner {
-    height: 70vh;
+    height: 40vh;
   }
 
   .banner-content-box {
@@ -78,5 +73,50 @@
       align-self: center;
       font-size: 1rem;
     }
+  }
+}
+
+// alt banner
+
+.alt-banner {
+  display: flex;
+  margin: 2rem 0 5rem;
+}
+
+.alt-banner-text-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.alt-banner-image-container {
+  flex: 1;
+}
+
+.alt-banner-image {
+  object-fit: cover;
+  width: 100%;
+  border-radius: 5%;
+  height: 80vh;
+}
+
+@media screen and (max-width: 749px) {
+  .alt-banner {
+    flex-direction: column;
+  }
+
+  .alt-banner-text-container {
+    order: 2;
+    text-align: center;
+  }
+
+  .alt-banner-image-container {
+    width: 100vw;
+    margin-left: -1rem;
+  }
+
+  .alt-banner-image {
+    border-radius: 0;
+    height: 50vh;
   }
 }
