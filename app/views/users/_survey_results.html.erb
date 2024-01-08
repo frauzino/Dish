@@ -1,6 +1,5 @@
-<%= image_tag "stars_icon", class: "content-icon-small" %>
-<h3 class="account-header">Survey Results</h3>
-<div class="content-panel" data-controller="badges">
+<div class="content-panel bg-pale-blue" data-controller="badges">
+  <h3 class="account-header english-violet">Survey Results</h3>
   <div class="content-grid">
     <% @user.surveys.each do |survey| %>
       <div class="badge-wrapper tooltip" data-badges-target="badgeElement">

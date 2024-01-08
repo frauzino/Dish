@@ -1,40 +1,40 @@
-<div class="navbar<% unless current_page?(root_path) || current_page?(project_path) %> navbar-border<% end %>">
+<div class="navbar">
   <div class="navbar-inner">
+  <% if user_signed_in? %>
+    <div class="account-dropdown" data-controller="dropdown">
+      <div class="account-icon-wrapper" data-action="click->dropdown#openDropdown">
+        <% if current_user.photo.key %>
+          <%= cl_image_tag current_user.photo.key, class: "user-avatar avatar-common" %>
+        <% else %>
+          <%= image_tag "user_icon", class: "account-icon" %>
+        <% end %>
+      </div>
+      <div class="dropdown-content" data-dropdown-target="dropdownContent">
+        <%= link_to "Account", account_path, class: "nav-link" %>
+        <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+      </div>
+      <div class="blocker" data-action="click->dropdown#closeDropdown" data-dropdown-target="dropdownBlocker">
+      </div>
+    </div>
+  <% else %>
+    <div class="nav-item">
+      <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+    </div>
+  <% end %>
     <div class="logo-container">
-      <%= link_to image_tag(current_page?(root_path) ? "logo_reverse.svg" : "logo.svg", class: "logo"), root_path %>
+      <%= link_to image_tag("dish_logo.svg", class: "logo"), root_path %>
     </div>
     <div class="links-container">
-      <ul class=<%= current_page?(project_path) ? "nav-links-background" : "nav-links" %>>
+      <ul class="nav-links">
         <li class="nav-item">
-          <%= link_to "Survey", new_survey_path, class: current_page?(root_path) ? "alt-nav-link" : "nav-link"  %>
+          <%= link_to "Survey", new_survey_path, class: "nav-link"  %>
         </li>
         <li class="nav-item">
-          <%= link_to "Leaderboard", leaderboard_path, class: current_page?(root_path) ? "alt-nav-link" : "nav-link" %>
+          <%= link_to "Leaderboard", leaderboard_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Project", project_path, class: current_page?(root_path) ? "alt-nav-link" : "nav-link" %>
+          <%= link_to "Project", project_path, class: "nav-link" %>
         </li>
-        <% if user_signed_in? %>
-          <li class="account-dropdown" data-controller="dropdown">
-            <div class="account-icon-wrapper" data-action="click->dropdown#openDropdown">
-              <% if current_user.photo.key %>
-                <%= cl_image_tag current_user.photo.key, class: "user-avatar avatar-common" %>
-              <% else %>
-                <%= image_tag current_page?(root_path) ? "user_icon_white" : "user_icon", class: "account-icon" %>
-              <% end %>
-            </div>
-            <div class="dropdown-content" data-dropdown-target="dropdownContent">
-              <%= link_to "Account", account_path, class: "nav-link" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
-            </div>
-            <div class="blocker" data-action="click->dropdown#closeDropdown" data-dropdown-target="dropdownBlocker">
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: current_page?(root_path) ? "alt-nav-link" : "nav-link" %>
-          </li>
-        <% end %>
       </ul>
     </div>
   </div>

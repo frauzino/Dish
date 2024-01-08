@@ -15,14 +15,23 @@
 body {
   background-color: $background-offwhite;
   font-family: $body-font;
-  color: $gray;
+  color: $text-gray;
   margin: 0;
   font-size: 1.4rem;
+  font-weight: lighter;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $headers-font !important;
-  color: #2C1A1D
+  font-family: $headers-font;
+  color: $gray;
+}
+
+.logo-text {
+  font-family: $logo-font;
+  font-size: 4rem;
+  letter-spacing: 2px;
+  color: white;
+  margin: 1rem;
 }
 
 .header {
@@ -31,7 +40,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .subheading {
   font-size: 1.2rem;
-  color: $safedate-red
 }
 
 .show {
@@ -44,6 +52,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .center-align {
   align-self: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
 }
 
 @media screen and (max-width: 749px) {

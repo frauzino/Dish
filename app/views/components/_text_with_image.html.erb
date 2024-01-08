@@ -1,0 +1,26 @@
+<%# Accepts:
+reverse: reverses flow of content if true
+header_text: string
+header_color: string (lilac, pale-blue, pale-yellow), for default, use empty string
+content_text: string
+image: string
+buttons: array of buttons as hash ex:
+  [{text: "foo", path: "foo_path", style: "btn button_primary" }, {text: "bar", path: "bar_path", style: "btn button_primary" }]
+%>
+
+<%= tag.div class: "page-width-container text-with-image #{"reverse" if reverse}" do %>
+  <div class="text-container">
+    <%= tag.h1 header_text, class: "header #{header_color}" %>
+    <p class="text">
+      <%= content_text %>
+    </p>
+    <div class="twi-button-container">
+      <% buttons.each do |button| %>
+        <%= link_to button[:text], button[:path], class: button[:style] %>
+      <% end %>
+    </div>
+  </div>
+  <div class="image-container">
+    <%= image_tag image, class: "twi-image" %>
+  </div>
+<% end %>

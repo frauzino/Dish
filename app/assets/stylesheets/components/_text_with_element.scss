@@ -1,0 +1,54 @@
+.text-with-element {
+  display: flex;
+  gap: 5rem;
+}
+
+.twe-text-container {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.twe-header {
+  margin: 0;
+}
+
+.twe-text {
+  width: 60%;
+}
+
+.twe-image-container {
+  flex: 1;
+  padding: 2rem;
+}
+
+.phone-element-wrapper {
+  width: 15rem;
+  display: flex;
+  padding: 1rem;
+  border: 1px solid $gray;
+  transform: rotate(-5deg);
+  border-radius: 2.5rem;
+  box-shadow: 2px 2px 12px 5px $shadow-gray;
+  background: white;
+}
+
+.phone-image {
+  object-fit: contain;
+  width: 100%;
+  border-radius: 1.5rem;
+  border: 1px solid $gray
+}
+
+@media screen and (max-width:749px) {
+  .text-with-element {
+    flex-direction: column;
+    gap: 1rem;
+    margin: 3rem 0;
+  }
+
+  .twe-text-container {
+    order: 2;
+  }
+}

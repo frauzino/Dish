@@ -1,7 +1,6 @@
 <div class="content-container">
   <div class="content-container-inner">
-    <div class="content-panel devise-panel">
-      <%= image_tag "user_icon.svg", class: "content-icon" %>
+    <div class="content-panel bg-pale-yellow devise-panel">
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
 
@@ -64,7 +63,7 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Sign up", class: "button-primary" %>
+          <%= f.button :submit, "Sign up", class: "button-secondary" %>
         </div>
       <% end %>
       <div class="devise-links">

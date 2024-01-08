@@ -1,17 +1,17 @@
-<div class="content-container reduced-margin">
+<div class="content-container">
   <div class="column">
     <%= render "survey_results" %>
     <%= render "badges" %>
   </div>
 
   <div class="column column-small">
-    <% if @user.photo.key %>
-      <%= cl_image_tag @user.photo.key, class: "user-avatar content-icon-small" %>
-    <% else %>
-      <%= image_tag "user_icon", class: "content-icon-small" %>
-    <% end %>
-    <h3 class="account-header">Personal Information</h3>
-    <div class="content-panel account-info">
+    <div class="content-panel bg-pale-yellow account-info">
+      <h3 class="account-header english-violet">Personal Information</h3>
+      <% if @user.photo.key %>
+        <%= cl_image_tag @user.photo.key, class: "user-avatar content-icon-small" %>
+      <% else %>
+        <%= image_tag "user_icon", class: "content-icon-small" %>
+      <% end %>
       <div class="account-detail">
         <span class="account-detail-title">E-mail:</span>
         <span><%= @user.email %></span>

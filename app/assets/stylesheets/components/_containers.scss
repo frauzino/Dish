@@ -3,9 +3,19 @@
   margin-bottom: 5rem;
 }
 
+.full-width-container {
+  width: calc(100% + 10rem);
+  margin-left: -5rem;
+}
+
+.page-width-container {
+  padding: 2rem 6rem;
+}
+
 .content-container {
+  position: relative;
   display: flex;
-  margin: 20vh 0 0;
+  margin: 5rem 0 0;
   padding: 0;
   justify-content: center;
 }
@@ -24,9 +34,8 @@
 }
 
 .content-panel {
-  background: $content-box-gray;
   list-style: none;
-  padding: 4rem 3rem 3rem;
+  padding: 3rem;
   border-radius: 1rem;
   box-shadow: $content-box-shadow;
   display: flex;
@@ -60,6 +69,14 @@
 @media screen and (max-width: 749px){
   .master-container {
     padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .page-width-container {
+    padding: 0;
   }
 
   .content-container-static {
@@ -75,7 +92,7 @@
   }
 
   .content-panel {
-    padding: 2rem 1rem 1rem;
+    padding: 1rem;
     margin: 0;
   }
 

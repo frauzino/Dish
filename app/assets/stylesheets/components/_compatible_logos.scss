@@ -1,0 +1,31 @@
+.compatible-logos {
+  margin-top: 5rem;
+}
+
+.compatible-logos-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  align-items: center;
+}
+
+.comp-logo {
+  width: 8rem;
+}
+
+@media screen and (max-width: 749px) {
+  .compatible-logos {
+    margin-top: 3rem;
+  }
+
+  .compatible-logos-wrapper {
+    flex-wrap: wrap;
+    padding: 0 2rem;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .comp-logo {
+    width: 7rem;
+  }
+}

@@ -1,6 +1,6 @@
 <div class="content-container">
   <div class="content-container-inner">
-    <div class="content-panel devise-panel">
+    <div class="content-panel bg-pale-yellow devise-panel">
       <%# <h2>Edit <%= resource_name.to_s.humanize %></h2>
       <% if @user.photo.key %>
         <%= cl_image_tag @user.photo.key, class: 'user-avatar content-icon edit-hover' %>
@@ -45,7 +45,7 @@
           <% end %>
 
           <%= f.input :password,
-                      hint: "leave field blank if you don't want to change your password",
+                      hint: "Leave field blank if you don't want to change your password.",
                       required: false,
                       label: false,
                       placeholder: "New password",
@@ -56,7 +56,7 @@
                       placeholder: "confirm new password",
                       input_html: { autocomplete: "new-password" } %>
           <%= f.input :current_password,
-                      hint: "we need your current password to confirm your changes",
+                      hint: "We need your current password to confirm your changes.",
                       required: true,
                       label: false,
                       placeholder: "current password",
@@ -64,7 +64,7 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Save Changes", class: "btn button-primary" %>
+          <%= f.button :submit, "Save Changes", class: "btn button-secondary" %>
         </div>
       <% end %>
 

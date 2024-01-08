@@ -1,9 +1,8 @@
 <div class="survey-container" data-controller="survey">
   <div class="survey-question-container">
-    <%= image_tag "survey_icon.svg", class: "content-icon survey-icon" %>
 
     <%= simple_form_for(@survey, html: {"data-survey-target": "surveyElement"}) do |f| %>
-      <div data-survey-target="questionElement" class="survey-question-panel animated">
+      <div data-survey-target="questionElement" class="survey-question-panel bg-pale-blue animated">
         <%= image_tag "bumble_screenshot.png", class: "survey-image" %>
         <div class="survey-photo-label">
           Please upload a screenshot of the dating app profile picture with details for the person you went on a date with.
@@ -19,9 +18,9 @@
         <div
           data-survey-target="questionElement"
           <% if sq.index == 0 %>
-            class="survey-question-panel animated hidden"
+            class="survey-question-panel bg-pale-blue animated hidden"
           <% else %>
-            class="survey-question-panel animated hidden"
+            class="survey-question-panel bg-pale-blue animated hidden"
           <% end %>
         >
           <%= sq.input :answer,
@@ -35,7 +34,7 @@
           <%= render 'next_button', sq: sq, index: sq.index + 1 %>
         </div>
       <% end %>
-      <%= f.submit class: "btn button-primary hidden"%>
+      <%= f.submit class: "btn button-secondary hidden"%>
     <% end %>
   </div>
   <div class="progress-bar">

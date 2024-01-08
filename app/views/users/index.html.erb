@@ -1,11 +1,13 @@
+<%# Leaderboard %>
+
 <div class="content-container" data-controller="leaderboard">
   <div class="leaderboard-links">
     <span data-action="click->leaderboard#showIndivs">Individual Standings</span>
     <span data-action="click->leaderboard#showSchools">School Standings</span>
   </div>
   <div class="content-container-inner">
-    <ul class="content-panel" data-leaderboard-target="indivPanelElement">
-      <%= image_tag "standings_icon.svg", class: "content-icon" %>
+    <ul class="content-panel bg-lilac" data-leaderboard-target="indivPanelElement">
+      <%= tag.h3 "User Rankings", class: "english-violet small text-center", style: "margin: 0;" %>
       <% @top10_users.each do |user| %>
         <li class="user-row">
           <% if user.photo.key %>
@@ -23,8 +25,8 @@
       <% end %>
     </ul>
 
-    <ul class="content-panel hidden" data-leaderboard-target="schoolPanelElement">
-      <%= image_tag "school_icon.svg", class: "content-icon" %>
+    <ul class="content-panel bg-pale-yellow hidden" data-leaderboard-target="schoolPanelElement">
+      <%= tag.h3 "School Rankings", class: "english-violet small text-center", style: "margin: 0;" %>
       <% @top10_schools.each do |school| %>
         <li class="user-row">
           <div class="user-stats">
@@ -34,5 +36,16 @@
         </li>
       <% end %>
     </ul>
+
+    <div class="multi-dots-container">
+      <div class="multi-dot dark-dot"
+           data-action="click->leaderboard#showIndivs"
+           data-leaderboard-target="multidotElement"
+      ></div>
+      <div class="multi-dot"
+           data-action="click->leaderboard#showSchools"
+           data-leaderboard-target="multidotElement"
+      ></div>
+    </div>
   </div>
 </div>

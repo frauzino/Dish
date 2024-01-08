@@ -1,6 +1,5 @@
-<%= image_tag "ribbon_icon", class: "content-icon-small" %>
-<h3 class="account-header">Badges</h3>
-<div class="content-panel" data-controller="badges">
+<div class="content-panel bg-lilac" data-controller="badges">
+  <h3 class="account-header english-violet">Badges</h3>
   <div class="content-grid">
     <% @user.badges.each do |badge| %>
       <div class="badge-wrapper tooltip" data-badges-target="badgeElement">

@@ -1,36 +1,80 @@
 <div class="home-page-container">
-  <%= render "image_banner" %>
+
+  <%= render "components/banner" %>
+
   <div class="content-container-static column">
-    <div class="text-with-image">
-      <div class="text-container">
-        <h1 class="header">
-          Curious about the DateGuard project?
-        </h1>
-        <p class="text">
-          We're currently collecting data from users of dating apps.
-          The Experience Tracker survey is designed by best-in-class Relationship Psychologists with objectivity in mind.
-        </p>
-        <%= link_to "Learn more", project_path, class: " btn button-primary" %>
-      </div>
-      <div class="image-container">
-        <%= image_tag "dark_haired_couple.jpg", class: "twi-image" %>
-      </div>
+    <%= render "components/text_with_image",
+      reverse: false,
+      header_text: "Get the full scoop before you date.",
+      header_color: "",
+      content_text: "Dish collects anonymous submissions to create a report card on your date. No more bad vibes.
+        Dish lets you see what others had to say about your date.",
+      image: "couple_phones.jpg",
+      buttons: [
+        {text: "Take the Quiz", path: new_survey_path, style: "btn button-secondary"},
+        {text: "Learn More", path: project_path, style: "btn button-tertiary"}
+      ]
+    %>
+
+    <%= render "components/compatible_logos", images: ["hinge_logo.webp", "bumble_logo.webp", "tinder_logo.webp", "raya_logo.webp"]  %>
+
+    <%= render "components/full_width_image", image: "couple_in_grass.jpg" %>
+
+    <%= render "components/text_with_element",
+      reverse: false,
+      header_text: "Submit a Date",
+      header_size: "large",
+      header_color: "pale-blue",
+      content_text: "Upload a screenshot and take the quiz. Anonymously share how your date went.",
+      image: "bumble_screenshot.png",
+      buttons: [{text: "Get Started", path: new_survey_path, style: "btn button-secondary"}]
+    %>
+
+    <%= render "components/text_with_element",
+      reverse: true,
+      header_text: "Search a Date",
+      header_size: "large",
+      header_color: "lilac",
+      content_text: "Got a date planned? Upload a screenshot for a full report.",
+      image: "tinder_profile.jpeg",
+      buttons: [{text: "Coming Soon!", path: "", style: "btn button-disabled"}]
+    %>
+
+    <h3 class="header small text-center purple" style="margin-top: 10rem">Top ranked campuses for date culture</h3>
+    <div class="color-blocks-container">
+      <% top3_schools = School.all.sort_by { |school| school[:points]}.reverse.take 3 %>
+      <% top3_schools.each_with_index do |school, index| %>
+        <%= render "components/color_block_element",
+          school: school.name,
+          number: index + 1,
+          color: case index
+          when 0
+            "pale-blue"
+          when 1
+            "lilac"
+          else
+            "pale-yellow"
+          end
+        %>
+      <% end %>
     </div>
-    <div class="text-with-image reverse">
-      <div class="text-container">
-        <h1 class="header">
-          Take the anxiety out of dating.
-        </h1>
-        <p class="text">
-          Help us reduce the number of catfishes and false accounts in online dating.
-          We strive to ensure that all users can feel confident and safe with their
-          online dating match.
-        </p>
-        <%= link_to "Take the survey", new_survey_path, class: " btn button-primary" %>
-      </div>
-      <div class="image-container">
-        <%= image_tag "hand_holding_tree.jpg", class: "twi-image" %>
-      </div>
-    </div>
+
+    <%= render "components/text_with_image",
+      reverse: false,
+      header_text: "How are campuses ranked?",
+      header_color: "",
+      content_text: "Campuses are ranked by the highest number of submissions and the aggregated overall objective scores of dates!",
+      image: "uni_campus.jpg",
+      buttons: [{text: "Read More", path: project_path, style: "btn button-secondary"}]
+    %>
+
+    <%= render "components/text_with_image",
+      reverse: true,
+      header_text: "How do I search a date?",
+      header_color: "",
+      content_text: "Want to get a pulse on someone before going on a date? Just submit a screenshot of their profile and you'll see the fully anonymous report.",
+      image: "woman_phone.jpg",
+      buttons: [{text: "Coming Soon!", path: "", style: "btn button-disabled"}]
+    %>
   </div>
 </div>

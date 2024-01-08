@@ -1,7 +1,7 @@
 <div class="content-container">
   <div class="content-container-inner">
-    <div class="content-panel devise-panel">
-      <%= image_tag "key-small", class: "content-icon" %>
+    <div class="content-panel bg-lilac devise-panel">
+      <h2 class="text-center english-violet" style="margin-top: 0">Change your password</h2>
       <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= f.error_notification %>
 
@@ -15,7 +15,7 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Send password reset instructions", class: "button-primary" %>
+          <%= f.button :submit, "Send password reset instructions", class: "button-secondary" %>
         </div>
       <% end %>
 

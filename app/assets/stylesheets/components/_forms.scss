@@ -3,7 +3,6 @@
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 2rem;
-  color: $safedate-red;
 
   input, select {
     font-size: 1.4rem;
@@ -30,10 +29,9 @@
   display: flex;
   gap: 1rem;
   font-size: 1rem;
-  color: $safedate-red;
 
   a {
-    color: $safedate-red;
+    color: $english-violet;
   }
 }
 
@@ -44,5 +42,4 @@
 
 .field_with_hint {
   font-size: 1rem;
-  color: $safedate-red;
 }

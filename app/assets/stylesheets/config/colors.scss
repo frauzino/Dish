@@ -5,9 +5,58 @@ $blue: #0D6EFD;
 $yellow: #FFC65A;
 $orange: #E67E22;
 $green: #1EDD88;
-$gray: #0E0000;
+$gray: #333333;
+$text-gray: #646464;
 $light-gray: #F4F4F4;
+$button-gray: #dadada;
 $shadow-gray: #b7b7b794;
 $safedate-red: #b60809;
 $content-box-gray: #F2F1F2;
-$background-offwhite: #FAF6F4
+$background-offwhite: #FAF6F4;
+
+$pale-blue: #c5f5ff;
+$lilac: #f9caf6;
+$purple: #e8b3f8;
+$pale-yellow: #f0f797;
+$english-violet: #5F4867;
+
+$banner-background: linear-gradient(45deg, $pale-blue, $pale-blue 38%, $lilac 38%, $lilac 60%, $purple 60%, $purple 68%, $pale-yellow 68%, $pale-yellow 100%);
+
+// background colors
+
+.bg-pale-blue {
+  background: $pale-blue;
+}
+
+.bg-lilac {
+  background: $lilac;
+}
+
+.bg-pale-yellow {
+  background: $pale-yellow;
+}
+
+// Font colors
+
+.pale-blue {
+  color: $pale-blue;
+  text-shadow: 0px 0.4px 1px $shadow-gray;
+}
+
+.lilac {
+  color: $lilac;
+  text-shadow: 0px 0.4px 1px $shadow-gray;
+}
+.pale-yellow {
+  color: $pale-yellow;
+  text-shadow: 0px 0.4px 1px $shadow-gray;
+}
+.purple {
+  color: $purple;
+  text-shadow: 0px 0.4px 1px $shadow-gray;
+}
+
+.english-violet {
+  color: $english-violet;
+  text-shadow: 0px 0.4px 1px $shadow-gray;
+}
