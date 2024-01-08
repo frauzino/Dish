@@ -1,40 +1,39 @@
 <div class="banner-page-container">
-  <%= render "components/image_banner" %>
   <div class="content-container-static">
     <div class="content-container-inner column">
-      <h1 class="header center-align">
-        Our Goal: keep dating safe
-      </h1>
-      <div class="text-with-image">
-        <div class="text-container">
-          <h2>
-            "Online Dating Dilemma: Trusting Connections"
-          </h2>
-          <p>
-            Just within the U.S., over 50M people use dating apps
+
+      <%= render "components/text_with_image",
+        reverse: false,
+        header_text: "Our Goal: Improve safety of online dating.",
+        header_color: "purple",
+        content_text: "",
+        image: "hand_holding_tree.jpg",
+        buttons: []
+      %>
+
+      <%= render "components/text_with_image",
+        reverse: true,
+        header_text: "Online Dating Dilemma: Trusting Connections",
+        header_color: "",
+        content_text: "Just within the U.S., over 50M people use dating apps
             every year to find new dates. One of the biggest challenges faced by the dating population is that there is not a reliable source of
             information about the person they connected with on a dating site to evaluate whether they have had a good dating track record
-            and would turn out to be a good date for them, or not.
-          </p>
-        </div>
-        <div class="image-container">
-          <%= image_tag "dating_app.jpg", class: "twi-image" %>
-        </div>
-      </div>
-      <div class="text-with-image reverse">
-        <div class="text-container">
-          <h2>
-          Relationship psychologist developed questionnaire
-          </h2>
-          <p>
-            Our team of relationship psychologists have structured the questionnaire to incorporate a variety of critical concepts. The survey questions are
+            and would turn out to be a good date for them, or not.",
+        image: "dating_app.jpg",
+        buttons: []
+      %>
+
+      <%= render "components/text_with_image",
+        reverse: false,
+        header_text: "Relationship psychologist developed questionnaire",
+        header_color: "",
+        content_text: "Our team of relationship psychologists have structured the questionnaire to incorporate a variety of critical concepts. The survey questions are
             perfectly curated and designed to ensure responses that provide optimal outputs. The survey results avoid any subjectivity, limiting a users capacity to
-            slander people with whom they may have had an unsuccessful date.
-        </div>
-        <div class="image-container">
-          <%= image_tag "couple_in_grass.jpg", class: "twi-image" %>
-        </div>
-      </div>
+            slander people with whom they may have had an unsuccessful date.",
+        image: "dark_haired_couple.jpg",
+        buttons: []
+      %>
+
     </div>
   </div>
 </div>

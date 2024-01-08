@@ -1,4 +1,4 @@
-<div class="navbar<% unless current_page?(root_path) || current_page?(project_path) %> navbar-border<% end %>">
+<div class="navbar">
   <div class="navbar-inner">
   <% if user_signed_in? %>
     <div class="account-dropdown" data-controller="dropdown">
@@ -25,7 +25,7 @@
       <%= link_to image_tag("dish_logo.svg", class: "logo"), root_path %>
     </div>
     <div class="links-container">
-      <ul class=<%= current_page?(project_path) ? "nav-links-background" : "nav-links" %>>
+      <ul class="nav-links">
         <li class="nav-item">
           <%= link_to "Survey", new_survey_path, class: "nav-link"  %>
         </li>

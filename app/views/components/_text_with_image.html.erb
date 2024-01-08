@@ -1,6 +1,7 @@
 <%# Accepts:
 reverse: reverses flow of content if true
 header_text: string
+header_color: string (lilac, pale-blue, pale-yellow), for default, use empty string
 content_text: string
 image: string
 buttons: array of buttons as hash ex:
@@ -9,9 +10,7 @@ buttons: array of buttons as hash ex:
 
 <%= tag.div class: "page-width-container text-with-image #{"reverse" if reverse}" do %>
   <div class="text-container">
-    <h1 class="header">
-      <%= header_text %>
-    </h1>
+    <%= tag.h1 header_text, class: "header #{header_color}" %>
     <p class="text">
       <%= content_text %>
     </p>
