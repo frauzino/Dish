@@ -51,6 +51,8 @@
 .button-disabled {
   opacity: .6;
   pointer-events: none;
+  color: black;
+  background-color: $button-gray;
 }
 
 .survey-next-button {

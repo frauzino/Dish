@@ -55,6 +55,14 @@ h1, h2, h3, h4, h5, h6 {
   align-self: center;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
 @media screen and (max-width: 749px) {
   body {
     font-size: 1rem;

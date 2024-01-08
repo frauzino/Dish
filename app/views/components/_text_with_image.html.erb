@@ -1,4 +1,13 @@
-<div class="page-width-container text-with-image">
+<%# Accepts:
+reverse: reverses flow of content if true
+header_text: string
+content_text: string
+image: string
+buttons: array of buttons as hash ex:
+  [{text: "foo", path: "foo_path", style: "btn button_primary" }, {text: "bar", path: "bar_path", style: "btn button_primary" }]
+%>
+
+<%= tag.div class: "page-width-container text-with-image #{"reverse" if reverse}" do %>
   <div class="text-container">
     <h1 class="header">
       <%= header_text %>
@@ -15,4 +24,4 @@
   <div class="image-container">
     <%= image_tag image, class: "twi-image" %>
   </div>
-</div>
+<% end %>

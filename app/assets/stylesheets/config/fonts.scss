@@ -17,3 +17,30 @@ $logo-font: "Lily Script One", sans-serif;
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+
+
+.small {
+  font-size: 1.85rem;
+}
+
+.medium {
+  font-size: 3rem;
+}
+
+.large {
+  font-size: 4.5rem;
+}
+
+@media screen and (max-width:749px) {
+  .small {
+    font-size: 1.4rem;
+  }
+
+  .medium {
+    font-size: 2rem;
+  }
+
+  .large {
+    font-size: 3rem;
+  }
+}
