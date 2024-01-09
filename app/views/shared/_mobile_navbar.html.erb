@@ -1,4 +1,4 @@
-<div data-controller="mobile-nav">
+<div class="mobile-nav-wrapper" data-controller="mobile-nav" data-navbar-target="navbarElement">
   <div class="navbar<% unless current_page?(root_path) || current_page?(project_path) %> navbar-border<% end %>">
     <div class="mobile-nav-inner">
       <div
@@ -7,9 +7,9 @@
       >
         <%= image_tag "hamburger_menu.svg", class: "mobile-nav-icon" %>
       </div>
-      <div class="mobile-nav-item">
+      <%= content_tag(:div, data: {"navbar-target": "logoElement"}, class: current_page?(root_path) ? "mobile-nav-item hidden" : "mobile-nav-item") do %>
         <%= link_to image_tag("dish_logo.svg", class: "mobile-logo"), root_path %>
-      </div>
+      <% end %>
       <div
         class="mobile-nav-item"
         data-action="click->mobile-nav#openUserMenuDrawer"

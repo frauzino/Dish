@@ -3,18 +3,25 @@
   animation-timing-function: ease-in-out;
 }
 
-// Survey Questions Fade in/out
+// Survey Questions/slides Fade in/out
 
-.slide-in {
-  animation-name: slideIn;
+.slide-in-left {
+  animation-name: slideInLeft;
 }
 
-.slide-out {
-  animation-name: slideOut;
+.slide-out-left {
+  animation-name: slideOutLeft;
 }
 
+.slide-in-right {
+  animation-name: slideInRight;
+}
 
-@keyframes slideIn {
+.slide-out-right {
+  animation-name: slideOutRight;
+}
+
+@keyframes slideInLeft {
   0% {
     opacity: 0;
     transform: translateX(50%);
@@ -25,7 +32,7 @@
   }
 }
 
-@keyframes slideOut {
+@keyframes slideOutLeft {
   0% {
     opacity: 1;
     transform: translateX(0%);
@@ -33,6 +40,44 @@
   100% {
     opacity: 0;
     transform: translateX(-50%);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%)
+  }
+}
+
+@keyframes slideOutRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+}
+
+// Navbar Animations
+
+.fade-in {
+  animation-name: fadeIn;
+  animation-duration: .25s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 

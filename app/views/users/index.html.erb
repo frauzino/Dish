@@ -1,12 +1,12 @@
 <%# Leaderboard %>
 
-<div class="content-container" data-controller="leaderboard">
+<div class="content-container" data-controller="leaderboard swiper">
   <div class="leaderboard-links">
     <span data-action="click->leaderboard#showIndivs">Individual Standings</span>
     <span data-action="click->leaderboard#showSchools">School Standings</span>
   </div>
   <div class="content-container-inner">
-    <ul class="content-panel bg-lilac" data-leaderboard-target="indivPanelElement">
+    <ul class="content-panel animated bg-lilac" data-leaderboard-target="indivPanelElement" data-swiper-target="slideElement">
       <%= tag.h3 "User Rankings", class: "english-violet small text-center", style: "margin: 0;" %>
       <% @top10_users.each do |user| %>
         <li class="user-row">
@@ -25,7 +25,7 @@
       <% end %>
     </ul>
 
-    <ul class="content-panel bg-pale-yellow hidden" data-leaderboard-target="schoolPanelElement">
+    <ul class="content-panel animated bg-pale-yellow hidden" data-leaderboard-target="schoolPanelElement" data-swiper-target="slideElement">
       <%= tag.h3 "School Rankings", class: "english-violet small text-center", style: "margin: 0;" %>
       <% @top10_schools.each do |school| %>
         <li class="user-row">
@@ -48,4 +48,11 @@
       ></div>
     </div>
   </div>
+
 </div>
+  <%# <%= render 'components/slide',
+    slides: [
+      {title: "Slide 1", text_content: "this is slide 1", bg_color: "lilac"},
+      {title: "Slide 2", text_content: "this is slide 2", bg_color: "pale-yellow"}
+    ]
+  %>

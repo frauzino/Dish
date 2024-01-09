@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "stimulus-carousel": "^5.0.1",
+    "swiper": "^11.0.5"
+  }
+}

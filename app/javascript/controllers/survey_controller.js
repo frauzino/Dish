@@ -19,8 +19,8 @@ export default class extends Controller {
   next() {
     for(let i = 0; i < this.questionElementTargets.length; i++) {
       if (event.target.id == `next${i}`) {
-        this.questionElementTargets[i].classList.add("slide-out");
-        this.questionElementTargets[i + 1].classList.add("slide-in");
+        this.questionElementTargets[i].classList.add("slide-out-left");
+        this.questionElementTargets[i + 1].classList.add("slide-in-left");
 
         setTimeout(() => {
           this.questionElementTargets[i].classList.add("hidden");
