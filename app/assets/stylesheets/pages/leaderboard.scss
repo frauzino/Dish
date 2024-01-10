@@ -2,6 +2,36 @@
   height: 30rem;
 }
 
+.ranking-headers {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 4rem;
+  padding: 0 1rem;
+  text-align: center;
+
+  > span:nth-child(1) {
+    flex: 1.5;
+    text-align: left;
+  }
+
+  > span:nth-child(2) {
+    flex: 3;
+  }
+
+  > span:nth-last-child(-n + 2) {
+    flex: 1;
+  }
+
+  > span:nth-last-child(1) {
+    text-align: right;
+  }
+}
+
+.school-headers {
+  margin: 0;
+  padding: 0 1rem;
+}
+
 .user-row {
 display: flex;
 align-items: center;
@@ -17,8 +47,17 @@ gap: 1rem;
   padding: .5rem 1rem;
   justify-content: space-between;
   border-radius: .5rem;
-  > * {
+
+  > span:nth-last-child(-n + 2) {
     flex: 1;
+  }
+
+  > span:nth-child(1) {
+    flex: 1.5;
+  }
+
+  > span:nth-child(2) {
+    flex: 3;
   }
 }
 
@@ -28,39 +67,4 @@ gap: 1rem;
 
 .user-points {
   text-align: end;
-}
-
-.leaderboard-links {
-  flex-direction: column;
-  justify-content: center;
-  gap: 2rem;
-  top: 4rem;
-  right: 14.5%;
-  width: fit-content;
-  position: absolute;
-  display: flex;
-  span {
-    background: $button-gray;
-    box-shadow: $avatar-shadow;
-    display: flex;
-    align-items: center;
-    padding: .75rem 1.5rem;
-    border-radius: 1.5rem;
-    font-size: 1rem;
-    height: 1.5rem;
-    width: 10rem;
-    justify-content: end;
-    transition: transform .25s ease-in-out;
-
-    &:hover {
-      cursor: pointer;
-      transform: translateX(10rem);
-    }
-  }
-}
-
-@media screen and (max-width: 749px) {
-  .leaderboard-links {
-    display: none;
-  }
 }

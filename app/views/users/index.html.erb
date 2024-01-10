@@ -7,8 +7,8 @@
       text_color: "white",
       header_text: "Log in to play!",
       header_size: "small",
-      content_text: "Earn points and badges by completing quizzes and inviting friends etc. Compete against your friends
-       and other users! Going on dates and competing quizzes affects your school's Saftey Score. Check the leaderboards
+      content_text: "Earn points and badges by completing dish reports and inviting friends etc. Compete against your friends
+       and other users! Going on dates and competing dish reports affects your school's Saftey Score. Check the leaderboards
        to see which schools have best dating culture",
        buttons: [
         {text: "Log In", path: new_user_session_path, style: "btn button-primary"},
@@ -19,6 +19,12 @@
   <div class="content-container-inner">
     <ul class="content-panel leaderboard-panel animated bg-lilac" data-leaderboard-target="indivPanelElement" data-swiper-target="slideElement">
       <%= tag.h3 "User Rankings", class: "english-violet small text-center", style: "margin: 0;" %>
+      <div class="ranking-headers">
+        <span class="subheading">User</span>
+        <span class="subheading">School</span>
+        <span class="subheading">Dates</span>
+        <span class="subheading">Pts</span>
+      </div>
       <% @top10_users.each do |user| %>
         <li class="user-row">
           <% if user.photo.key %>
@@ -29,8 +35,8 @@
           <div class="user-stats">
             <span class="user-username subheading"><%= user.username %></span>
             <span class="user-surveys subheading"><%= user.school.name %></span>
-            <span class="user-surveys subheading"><%= user.surveys.length %> Dates</span>
-            <span class="user-points subheading"><%= user.points %> Pts</span>
+            <span class="user-surveys subheading"><%= user.surveys.length %></span>
+            <span class="user-points subheading"><%= user.points %></span>
           </div>
         </li>
       <% end %>
@@ -38,11 +44,15 @@
 
     <ul class="content-panel leaderboard-panel animated bg-pale-yellow hidden" data-leaderboard-target="schoolPanelElement" data-swiper-target="slideElement">
       <%= tag.h3 "School Rankings", class: "english-violet small text-center", style: "margin: 0;" %>
+      <div class="ranking-headers school-headers">
+        <span class="subheading">School</span>
+        <span class="subheading">Pts</span>
+      </div>
       <% @top10_schools.each do |school| %>
         <li class="user-row">
           <div class="user-stats">
             <span class="user-username subheading"><%= school.name %></span>
-            <span class="user-points subheading"><%= school.points %>/100 Safety Score</span>
+            <span class="user-points subheading"><%= school.points %>/100</span>
           </div>
         </li>
       <% end %>
