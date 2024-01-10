@@ -1,10 +1,10 @@
-<div class="content-container column">
+<div class="content-container column" data-controller="survey">
 
   <div class="progress-bar">
       <div class="active-progress" data-survey-target="progressBarElement"></div>
     </div>
 
-  <div class="survey-container" data-controller="survey">
+  <div class="survey-container">
     <% unless user_signed_in? %>
       <%= render "shared/alert",
         bg_color: "english-violet",
