@@ -10,7 +10,7 @@ export default class extends Controller {
 
   closePanel() {
     this.alertPanelElementTarget.classList.add('animated');
-    this.alertPanelElementTarget.classList.add('slide-out-top');
+    this.alertPanelElementTarget.classList.add('slide-out-bottom');
 
     setTimeout(() => {
       this.alertPanelElementTarget.classList.add('hidden');
