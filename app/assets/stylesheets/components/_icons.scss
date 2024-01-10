@@ -12,6 +12,17 @@
   z-index: 1;
 }
 
+.panel-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 3rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 @media screen and (max-width: 749px) {
   .content-icon {
     height: 4rem;
@@ -24,5 +35,11 @@
 
   .content-icon-small {
     top: 6rem;
+  }
+
+  .panel-close {
+    top: 1rem;
+    right: .5rem;
+    width: 1.5rem;
   }
 }

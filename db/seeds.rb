@@ -35,7 +35,7 @@ puts 'Creating admin user'
 
 User.create(
   email: 'a@a.a',
-  username: 'Test User',
+  username: 'Plantbaby',
   password: '123456',
   first_name: 'Richard',
   last_name: 'Smith',
@@ -47,7 +47,7 @@ User.create(
 )
 User.create(
   email: 'b@b.b',
-  username: 'Another Test',
+  username: 'Corvette',
   password: '123456',
   first_name: 'Bob',
   last_name: 'jones',

@@ -1,0 +1,41 @@
+.alert-panel-wrapper {
+  width: 100%;
+}
+
+.alert-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem 4rem;
+  position: relative;
+  border-radius: 2rem;
+  box-shadow: $content-box-shadow;
+  font-size: 1.2rem;
+}
+
+.alert-header {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.alert-button-container {
+  display: flex;
+  justify-content: center;
+  padding: 0 4rem;
+}
+
+@media screen and (max-width: 749px) {
+  .alert-panel {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    font-size: .8rem;
+
+    .text-container {
+      padding: 0;
+    }
+  }
+
+  .alert-header {
+    margin: .5rem 0;
+  }
+}

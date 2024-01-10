@@ -1,0 +1,14 @@
+<div class="alert-panel-wrapper" data-controller="alert" data-alert-target="alertPanelElement">
+  <%= tag.div class: "alert-panel bg-#{bg_color}" do %>
+    <%= image_tag "x_icon_rev.svg", class: "panel-close", data: {"alert-target": "closeElement", action: "click->alert#closePanel"} %>
+    <div class="text-container">
+      <%= tag.h3 header_text, class: "alert-header #{header_size} #{text_color}" %>
+      <%= tag.p content_text, class: text_color %>
+    </div>
+    <div class="alert-button-container">
+      <% buttons.each do |button| %>
+        <%= link_to button[:text], button[:path], class: button[:style] %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

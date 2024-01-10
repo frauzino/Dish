@@ -21,6 +21,10 @@
   animation-name: slideOutRight;
 }
 
+.slide-out-top {
+  animation-name: slideOutTop;
+}
+
 @keyframes slideInLeft {
   0% {
     opacity: 0;
@@ -62,6 +66,17 @@
   100% {
     opacity: 0;
     transform: translateX(50%);
+  }
+}
+
+@keyframes slideOutTop {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50%);
   }
 }
 

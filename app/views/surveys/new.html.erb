@@ -1,43 +1,60 @@
-<div class="survey-container" data-controller="survey">
-  <div class="survey-question-container">
-
-    <%= simple_form_for(@survey, html: {"data-survey-target": "surveyElement"}) do |f| %>
-      <div data-survey-target="questionElement" class="survey-question-panel bg-pale-blue animated">
-        <%= image_tag "bumble_screenshot.png", class: "survey-image" %>
-        <div class="survey-photo-label">
-          Please upload a screenshot of the dating app profile picture with details for the person you went on a date with.
-          <i>(It should include both an image and words, and look something like this, depending on the dating app.)</i>
-        </div>
-        <%= f.input :photo,
-                    as: :file,
-                    label: false,
-                    input_html: {data: {action: "change->survey#radioChecked", index: 0}} %>
-        <%= render 'next_button', sq: f, index: 0 %>
-      </div>
-      <%= f.fields_for :survey_questions do |sq| %>
-        <div
-          data-survey-target="questionElement"
-          <% if sq.index == 0 %>
-            class="survey-question-panel bg-pale-blue animated hidden"
-          <% else %>
-            class="survey-question-panel bg-pale-blue animated hidden"
-          <% end %>
-        >
-          <%= sq.input :answer,
-                       label: sq.object.question.body,
-                       as: :radio_buttons,
-                       collection: sq.object.question.options,
-                       label_method: :body,
-                       value_method: :body,
-                       input_html: {data: {action: "click->survey#radioChecked", index: sq.index + 1}} %>
-          <%= sq.hidden_field :question_id, value: sq.object.question.id %>
-          <%= render 'next_button', sq: sq, index: sq.index + 1 %>
-        </div>
-      <% end %>
-      <%= f.submit class: "btn button-secondary hidden"%>
+<div class="content-container column">
+  <div class="survey-container" data-controller="survey">
+    <% unless user_signed_in? %>
+      <%= render "shared/alert",
+        bg_color: "english-violet",
+        text_color: "white",
+        header_text: "Log in to play!",
+        header_size: "small",
+        content_text: "Earn points and badges by completing quizzes and inviting friends etc. Compete against your friends
+        and other users! Going on dates and competing quizzes affects your school's Saftey Score. Check the leaderboards
+        to see which schools have best dating culture",
+        buttons: [
+          {text: "Log In", path: new_user_session_path, style: "btn button-primary"}
+        ]
+      %>
     <% end %>
-  </div>
-  <div class="progress-bar">
-    <div class="active-progress" data-survey-target="progressBarElement"></div>
+
+    <div class="survey-question-container">
+
+      <%= simple_form_for(@survey, html: {"data-survey-target": "surveyElement"}) do |f| %>
+        <div data-survey-target="questionElement" class="survey-question-panel bg-pale-blue animated">
+          <%= image_tag "bumble_screenshot.png", class: "survey-image" %>
+          <div class="survey-photo-label">
+            Please upload a screenshot of the dating app profile picture with details for the person you went on a date with.
+            <i>(It should include both an image and words, and look something like this, depending on the dating app.)</i>
+          </div>
+          <%= f.input :photo,
+                      as: :file,
+                      label: false,
+                      input_html: {data: {action: "change->survey#radioChecked", index: 0}} %>
+          <%= render 'next_button', sq: f, index: 0 %>
+        </div>
+        <%= f.fields_for :survey_questions do |sq| %>
+          <div
+            data-survey-target="questionElement"
+            <% if sq.index == 0 %>
+              class="survey-question-panel bg-pale-blue animated hidden"
+            <% else %>
+              class="survey-question-panel bg-pale-blue animated hidden"
+            <% end %>
+          >
+            <%= sq.input :answer,
+                        label: sq.object.question.body,
+                        as: :radio_buttons,
+                        collection: sq.object.question.options,
+                        label_method: :body,
+                        value_method: :body,
+                        input_html: {data: {action: "click->survey#radioChecked", index: sq.index + 1}} %>
+            <%= sq.hidden_field :question_id, value: sq.object.question.id %>
+            <%= render 'next_button', sq: sq, index: sq.index + 1 %>
+          </div>
+        <% end %>
+        <%= f.submit class: "btn button-secondary hidden"%>
+      <% end %>
+    </div>
+    <div class="progress-bar">
+      <div class="active-progress" data-survey-target="progressBarElement"></div>
+    </div>
   </div>
 </div>

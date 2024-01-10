@@ -40,7 +40,16 @@ $banner-background: linear-gradient(45deg, $pale-blue, $pale-blue 38%, $lilac 38
   background: $background-offwhite;
 }
 
+.bg-english-violet {
+  background: $english-violet;
+}
+
 // Font colors
+
+.white {
+  color: white;
+  text-shadow: 0px 0.4px 1px $shadow-gray;
+}
 
 .pale-blue {
   color: $pale-blue;
