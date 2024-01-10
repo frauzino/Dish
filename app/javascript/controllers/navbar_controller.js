@@ -6,18 +6,25 @@ export default class extends Controller {
   static targets = ['logoElement', "navbarElement"]
 
   connect() {
-    console.log(this.logoElementTarget)
-    window.onscroll = () => {showLogo(this.logoElementTarget, this.navbarElementTarget)}
+    window.onscroll = () => {showLogo(this.logoElementTargets, this.navbarElementTargets)}
 
-    function showLogo(logo,navbar) {
+    function showLogo(logos, navbars) {
       if (window.pageYOffset > 740 ) {
-        logo.classList.remove('hidden');
-        logo.classList.add('fade-in');
-        navbar.classList.add('bg-offwhite')
+        logos.forEach(function(logo) {
+          logo.classList.remove('hidden')
+          logo.classList.add('fade-in')
+        })
+        navbars.forEach(function(navbar) {
+          navbar.classList.add('bg-offwhite')
+        })
       } else {
-        logo.classList.remove('fade-in');
-        logo.classList.add('hidden');
-        navbar.classList.remove('bg-offwhite');
+        logos.forEach(function(logo) {
+          logo.classList.remove('fade-in')
+          logo.classList.add('hidden')
+        })
+        navbars.forEach(function(navbar) {
+          navbar.classList.remove('bg-offwhite')
+        })
       }
     }
   }

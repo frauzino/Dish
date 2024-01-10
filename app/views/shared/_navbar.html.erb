@@ -1,4 +1,9 @@
-<div class="navbar" data-navbar-target="navbarElement">
+<%= content_tag(
+    :div,
+    data: current_page?(root_path) ? {"navbar-target": "navbarElement"} : {},
+    class: current_page?(root_path) ? "navbar" : "navbar bg-offwhite"
+  ) do
+%>
   <div class="navbar-inner">
   <% if user_signed_in? %>
     <div class="account-dropdown" data-controller="dropdown">
@@ -21,7 +26,12 @@
       <%= link_to "Login", new_user_session_path, class: "nav-link" %>
     </div>
   <% end %>
-    <%= content_tag(:div, data: {"navbar-target": "logoElement"}, class: current_page?(root_path) ? "logo-container hidden" : "logo-container") do %>
+    <%= content_tag(
+        :div,
+        data: current_page?(root_path) ? {"navbar-target": "logoElement"} : {},
+        class: current_page?(root_path) ? "logo-container hidden" : "logo-container"
+      ) do
+    %>
       <%= link_to image_tag("dish_logo.svg", class: "logo"), root_path %>
     <% end %>
     <div class="links-container">
@@ -38,4 +48,4 @@
       </ul>
     </div>
   </div>
-</div>
+<% end %>
