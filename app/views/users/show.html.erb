@@ -10,7 +10,7 @@
       <% if @user.photo.key %>
         <%= cl_image_tag @user.photo.key, class: "user-avatar content-icon-small" %>
       <% else %>
-        <%= image_tag "user_icon", class: "content-icon-small" %>
+        <%= image_tag "user_icon.svg", class: "content-icon-small" %>
       <% end %>
       <div class="account-detail">
         <span class="account-detail-title">E-mail:</span>

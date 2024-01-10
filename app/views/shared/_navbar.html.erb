@@ -11,7 +11,7 @@
         <% if current_user.photo.key %>
           <%= cl_image_tag current_user.photo.key, class: "user-avatar avatar-common" %>
         <% else %>
-          <%= image_tag "user_icon", class: "account-icon" %>
+          <%= image_tag "user_icon.svg", class: "account-icon" %>
         <% end %>
       </div>
       <div class="dropdown-content" data-dropdown-target="dropdownContent">
