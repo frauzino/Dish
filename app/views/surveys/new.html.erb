@@ -1,4 +1,9 @@
 <div class="content-container column">
+
+  <div class="progress-bar">
+      <div class="active-progress" data-survey-target="progressBarElement"></div>
+    </div>
+
   <div class="survey-container" data-controller="survey">
     <% unless user_signed_in? %>
       <%= render "shared/alert",
@@ -52,9 +57,6 @@
         <% end %>
         <%= f.submit class: "btn button-secondary hidden"%>
       <% end %>
-    </div>
-    <div class="progress-bar">
-      <div class="active-progress" data-survey-target="progressBarElement"></div>
     </div>
   </div>
 </div>
