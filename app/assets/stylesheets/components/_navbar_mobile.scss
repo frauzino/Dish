@@ -1,7 +1,11 @@
 .mobile-navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
+}
+
+.mobile-nav-wrapper {
+  padding-top: 1rem;
 }
 
 .mobile-nav-inner {

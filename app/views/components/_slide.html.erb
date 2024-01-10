@@ -1,0 +1,24 @@
+<div class="swiper-container" data-controller="swiper">
+  <div class="swiper-wrapper">
+    <% slides.each_with_index do |slide, index| %>
+      <div
+        <% if index == 0 %>
+          class="swiper-slide animated"
+        <% else %>
+          class="swiper-slide animated hidden"
+        <% end %>
+        data-swiper-target="slideElement"
+      >
+        <%= tag.div class: "slide-inner bg-#{slide[:bg_color]}" do %>
+          <%= tag.h3 slide[:title] %>
+          <%= tag.p slide[:text_content] %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+ <!-- Pagination -->
+  <div class="swiper-pagination"></div>
+ <!-- Navigation -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>

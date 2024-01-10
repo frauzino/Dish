@@ -1,0 +1,26 @@
+.chevron {
+  width: 3rem;
+  aspect-ratio: 1/1;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.left-arrow-wrapper {
+  position: absolute;
+  top: calc(50% - 3rem);
+  left: 10%;
+}
+
+.right-arrow-wrapper {
+  position: absolute;
+  top: calc(50% - 3rem);
+  right: 10%;
+}
+
+@media screen and (max-width: 749px) {
+  .right-arrow-wrapper, .left-arrow-wrapper {
+    display: none;
+  }
+}
