@@ -24,11 +24,7 @@ School.create(
 
 School.create(
   name: 'McGill',
-  points: 55
-)
-School.create(
-  name: 'Akron University',
-  points: 100
+  points: 50
 )
 
 puts 'Creating admin user'
