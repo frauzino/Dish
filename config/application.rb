@@ -13,6 +13,9 @@ module Safedate
 
     config.paths['app/views'] << "app/views/devise"
 
+    config.assets.paths << Rails.root.join("app", "assets", "images", "avatars")
+    config.assets.paths << Rails.root.join("app", "assets", "images", "badges")
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
