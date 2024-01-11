@@ -2,8 +2,6 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.assets.paths << Rails.root.join("app", "assets", "images", "avatars")
-  config.assets.paths << Rails.root.join("app", "assets", "images", "badges")
 
   # Code is not reloaded between requests.
   config.cache_classes = true
