@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Dish. | Make Online Dating Better</title>
+    <%= javascript_importmap_tags %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="Dish is committed to improving the online dating culture through collecting and providing anonymous reports on your dates.">
     <%# fonts %>
@@ -15,7 +16,6 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
     <%= favicon_link_tag asset_path('dish_favicon.svg') %>
   </head>
 

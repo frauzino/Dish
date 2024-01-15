@@ -2,8 +2,7 @@
 
 import "@hotwired/turbo-rails"
 import "controllers"
-import "./add_jquery"
-// import jquery from "jquery";
 
-// window.jQuery = jquery;
-// window.$ = jquery;
+// import "./add_jquery"
+
+import 'jquery'

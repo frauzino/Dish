@@ -32,4 +32,4 @@
 .env*
 
 # Ignore jquery node_modules
-node_modules
+# node_modules
