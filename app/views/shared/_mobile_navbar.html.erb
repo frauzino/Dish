@@ -18,14 +18,14 @@
           class: current_page?(root_path) ? "mobile-nav-item hidden" : "mobile-nav-item"
         ) do
       %>
-        <%= link_to image_tag("dish_logo.svg", class: "mobile-logo"), root_path %>
+        <%= link_to image_tag("dish_logo.svg", loading: 'lazy', class: "mobile-logo"), root_path %>
       <% end %>
       <div
         class="mobile-nav-item"
         data-action="click->mobile-nav#openUserMenuDrawer"
       >
         <% if user_signed_in? and current_user.photo.key %>
-          <%= cl_image_tag current_user.photo.key, class: "user-avatar avatar-common mobile-nav-icon" %>
+          <%= cl_image_tag current_user.photo.key, loading: 'lazy', class: "user-avatar avatar-common mobile-nav-icon" %>
         <% else %>
           <%= image_tag "user_icon.svg", class: "mobile-nav-icon" %>
         <% end %>
@@ -38,7 +38,7 @@
     data-mobile-nav-target="mainMenuDrawerElement"
   >
     <div class="drawer-top-links drawer-lilac">
-      <%= link_to image_tag("dish_logo.svg", class: "mobile-logo"), root_path %>
+      <%= link_to image_tag("dish_logo.svg", loading: 'lazy', class: "mobile-logo"), root_path %>
       <div
         class="close-button"
         data-action="click->mobile-nav#closeMainMenuDrawer"
@@ -64,7 +64,7 @@
     data-mobile-nav-target="userMenuDrawerElement"
   >
     <div class="drawer-top-links drawer-blue">
-      <%= link_to image_tag("dish_logo.svg", class: "mobile-logo"), root_path %>
+      <%= link_to image_tag("dish_logo.svg", loading: 'lazy', class: "mobile-logo"), root_path %>
       <div
         class="close-button"
         data-action="click->mobile-nav#closeUserMenuDrawer"

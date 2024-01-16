@@ -24,7 +24,7 @@
 
       <%= simple_form_for(@survey, html: {"data-survey-target": "surveyElement"}) do |f| %>
         <div data-survey-target="questionElement" class="survey-question-panel bg-pale-blue animated">
-          <%= image_tag "bumble_screenshot.png", class: "survey-image" %>
+          <%= image_tag "bumble_screenshot.png", loading: 'lazy', class: "survey-image" %>
           <div class="survey-photo-label">
             Please upload a screenshot of the dating app profile picture with details for the person you went on a date with.
             <i>(It should include both an image and words, and look something like this, depending on the dating app.)</i>

@@ -8,9 +8,9 @@
     <div class="content-panel bg-pale-yellow account-info">
       <h3 class="account-header english-violet">Personal Information</h3>
       <% if @user.photo.key %>
-        <%= cl_image_tag @user.photo.key, class: "user-avatar content-icon-small" %>
+        <%= cl_image_tag @user.photo.key, loading: 'lazy', class: "user-avatar content-icon-small" %>
       <% else %>
-        <%= image_tag "user_icon.svg", class: "content-icon-small" %>
+        <%= image_tag "user_icon.svg", loading: 'lazy', class: "content-icon-small" %>
       <% end %>
       <div class="account-detail">
         <span class="account-detail-title">E-mail:</span>
