@@ -37,6 +37,11 @@ class SurveysController < ApplicationController
 
   def show
     @survey = current_user.surveys.last
+    max_value = 0.0
+    @survey.survey_questions.each do |sq|
+      max_value += sq.question.options.maximum('value')
+    end
+    @survey_score = ((@survey.total_value / max_value) * 100).round(0)
   end
 
   def create_result(survey)
