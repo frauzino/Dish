@@ -3,7 +3,7 @@
   <div class="content-grid">
     <% @user.surveys.each do |survey| %>
       <div class="badge-wrapper tooltip" data-badges-target="badgeElement">
-        <%= image_tag "#{survey.result.image}", class: "badge" %>
+        <%= image_tag "#{survey.result.image}", loading: 'lazy', class: "badge" %>
         <span class="tooltip-text"><%= survey.result.image.chomp('.svg') %></span>
       </div>
     <% end %>

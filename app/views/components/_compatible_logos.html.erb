@@ -1,7 +1,7 @@
 <div class="page-width-container compatible-logos">
       <div class="compatible-logos-wrapper">
         <% images.each do |image| %>
-          <%= image_tag image, class: "comp-logo" %>
+          <%= image_tag image, loading: 'lazy', class: "comp-logo" %>
         <% end %>
       </div>
     </div>

@@ -28,9 +28,9 @@
       <% @top10_users.each do |user| %>
         <li class="user-row">
           <% if user.photo.key %>
-            <%= cl_image_tag user.photo.key, class: "user-avatar avatar-common" %>
+            <%= cl_image_tag user.photo.key, loading: 'lazy', class: "user-avatar avatar-common" %>
           <% else %>
-            <%= image_tag "placeholder.jpg", class: "user-avatar avatar-common" %>
+            <%= image_tag "placeholder.jpg", loading: 'lazy', class: "user-avatar avatar-common" %>
           <% end %>
           <div class="user-stats">
             <span class="user-username subheading"><%= user.username %></span>
@@ -60,6 +60,7 @@
 
     <div class="left-arrow-wrapper">
       <%= image_tag "chevron_left.svg",
+        loading: 'lazy',
         data: {
           action: "click->leaderboard#showIndivs",
           'leaderboard-target': "leftElement"
@@ -70,6 +71,7 @@
 
     <div class="right-arrow-wrapper">
       <%= image_tag "chevron_right.svg",
+        loading: 'lazy',
         data: {
           action: "click->leaderboard#showSchools",
           'leaderboard-target': "rightElement"

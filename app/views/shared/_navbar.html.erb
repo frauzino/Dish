@@ -9,7 +9,7 @@
     <div class="account-dropdown" data-controller="dropdown">
       <div class="account-icon-wrapper" data-action="click->dropdown#openDropdown">
         <% if current_user.photo.key %>
-          <%= cl_image_tag current_user.photo.key, class: "user-avatar avatar-common" %>
+          <%= cl_image_tag current_user.photo.key, loading: 'lazy', class: "user-avatar avatar-common" %>
         <% else %>
           <%= image_tag "user_icon.svg", class: "account-icon" %>
         <% end %>
@@ -32,7 +32,7 @@
         class: current_page?(root_path) ? "logo-container hidden" : "logo-container"
       ) do
     %>
-      <%= link_to image_tag("dish_logo.svg", class: "logo"), root_path %>
+      <%= link_to image_tag("dish_logo.svg", loading: 'lazy', class: "logo"), root_path %>
     <% end %>
     <div class="links-container">
       <ul class="nav-links">
