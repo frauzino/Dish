@@ -25,11 +25,26 @@
   }
 }
 
-.survey-image {
-  width: 10rem;
+.survey-image-container {
+  position: relative;
+  height: 17rem;
+  width: 100%;
   margin: 1rem 0 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.survey-image {
+  position: absolute;
+  width: 10rem;
   align-self: center;
   border-radius: 0.6rem;
+  transition: .4s;
+  z-index: 1;
+}
+
+.image-grow {
+  transform: scale(2);
 }
 
 .survey-photo-label {
@@ -50,10 +65,6 @@
 @media screen and (max-width: 749px) {
   .survey-question-panel {
     margin: 0;
-  }
-
-  .survey-image {
-    width: 5rem;
   }
 
   .survey-photo-label {
