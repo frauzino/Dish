@@ -5,7 +5,9 @@
     </div>
 
   <div class="survey-container">
-    <% unless user_signed_in? %>
+
+    <%# POPUP ALERT TO PROPMT USER TO SIGN IN %>
+    <!--- <% unless user_signed_in? %>
       <%= render "shared/alert",
         bg_color: "english-violet",
         text_color: "white",
@@ -18,7 +20,7 @@
           {text: "Log In", path: new_user_session_path, style: "btn button-primary"}
         ]
       %>
-    <% end %>
+    <% end %> --->
 
     <div class="survey-question-container">
 
@@ -26,6 +28,7 @@
         <div data-survey-target="questionElement" class="survey-question-panel bg-pale-blue animated">
           <div class="survey-image-container">
             <%= image_tag "male_bumble_profile.png", loading: 'lazy', class: "survey-image", data: {action: 'click->survey#toggleImageSize', 'survey-target': 'imageElement'} %>
+            <div class="survey-image-blocker hidden" data-action='click->survey#toggleImageSize' data-survey-target="blockerElement"></div>
           </div>
           <div class="survey-photo-label">
             Please upload a screenshot of the dating app profile picture with details for the person you went on a date with.

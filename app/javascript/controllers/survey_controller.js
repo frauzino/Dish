@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="survey"
 export default class extends Controller {
 
-  static targets = ["questionElement", "surveyElement", "progressBarElement", "buttonElement", "imageElement"]
+  static targets = ["questionElement", "surveyElement", "progressBarElement", "buttonElement", "imageElement", "blockerElement"]
 
   connect() {
   }
@@ -64,8 +64,11 @@ export default class extends Controller {
      console.log('click', this.imageElementTarget)
     if (this.imageElementTarget.classList.contains('image-grow')) {
       this.imageElementTarget.classList.remove('image-grow');
+      this.blockerElementTarget.classList.add('hidden');
+
     } else {
       this.imageElementTarget.classList.add('image-grow');
+      this.blockerElementTarget.classList.remove('hidden');
     };
   };
 }

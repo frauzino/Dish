@@ -34,17 +34,26 @@
   justify-content: center;
 }
 
+.survey-image-blocker {
+  position: absolute;
+  height: 120vh;
+  width: 100vw;
+  background-color: transparent;
+  top: -20rem;
+  z-index: 1;
+}
+
 .survey-image {
   position: absolute;
   width: 10rem;
   align-self: center;
   border-radius: 0.6rem;
   transition: .4s;
-  z-index: 1;
 }
 
 .image-grow {
   transform: scale(2);
+  z-index: 1;
 }
 
 .survey-photo-label {
