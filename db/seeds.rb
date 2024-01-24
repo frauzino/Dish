@@ -42,7 +42,7 @@ User.create(
   is_admin: true,
   gender: 'Male',
   school: School.first,
-  points: 50,
+  points: 0,
   referral: Referral.new(code: SecureRandom.alphanumeric(8))
 )
 User.create(
@@ -54,7 +54,7 @@ User.create(
   is_admin: false,
   gender: 'Female',
   school: School.last,
-  points: 109,
+  points: 0,
   referral: Referral.new(code: SecureRandom.alphanumeric(8))
 )
 
