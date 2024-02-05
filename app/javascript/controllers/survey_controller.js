@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-const skyBiometryUrl = 'http://api.skybiometry.com/fc/faces/detect.json'
+const skyBiometryUrl = 'https://api.skybiometry.com/fc/faces/detect.json'
 
 // Connects to data-controller="survey"
 export default class extends Controller {
