@@ -18,11 +18,11 @@ export default class extends Controller {
   faceDetect() {
     const [file] = this.imageInputElementTarget.files
     const fileSrc = URL.createObjectURL(file)
-    console.log(fileSrc)
-    // const url = `${skyBiometryUrl}?api_key=${this.apiKeyValue}&api_secret=${this.secretKeyValue}&urls=${fileSrc}`
-    // fetch(url)
-    // .then(res => res.json())
-    // .then(data => console.log(data))
+    console.log('fileSrc', fileSrc)
+    const url = `${skyBiometryUrl}?api_key=${this.apiKeyValue}&api_secret=${this.secretKeyValue}&urls=${fileSrc}`
+    fetch(url)
+    .then(res => res.json())
+    .then(data => console.log(data))
   }
 
   radioChecked() {
