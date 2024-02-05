@@ -1,11 +1,28 @@
 import { Controller } from "@hotwired/stimulus"
 
+const skyBiometryUrl = 'http://api.skybiometry.com/fc/faces/detect.json'
+
 // Connects to data-controller="survey"
 export default class extends Controller {
 
-  static targets = ["questionElement", "surveyElement", "progressBarElement", "buttonElement", "imageElement", "blockerElement"]
+  static values = {
+    apiKey: String,
+    secretKey: String
+  }
+
+  static targets = ["questionElement", "surveyElement", "progressBarElement", "buttonElement", "imageElement", "blockerElement", 'imageInputElement']
 
   connect() {
+  }
+
+  faceDetect() {
+    const [file] = this.imageInputElementTarget.files
+    const fileSrc = URL.createObjectURL(file)
+    console.log(fileSrc)
+    // const url = `${skyBiometryUrl}?api_key=${this.apiKeyValue}&api_secret=${this.secretKeyValue}&urls=${fileSrc}`
+    // fetch(url)
+    // .then(res => res.json())
+    // .then(data => console.log(data))
   }
 
   radioChecked() {

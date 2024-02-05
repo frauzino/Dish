@@ -1,4 +1,9 @@
-<div class="content-container column" data-controller="survey">
+<div
+  class="content-container column"
+  data-controller="survey"
+  data-survey-api-key-value="<%=ENV['SKYBIOMETRY_API_KEY']%>"
+  data-survey-secret-key-value="<%=ENV['SKYBIOMETRY_SECRET_KEY']%>"
+>
 
   <div class="progress-bar">
       <div class="active-progress" data-survey-target="progressBarElement"></div>
@@ -37,7 +42,7 @@
           <%= f.input :photo,
                       as: :file,
                       label: false,
-                      input_html: {data: {action: "change->survey#radioChecked", index: 0}} %>
+                      input_html: {data: {action: "change->survey#faceDetect survey#radioChecked", "survey-target": 'imageInputElement', index: 0}} %>
           <%= render 'next_button', sq: f, index: 0 %>
         </div>
         <%= f.fields_for :survey_questions do |sq| %>
