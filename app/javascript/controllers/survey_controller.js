@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-const skyBiometryUrl = 'https://api.skybiometry.com/fc/faces/detect.json'
+const skyBiometryUrlDetect = 'https://api.skybiometry.com/fc/faces/detect.json'
 
 // Connects to data-controller="survey"
 export default class extends Controller {
@@ -10,25 +10,36 @@ export default class extends Controller {
     secretKey: String
   }
 
-  static targets = ["questionElement", "surveyElement", "progressBarElement", "buttonElement", "imageElement", "blockerElement", 'imageInputElement']
+  static targets = ["questionElement", "surveyElement", "progressBarElement", "buttonElement", "imageElement", "blockerElement", 'imageInputElement', 'errorMessageElement']
 
   connect() {
   }
 
-  faceDetect() {
+  async faceDetect() {
     const [file] = this.imageInputElementTarget.files
-    const fileSrc = URL.createObjectURL(file)
-    console.log('fileSrc', fileSrc)
-    const url = `${skyBiometryUrl}?api_key=${this.apiKeyValue}&api_secret=${this.secretKeyValue}&urls=${fileSrc}`
-    fetch(url)
+    const formData = new FormData();
+    const changeImageEvent = event
+
+    formData.append("api_key", this.apiKeyValue)
+    formData.append("api_secret", this.secretKeyValue)
+    formData.append("attributes", "all")
+    formData.append("file", file)
+
+    const data = await fetch(skyBiometryUrlDetect, {
+      method: "POST",
+      body: formData
+    })
     .then(res => res.json())
-    .then(data => console.log(data))
+
+    const faceExists = data.photos[0].tags[0] ? true : false
+    faceExists ? [this.radioChecked(changeImageEvent), this.errorMessageElementTarget.classList.add('hidden')] : [this.radioChecked(changeImageEvent, "disable"), this.errorMessageElementTarget.classList.remove('hidden')]
   }
 
-  radioChecked() {
+  radioChecked(backupEvent, disable = false) {
+    const liveEvent = event ? event : backupEvent
     for (let i = 0; i < this.questionElementTargets.length; i++) {
-      if (event.target.dataset.index == i) {
-        this.buttonElementTargets[i].classList.remove("button-disabled")
+      if (liveEvent.target.dataset.index == i) {
+        disable === false ? this.buttonElementTargets[i].classList.remove("button-disabled") : this.buttonElementTargets[i].classList.add("button-disabled")
       }
     }
   }
