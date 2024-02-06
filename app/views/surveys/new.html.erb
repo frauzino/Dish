@@ -42,7 +42,10 @@
           <%= f.input :photo,
                       as: :file,
                       label: false,
-                      input_html: {data: {action: "change->survey#faceDetect survey#radioChecked", "survey-target": 'imageInputElement', index: 0}} %>
+                      input_html: {data: {action: "change->survey#faceDetect", "survey-target": 'imageInputElement', index: 0}} %>
+          <div class="survey-image-error-message hidden" data-survey-target="errorMessageElement">
+            Please ensure your screenshot matches the example above, including a clear view of the face.
+          </div>
           <%= render 'next_button', sq: f, index: 0 %>
         </div>
         <%= f.fields_for :survey_questions do |sq| %>
