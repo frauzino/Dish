@@ -23,8 +23,8 @@ class ResultsController < ApplicationController
   def set_gender(survey)
     if user_signed_in?
       sq = survey.survey_questions.joins(:question).find_by(question: { body: 'Was the person you went on a date with...' })
+      return sq.answer
     end
-    return sq.answer
   end
 
   def set_value(survey)
