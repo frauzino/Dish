@@ -24,12 +24,15 @@ class SurveysController < ApplicationController
     @survey = Survey.new(survey_params)
     @survey.user_id = current_user.id if user_signed_in?
     if @survey.save
-      # @survey.survey_questions.each(&:save)
       create_survey_questions(@survey)
       survey_total_value(@survey)
       create_result(@survey)
-      add_user_points if user_signed_in?
-      redirect_to survey_path(@survey)
+      if user_signed_in?
+        add_user_points
+        redirect_to survey_path(@survey)
+      else
+        redirect_to root_path
+      end
     else
       render :new, status: :unprocessable_entity
     end
