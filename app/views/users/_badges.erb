@@ -1,6 +1,6 @@
 <div class="content-panel bg-lilac" data-controller="badges">
   <h3 class="account-header english-violet">Badges</h3>
-  <div class="content-grid">
+  <div class="content-grid achievements-container">
     <% @user.badges.each do |badge| %>
       <div class="badge-wrapper tooltip" data-badges-target="badgeElement">
         <%= image_tag "#{badge.icon}", loading: 'lazy', class: "badge" %>

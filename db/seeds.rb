@@ -292,10 +292,10 @@ puts 'creating all the badges'
 
 badge_unlock_reqs = [
   'Have your referral code used by 5 friends',
-  'Complete 5 questionnaires',
+  'Complete 5 Dish Report',
   'Have your referral code used by 10 friends',
-  'Complete 10 questionnaires',
-  'Complete your first questionnaire',
+  'Complete 10 Dish Report',
+  'Complete your first Dish Report',
   'Have one friend use your referral code',
   'As a male, go on one date with another male',
   'As a female, go on one date with another female',
@@ -305,7 +305,8 @@ badge_unlock_reqs = [
   'Go on a date where one person is queer while the other is male',
   'Go on a date where both people are queer',
   'Go on a date where one person is male while the other is female',
-  'Achieve rank one on the leaderboard'
+  'Achieve rank one on the leaderboard',
+  'Attend a school that has achieved rank one on the leaderboard'
 ]
 
 Badge.create(
@@ -334,13 +335,13 @@ Badge.create(
 Badge.create(
   name: 'First Survey',
   unlock_reqs: badge_unlock_reqs[4],
-  icon: 'checkmark_badge.svg'
+  icon: '1x_survey_badge.svg'
 )
 
 Badge.create(
   name: 'First Friend',
   unlock_reqs: badge_unlock_reqs[5],
-  icon: 'friends_badge.svg'
+  icon: '1x_friends_badge.svg'
 )
 
 Badge.create(
@@ -395,6 +396,12 @@ Badge.create(
   name: 'First Place',
   unlock_reqs: badge_unlock_reqs[14],
   icon: 'trophy_badge.svg'
+)
+
+Badge.create(
+  name: 'Safest School Place',
+  unlock_reqs: badge_unlock_reqs[15],
+  icon: 'top_school_badge.svg'
 )
 
 puts 'created badges'

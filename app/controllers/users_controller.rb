@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @top10_users = rank_users.take(10)
-    @top10_schools = index_schools
+    @top10_schools = index_schools.take(10)
   end
 
   def show
@@ -67,6 +67,7 @@ class UsersController < ApplicationController
 
   def check_misc_badges
     create_badge('First Place') if rank_users.take(1).first == @user
+    create_badge('First Place') if @user.school == index_schools.take(1)
     create_badge('Profile Photo') if @user.photo.key
   end
 

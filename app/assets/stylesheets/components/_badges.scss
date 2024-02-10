@@ -1,6 +1,17 @@
+.achievements-container {
+  background-color: white;
+  border-radius: .5rem;
+  padding: 1rem;
+}
+
+.badge-wrapper {
+  display: flex;
+}
+
 .badge {
-  width: 5rem;
+  width: 6rem;
   aspect-ratio: 1/1;
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, .2));
 }
 
 @media screen and (max-width: 749px) {
