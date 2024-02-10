@@ -334,13 +334,13 @@ Badge.create(
 Badge.create(
   name: 'First Survey',
   unlock_reqs: badge_unlock_reqs[4],
-  icon: 'checkmark_badge.svg'
+  icon: '1x_survey_badge.svg'
 )
 
 Badge.create(
   name: 'First Friend',
   unlock_reqs: badge_unlock_reqs[5],
-  icon: 'friends_badge.svg'
+  icon: '1x_friends_badge.svg'
 )
 
 Badge.create(
