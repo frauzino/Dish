@@ -1,6 +1,6 @@
 <div class="content-panel bg-pale-blue" data-controller="badges">
   <h3 class="account-header english-violet">Survey Results</h3>
-  <div class="content-grid">
+  <div class="content-grid achievements-container">
     <% @user.surveys.each do |survey| %>
       <div class="badge-wrapper tooltip" data-badges-target="badgeElement">
         <%= image_tag "#{survey.result.image}", loading: 'lazy', class: "badge" %>
