@@ -399,7 +399,7 @@ Badge.create(
 )
 
 Badge.create(
-  name: 'Safest School Place',
+  name: 'Safest School',
   unlock_reqs: badge_unlock_reqs[15],
   icon: 'top_school_badge.svg'
 )
