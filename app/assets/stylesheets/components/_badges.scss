@@ -6,12 +6,32 @@
 
 .badge-wrapper {
   display: flex;
+  position: relative;
 }
 
 .badge {
   width: 6rem;
   aspect-ratio: 1/1;
   filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, .2));
+
+  // &:hover {
+  //   animation: rotate 2s linear infinite;
+  // }
+}
+
+.shimmer {
+  background: linear-gradient(-55deg, transparent 40%, #fafafac2 50%, transparent 60%);
+  background-size: 300%;
+  background-position-x: 100%;
+  border-radius: 50%;
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  aspect-ratio: 1/1;
+
+  &:hover {
+    animation: shimmer 3s linear infinite;
+  }
 }
 
 @media screen and (max-width: 749px) {
