@@ -4,6 +4,7 @@
     <% @user.badges.each do |badge| %>
       <div class="badge-wrapper tooltip" data-badges-target="badgeElement">
         <%= image_tag "#{badge.icon}", loading: 'lazy', class: "badge" %>
+        <div class="shimmer"></div>
         <span class="tooltip-text"><%= badge.unlock_reqs %></span>
       </div>
     <% end %>

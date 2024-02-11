@@ -160,3 +160,26 @@
     transform: translateX(100%);
   }
 }
+
+// Badges animations
+
+@keyframes rotate {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position-x: 100%;
+  }
+  20% {
+    background-position-x: 0%;
+  }
+  100% {
+    background-position-x: 0%;
+  }
+}
