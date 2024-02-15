@@ -10,7 +10,7 @@ export default class extends Controller {
     luxandApiKey: String
   }
 
-  static targets = ['fileUploadElement', 'imageElement', 'resultsScoreElement', 'resultsImageContainerElement']
+  static targets = ['fileUploadElement', 'imageElement', 'resultsScoreElement', 'resultsImagesContainerElement']
 
   connect() {
   }
@@ -41,16 +41,16 @@ export default class extends Controller {
     // .catch(error => console.log('error occured', error))
     // const photoUuids = data.map((photo) => photo.photo_uuid)
 
-    const photoUuids = ["20e565fe-cb5c-11ee-8061-0242ac160003", "20e565fe-cb5c-11ee-8061-0242ac160003" ]
+    const photoUuids = ["20e565fe-cb5c-11ee-8061-0242ac160003", "20e565fe-cb5c-11ee-8061-0242ac160003", "20e565fe-cb5c-11ee-8061-0242ac160003" ] // remove when live
     const results = await Promise.all(photoUuids.map((uuid) => this.returnMatchingSurveys(uuid)))
     console.log('results', results)
 
-    // results.forEach((result) => result ? [this.resultsScoreElementTarget.innerHTML = result.survey.score, this.resultsImageElementTarget.src = result.photo_url] : '')
-    // results.forEach((result) => result ? [this.resultsImageElementTarget.src = result.photo_url] : '')
-    results.forEach((result) => result ? this.resultsImageContainerElementTarget.innerHTML += this.buildImageTag(result.photo_url) : '')
+    results.forEach((result) => result ? this.resultsImagesContainerElementTarget.innerHTML += this.buildImageElement(result.photo_url) : '')
 
     const surveys = results.map((result) => result.survey)
-    this.resultsScoreElementTarget.innerHTML = this.medianOfScores(surveys)
+    this.resultsScoreElementTarget.innerHTML = results.length ? `This person's Dish Date Score is: ${this.medianOfScores(surveys)}%` : "We don't have enough information on this person."
+
+    this.dispatch("searchGalleryForPerson")
   }
 
   medianOfScores(surveys) {
@@ -59,8 +59,8 @@ export default class extends Controller {
     return scores.length % 2 ? scores[half] : (scores[half - 1] + scores[half]) / 2
   }
 
-  buildImageTag(photo_url) {
-    return `<img src=${photo_url} class="survey-result-image">`
+  buildImageElement(photo_url, index) {
+    return `<img src=${photo_url} class="survey-result-image profile-image swiper-slide animated" data-swiper-target="slideElement">`
   }
 
   async returnMatchingSurveys(uuid) {
