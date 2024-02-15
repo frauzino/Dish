@@ -1,0 +1,7 @@
+GET https://api.luxand.cloud/photo"
+
+{
+  "headers": {
+    "token": "4254828febc949f98e0f355a9b8d724b"
+  }
+}

@@ -1,6 +1,6 @@
 <%# Leaderboard %>
 
-<div class="content-container column" data-controller="leaderboard swiper">
+<div class="content-container column" data-controller="swiper">
   <% unless user_signed_in? %>
     <%= render "shared/alert",
       bg_color: "english-violet",
@@ -17,7 +17,7 @@
   <% end %>
 
   <div class="content-container-inner">
-    <ul class="content-panel leaderboard-panel animated bg-lilac" data-leaderboard-target="indivPanelElement" data-swiper-target="slideElement">
+    <ul class="content-panel leaderboard-panel animated bg-lilac" data-swiper-target="slideElement">
       <%= tag.h3 "User Rankings", class: "english-violet small text-center", style: "margin: 0;" %>
       <div class="ranking-headers">
         <span class="subheading">User</span>
@@ -42,7 +42,7 @@
       <% end %>
     </ul>
 
-    <ul class="content-panel leaderboard-panel animated bg-pale-yellow hidden" data-leaderboard-target="schoolPanelElement" data-swiper-target="slideElement">
+    <ul class="content-panel leaderboard-panel animated bg-pale-yellow hidden" data-swiper-target="slideElement">
       <%= tag.h3 "School Rankings", class: "english-violet small text-center", style: "margin: 0;" %>
       <div class="ranking-headers school-headers">
         <span class="subheading">School</span>
@@ -62,8 +62,8 @@
       <%= image_tag "chevron_left.svg",
         loading: 'lazy',
         data: {
-          action: "click->leaderboard#showIndivs",
-          'leaderboard-target': "leftElement"
+          action: "click->swiper#prev",
+          'swiper-target': "leftElement"
           },
         class: "chevron hidden"
       %>
@@ -73,23 +73,14 @@
       <%= image_tag "chevron_right.svg",
         loading: 'lazy',
         data: {
-          action: "click->leaderboard#showSchools",
-          'leaderboard-target': "rightElement"
+          action: "click->swiper#next",
+          'swiper-target': "rightElement"
           },
         class: "chevron"
       %>
     </div>
 
-    <div class="multi-dots-container">
-      <div class="multi-dot dark-dot"
-           data-leaderboard-target="multidotElement"
-           data-swiper-target="multidotElement"
-      ></div>
-      <div class="multi-dot"
-           data-leaderboard-target="multidotElement"
-           data-swiper-target="multidotElement"
-      ></div>
-    </div>
+    <div class="multi-dots-container" data-swiper-target="multidotContainerElement"></div>
   </div>
 
 </div>

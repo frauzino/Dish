@@ -10,12 +10,20 @@ let touchendX = 0
 export default class extends Controller {
 
 
-  static targets = ['slideElement', 'multidotElement']
+  static targets = ['slideElement', 'multidotContainerElement', 'multidotElement', 'rightElement', 'leftElement']
 
   connect() {
     // this.slideElementTargets.forEach(this.swipe)
     for(let i = 0; i < this.slideElementTargets.length; i++) {
+      // i > 0 ? [slide.classList.add('hidden'), this.rightElementTarget.classList.remove('hidden')] : ''
+      this.multidotContainerElementTarget.innerHTML += '<div class="multi-dot" data-swiper-target="multidotElement"></div>'
+      this.multidotElementTargets[0].classList.add('dark-dot')
       let slide = this.slideElementTargets[i]
+      if (i > 0) {
+        slide.classList.add('hidden'),
+        this.rightElementTarget.classList.remove('hidden')
+        this.multidotContainerElementTarget.classList.remove('hidden')
+      }
       this.swipe(slide, this.slideElementTargets, i)
     }
   }
@@ -29,67 +37,85 @@ export default class extends Controller {
 
     slide.addEventListener('touchend', e => {
       touchendX = e.changedTouches[0].screenX
-      checkDirection(slide, slideArray, dots, index)
+      this.checkDirection(slide, slideArray, dots, index)
     });
+  }
 
-    function checkDirection(slide, slideArray, dots, index) {
-      if ((touchendX < touchstartX) && (index + 1 < slideArray.length)) {
-        changeSlide("left", slide, slideArray, dots, index)
-      }
-      if ((touchendX > touchstartX) && (index > 0)) {
-        changeSlide("right", slide, slideArray, dots, index)
-      }
+  checkDirection(slide, slideArray, dots, index) {
+    if ((touchendX < touchstartX) && (index < slideArray.length - 1)) {
+      this.changeSlide("left", slide, slideArray, index)
     }
-
-    function changeSlide (direction, slide, slideArray, dots, index) {
-
-      dots.forEach(selectDot)
-
-      function selectDot(item) {
-        if (item.classList.contains("dark-dot")) {
-          item.classList.remove("dark-dot");
-        } else {
-          item.classList.add("dark-dot");
-        };
-      }
-
-      if (direction == "left") {
-        slide.classList.add("slide-out-left");
-        slideArray[index + 1].classList.add("slide-in-left");
-
-        setTimeout(() => {
-          slide.classList.add("hidden");
-          slide.classList.remove("slide-out-left");
-          slideArray[index + 1].classList.remove("hidden");
-        }, 400);
-
-        setTimeout(() => {
-          slideArray[index + 1].classList.remove("slide-in-left")
-        }, 1000);
-
-      } else {
-        slide.classList.add("slide-out-right");
-        slideArray[index - 1].classList.add("slide-in-right");
-
-        setTimeout(() => {
-          slide.classList.add("hidden");
-          slide.classList.remove("slide-out-right");
-          slideArray[index - 1].classList.remove("hidden");
-        }, 400);
-
-        setTimeout(() => {
-          slideArray[index - 1].classList.remove("slide-in-right")
-        }, 1000);
-      }
+    if ((touchendX > touchstartX) && (index > 0)) {
+      this.changeSlide("right", slide, slideArray, index)
     }
   }
-  selectDot(item) {
-    console.log('dot')
-    if (item.classList.contains("dark-dot")) {
-      item.classList.remove("dark-dot");
+
+  changeSlide(direction, slide, slideArray, index) {
+    let newIndex = index
+
+    if (direction == "left") {
+      newIndex += 1
+      slide.classList.add("slide-out-left");
+      slideArray[index + 1].classList.add("slide-in-left");
+
+      setTimeout(() => {
+        slide.classList.add("hidden");
+        slide.classList.remove("slide-out-left");
+        slideArray[index + 1].classList.remove("hidden");
+      }, 400);
+
+      setTimeout(() => {
+        slideArray[index + 1].classList.remove("slide-in-left")
+      }, 1000);
+
     } else {
-      item.classList.add("dark-dot");
-    };
+      newIndex -= 1
+      slide.classList.add("slide-out-right");
+      slideArray[index - 1].classList.add("slide-in-right");
+
+      setTimeout(() => {
+        slide.classList.add("hidden");
+        slide.classList.remove("slide-out-right");
+        slideArray[index - 1].classList.remove("hidden");
+      }, 400);
+
+      setTimeout(() => {
+        slideArray[index - 1].classList.remove("slide-in-right")
+      }, 1000);
+    }
+
+    this.selectDot(newIndex)
   }
+
+  prev() {
+    const slide = this.slideElementTargets.find((slide) => !slide.classList.contains('hidden'))
+    const index = this.slideElementTargets.indexOf(slide) - 1
+    this.changeSlide('left',slide ,this.slideElementTargets, index - 1)
+    this.rightElementTarget.classList.remove('hidden')
+    if (index < 1) {this.leftElementTarget.classList.add('hidden')}
+  }
+
+  next() {
+    const slide = this.slideElementTargets.find((slide) => !slide.classList.contains('hidden'))
+    const index = this.slideElementTargets.indexOf(slide) + 1
+    this.changeSlide('right',slide ,this.slideElementTargets, index + 1)
+    this.leftElementTarget.classList.remove('hidden')
+    if (index === this.slideElementTargets.length - 1) {this.rightElementTarget.classList.add('hidden')}
+  }
+
+  selectDot(index) {
+    this.multidotElementTargets.forEach((dot, i) => {
+      if (dot.classList.contains('dark-dot')) {dot.classList.remove('dark-dot')}
+      if (i === index) {dot.classList.add('dark-dot')}
+    });
+  }
+
+  // selectDot(item) {
+  //   if (item.classList.contains("dark-dot")) {
+  //     item.classList.remove("dark-dot");
+  //   } else {
+  //     item.classList.add("dark-dot");
+  //   };
+  // }
 
 }

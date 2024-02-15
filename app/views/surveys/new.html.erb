@@ -1,8 +1,9 @@
 <div
   class="content-container column"
   data-controller="survey"
-  data-survey-api-key-value="<%=ENV['SKYBIOMETRY_API_KEY']%>"
-  data-survey-secret-key-value="<%=ENV['SKYBIOMETRY_SECRET_KEY']%>"
+  data-survey-skybio-api-key-value="<%=ENV['SKYBIOMETRY_API_KEY']%>"
+  data-survey-skybio-secret-key-value="<%=ENV['SKYBIOMETRY_SECRET_KEY']%>"
+  data-survey-luxand-api-key-value="<%=ENV['LUXAND_API_KEY']%>"
 >
 
   <div class="progress-bar">
@@ -43,6 +44,7 @@
                       as: :file,
                       label: false,
                       input_html: {data: {action: "change->survey#faceDetect", "survey-target": 'imageInputElement', index: 0}} %>
+          <%= f.hidden_field :uuid, data: {"survey-target": "hiddenInputElement"} %>
           <div class="survey-image-error-message hidden" data-survey-target="errorMessageElement">
             Please ensure your screenshot matches the example above, including a clear view of the face.
           </div>
@@ -68,7 +70,7 @@
             <%= render 'next_button', sq: sq, index: sq.index + 1 %>
           </div>
         <% end %>
-        <%= f.submit class: "btn button-secondary hidden"%>
+        <%= f.submit class: "btn button-secondary hidden" %>
       <% end %>
     </div>
   </div>
