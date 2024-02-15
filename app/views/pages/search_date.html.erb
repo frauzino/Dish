@@ -1,0 +1,20 @@
+<div
+  class="content-container column"
+  data-controller="face-recognition"
+  data-face-recognition-luxand-api-key-value="<%=ENV['LUXAND_API_KEY']%>"
+>
+  <div class="face-recog-container">
+    <form class="face-recog-form">
+      <label for="image-upload">Upload a screenshot of your date's profile.</label>
+      <input type="file" name="image-upload" data-face-recognition-target="fileUploadElement" data-action="change->face-recognition#previewImage">
+      <img src="#" alt="" data-face-recognition-target="imageElement">
+      <button class="btn button-secondary" data-action="click->face-recognition#searchGalleryForPerson">Search</button>
+    </form>
+    <div class="results-container">
+      <div data-face-recognition-target="resultsScoreElement">
+      </div>
+      <div class="results-images" data-face-recognition-target="resultsImageContainerElement">
+      </div>
+    </div>
+  </div>
+</div>

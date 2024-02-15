@@ -1,6 +1,15 @@
 class SurveysController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[new create]
 
+  def index
+    @survey = Survey.find_by(uuid: params[:uuid])
+    @photo_url = Cloudinary::Utils.cloudinary_url('development/' + @survey.photo.key, version: 1707930724, secure: true, width: 50, height: 50, crop: :fill )
+    @result = { survey: @survey, photo_url: @photo_url }
+    respond_to do |format|
+      format.json { render json: @result }
+    end
+  end
+
   def new
     @survey = Survey.new
     @questions = assign_questions
@@ -16,7 +25,8 @@ class SurveysController < ApplicationController
                       else
                         [Question.first, Question.second]
                       end
-    questions_sample = Question.all[2..].sample 15
+    # questions_sample = Question.all[2..].sample 15
+    questions_sample = Question.all[2..].sample 5
     questions_array + questions_sample
   end
 
@@ -64,10 +74,12 @@ class SurveysController < ApplicationController
 
   def survey_total_value(survey)
     summed_value = 0
+    max_value = 0.0
     survey.survey_questions.each do |sq|
       summed_value += sq.answer_value
+      max_value += sq.question.options.maximum('value')
     end
-    survey.update(total_value: summed_value)
+    survey.update(total_value: summed_value, score: ((summed_value / max_value) * 100).round(0))
   end
 
   def add_user_points
@@ -78,6 +90,6 @@ class SurveysController < ApplicationController
   private
 
   def survey_params
-    params.require(:survey).permit(survey_questions_attributes: [:id, :answer, :answer_value, :photo, :question_id, { question_attributes: [:id, :body] }])
+    params.require(:survey).permit(:uuid, :score, :photo, survey_questions_attributes: [:id, :answer, :answer_value, :photo, :question_id, { question_attributes: [:id, :body] }])
   end
 end
