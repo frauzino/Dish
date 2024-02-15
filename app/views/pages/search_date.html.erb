@@ -47,7 +47,7 @@
     </div>
 
     <form class="face-recog-form">
-      <label for="image-upload">Upload a screenshot of your date's profile. It should look something like this. </label>
+      <label for="image-upload" data-face-recognition-target="inputLabelElement">Upload a screenshot of your date's profile. It should look something like this. </label>
       <input type="file" name="image-upload" data-face-recognition-target="fileUploadElement" data-action="change->face-recognition#previewImage">
       <button class="btn button-secondary" data-action="click->face-recognition#searchGalleryForPerson">Search</button>
     </form>

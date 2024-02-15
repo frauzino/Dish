@@ -34,3 +34,9 @@
   border-radius: .5rem;
   object-fit: cover;
 }
+
+@media screen and (max-width: 749px) {
+  .results-container {
+    flex-direction: column;
+  }
+}

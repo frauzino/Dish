@@ -42,20 +42,19 @@ export default class extends Controller {
   }
 
   checkDirection(slide, slideArray, dots, index) {
-    if ((touchendX < touchstartX) && (index + 1 < slideArray.length)) {
-      this.changeSlide("left", slide, slideArray, dots, index)
+    if ((touchendX < touchstartX) && (index < slideArray.length - 1)) {
+      this.changeSlide("left", slide, slideArray, index)
     }
     if ((touchendX > touchstartX) && (index > 0)) {
-      this.changeSlide("right", slide, slideArray, dots, index)
+      this.changeSlide("right", slide, slideArray, index)
     }
   }
 
-  changeSlide(direction, slide, slideArray, dots, index) {
-    console.log('change index', index)
-
-    dots.forEach(this.selectDot)
+  changeSlide(direction, slide, slideArray, index) {
+    let newIndex = index
 
     if (direction == "left") {
+      newIndex += 1
       slide.classList.add("slide-out-left");
       slideArray[index + 1].classList.add("slide-in-left");
 
@@ -70,6 +69,7 @@ export default class extends Controller {
       }, 1000);
 
     } else {
+      newIndex -= 1
       slide.classList.add("slide-out-right");
       slideArray[index - 1].classList.add("slide-in-right");
 
@@ -83,12 +83,14 @@ export default class extends Controller {
         slideArray[index - 1].classList.remove("slide-in-right")
       }, 1000);
     }
+
+    this.selectDot(newIndex)
   }
 
   prev() {
     const slide = this.slideElementTargets.find((slide) => !slide.classList.contains('hidden'))
     const index = this.slideElementTargets.indexOf(slide) - 1
-    this.changeSlide('left',slide ,this.slideElementTargets ,this.multidotElementTargets, index - 1)
+    this.changeSlide('left',slide ,this.slideElementTargets, index - 1)
     this.rightElementTarget.classList.remove('hidden')
     if (index < 1) {this.leftElementTarget.classList.add('hidden')}
   }
@@ -96,20 +98,24 @@ export default class extends Controller {
   next() {
     const slide = this.slideElementTargets.find((slide) => !slide.classList.contains('hidden'))
     const index = this.slideElementTargets.indexOf(slide) + 1
-    console.log('slide', slide)
-    console.log('clicked index', index)
-    console.log('length', this.slideElementTargets.length)
-    this.changeSlide('right',slide ,this.slideElementTargets ,this.multidotElementTargets, index + 1)
+    this.changeSlide('right',slide ,this.slideElementTargets, index + 1)
     this.leftElementTarget.classList.remove('hidden')
     if (index === this.slideElementTargets.length - 1) {this.rightElementTarget.classList.add('hidden')}
   }
 
-  selectDot(item) {
-    if (item.classList.contains("dark-dot")) {
-      item.classList.remove("dark-dot");
-    } else {
-      item.classList.add("dark-dot");
-    };
+  selectDot(index) {
+    this.multidotElementTargets.forEach((dot, i) => {
+      if (dot.classList.contains('dark-dot')) {dot.classList.remove('dark-dot')}
+      if (i === index) {dot.classList.add('dark-dot')}
+    });
   }
+
+  // selectDot(item) {
+  //   if (item.classList.contains("dark-dot")) {
+  //     item.classList.remove("dark-dot");
+  //   } else {
+  //     item.classList.add("dark-dot");
+  //   };
+  // }
 
 }

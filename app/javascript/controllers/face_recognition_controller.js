@@ -10,7 +10,7 @@ export default class extends Controller {
     luxandApiKey: String
   }
 
-  static targets = ['fileUploadElement', 'imageElement', 'resultsScoreElement', 'resultsImagesContainerElement']
+  static targets = ['fileUploadElement', 'imageElement', 'resultsScoreElement', 'resultsImagesContainerElement', 'inputLabelElement']
 
   connect() {
   }
@@ -49,6 +49,7 @@ export default class extends Controller {
 
     const surveys = results.map((result) => result.survey)
     this.resultsScoreElementTarget.innerHTML = results.length ? `This person's Dish Date Score is: ${this.medianOfScores(surveys)}%` : "We don't have enough information on this person."
+    this.inputLabelElementTarget.innerHTML = 'Search for another profile?'
 
     this.dispatch("searchGalleryForPerson")
   }
