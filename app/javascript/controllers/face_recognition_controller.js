@@ -24,6 +24,8 @@ export default class extends Controller {
 
   async searchGalleryForPerson() { // searches Luxand database for matching photos, then updates the DOM with relelvant information
     event.preventDefault()
+    this.resultsImagesContainerElementTarget.innerHTML = '' //removes any previously returned images from the DOM
+
     const [file] = this.fileUploadElementTarget.files
     const headers = {
       "token": this.luxandApiKeyValue
@@ -32,16 +34,14 @@ export default class extends Controller {
     formData.append('photo', file)
     formData.append('all', 1) // returns all matching photos
 
-    // const data = await fetch(luxandUrlSearch, { // Luxand API call searching for matching photos
-    //   method: "POST",
-    //   headers: headers,
-    //   body: formData
-    // })
-    // .then(response => response.json())
-    // .catch(error => console.log('error occured', error))
-    // const photoUuids = data.map((photo) => photo.photo_uuid)
-
-    const photoUuids = ['56345215-cc5a-11ee-8061-0242ac160003', '56345215-cc5a-11ee-8061-0242ac160003'] // to remove
+    const data = await fetch(luxandUrlSearch, { // Luxand API call searching for matching photos
+      method: "POST",
+      headers: headers,
+      body: formData
+    })
+    .then(response => response.json())
+    .catch(error => console.log('error occured', error))
+    const photoUuids = data.map((photo) => photo.photo_uuid)
 
     const results = (await Promise.all(photoUuids.map((uuid) => this.returnMatchingSurveys(uuid)))).filter((r) => r == 0 || r) // results are hashes with surveys with uuids that match returned Luxand photos and cloudinary photo urls {survey: survey, photo_url: cloudinary_photo_url}
 

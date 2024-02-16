@@ -25,8 +25,7 @@ class SurveysController < ApplicationController
                       else
                         [Question.first, Question.second]
                       end
-    # questions_sample = Question.all[2..].sample 15
-    questions_sample = Question.all[2..].sample 5
+    questions_sample = Question.all[2..].sample 15
     questions_array + questions_sample
   end
 

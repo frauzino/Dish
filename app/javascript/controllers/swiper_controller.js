@@ -13,9 +13,8 @@ export default class extends Controller {
   static targets = ['slideElement', 'multidotContainerElement', 'multidotElement', 'rightElement', 'leftElement']
 
   connect() {
-    // this.slideElementTargets.forEach(this.swipe)
+    this.multidotElementTargets.forEach((dot) => dot.remove())
     for(let i = 0; i < this.slideElementTargets.length; i++) {
-      // i > 0 ? [slide.classList.add('hidden'), this.rightElementTarget.classList.remove('hidden')] : ''
       this.multidotContainerElementTarget.innerHTML += '<div class="multi-dot" data-swiper-target="multidotElement"></div>'
       this.multidotElementTargets[0].classList.add('dark-dot')
       let slide = this.slideElementTargets[i]
