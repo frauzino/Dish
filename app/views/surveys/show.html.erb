@@ -4,7 +4,6 @@
       <div class="content-panel result-panel bg-lilac">
         <%= "Your Date Score: #{@survey_score}/100" %>
         <%= image_tag @survey.result.image, loading: 'lazy', class: 'result-avatar'%>
-        <%= cl_image_tag @survey.photo.key, loading: 'lazy' %>
         <span class="result-text"><%= "We think your date might have been a #{@survey.result.image.chomp('.svg')}!" %></span>
         <%= link_to "Check the leaderboards", leaderboard_path, class: " btn button-primary" %>
       </div>

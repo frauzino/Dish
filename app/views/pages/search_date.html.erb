@@ -4,53 +4,52 @@
   data-action="face-recognition:searchGalleryForPerson->swiper#connect"
   data-face-recognition-luxand-api-key-value="<%=ENV['LUXAND_API_KEY']%>"
 >
-  <div class="face-recog-container content-panel bg-pale-blue">
+  <div class="content-container-inner">
+    <div class="face-recog-container content-panel bg-pale-blue">
 
-    <span data-face-recognition-target="resultsScoreElement"></span>
+      <span data-face-recognition-target="resultsScoreElement"></span>
 
-    <div class="results-container">
-      <div class="upload-image-container">
-        <%= image_tag "cmb_profile.png", loading: 'lazy', class: "upload-image profile-image", data: {"face-recognition-target": "imageElement"} %>
+      <div class="results-container">
+        <div class="upload-image-container">
+          <%= image_tag "cmb_profile.png", loading: 'lazy', class: "upload-image profile-image", data: {"face-recognition-target": "imageElement"} %>
+        </div>
+        <div class="slides-container">
+          <div class="results-images" data-face-recognition-target="resultsImagesContainerElement">
+          </div>
+
+          <div class="left-arrow-wrapper">
+            <%= image_tag "chevron_left.svg",
+              loading: 'lazy',
+              data: {
+                action: "click->swiper#prev",
+                'swiper-target': "leftElement"
+                },
+              class: "chevron hidden"
+            %>
+          </div>
+
+          <div class="right-arrow-wrapper">
+            <%= image_tag "chevron_right.svg",
+              loading: 'lazy',
+              data: {
+                action: "click->swiper#next",
+                'swiper-target': "rightElement"
+                },
+              class: "chevron hidden"
+            %>
+          </div>
+
+          <div class="multi-dots-container" data-swiper-target="multidotContainerElement"></div>
+
+        </div>
       </div>
-      <div class="slides-container">
-        <div class="results-images" data-face-recognition-target="resultsImagesContainerElement">
-        </div>
 
-        <div class="left-arrow-wrapper">
-          <%= image_tag "chevron_left.svg",
-            loading: 'lazy',
-            data: {
-              action: "click->swiper#prev",
-              'swiper-target': "leftElement"
-              },
-            class: "chevron hidden"
-          %>
-        </div>
+      <form class="face-recog-form">
+        <label for="image-upload" data-face-recognition-target="inputLabelElement">Upload a screenshot of your date's profile. It should look something like this. </label>
+        <input type="file" name="image-upload" data-face-recognition-target="fileUploadElement" data-action="change->face-recognition#previewImage">
+        <button class="btn button-secondary" data-action="click->face-recognition#searchGalleryForPerson">Search</button>
+      </form>
 
-        <div class="right-arrow-wrapper">
-          <%= image_tag "chevron_right.svg",
-            loading: 'lazy',
-            data: {
-              action: "click->swiper#next",
-              'swiper-target': "rightElement"
-              },
-            class: "chevron hidden"
-          %>
-        </div>
-
-        <div class="multi-dots-container" data-swiper-target="multidotContainerElement">
-          <%# <div class="multi-dot dark-dot" data-swiper-target="multidotElement"></div>
-          <div class="multi-dot" data-swiper-target="multidotElement"></div> %>
-        </div>
-
-      </div>
     </div>
-
-    <form class="face-recog-form">
-      <label for="image-upload" data-face-recognition-target="inputLabelElement">Upload a screenshot of your date's profile. It should look something like this. </label>
-      <input type="file" name="image-upload" data-face-recognition-target="fileUploadElement" data-action="change->face-recognition#previewImage">
-      <button class="btn button-secondary" data-action="click->face-recognition#searchGalleryForPerson">Search</button>
-    </form>
-
   </div>
 </div>

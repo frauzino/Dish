@@ -14,7 +14,9 @@
 }
 
 .results-container {
+  width: 100%;
   display: flex;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -30,7 +32,7 @@
 
 .profile-image {
   width: 15rem;
-  max-height: 25rem;
+  height: 25rem;
   border-radius: .5rem;
   object-fit: cover;
 }
