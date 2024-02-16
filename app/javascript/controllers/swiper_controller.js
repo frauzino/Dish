@@ -10,9 +10,10 @@ let touchendX = 0
 export default class extends Controller {
 
 
-  static targets = ['slideElement', 'multidotContainerElement', 'multidotElement', 'rightElement', 'leftElement']
+  static targets = ['slideElement', 'multidotContainerElement', 'multidotElement', 'rightElement', 'leftElement', 'slidesContainerElement']
 
   connect() {
+    this.slideElementTargets.length > 0 ? this.slidesContainerElementTarget.classList.remove('hidden') : this.slidesContainerElementTarget.classList.add('hidden')
     this.multidotElementTargets.forEach((dot) => dot.remove())
     for(let i = 0; i < this.slideElementTargets.length; i++) {
       this.multidotContainerElementTarget.innerHTML += '<div class="multi-dot" data-swiper-target="multidotElement"></div>'
@@ -109,12 +110,7 @@ export default class extends Controller {
     });
   }
 
-  // selectDot(item) {
-  //   if (item.classList.contains("dark-dot")) {
-  //     item.classList.remove("dark-dot");
-  //   } else {
-  //     item.classList.add("dark-dot");
-  //   };
-  // }
-
+  showSlidesContainer() {
+    this.slidesContainerElementTarget.classList.remove('hidden')
+  }
 }
