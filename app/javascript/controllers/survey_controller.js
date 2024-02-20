@@ -36,7 +36,7 @@ export default class extends Controller {
 
     const faceExists = data.photos[0].tags[0] ? true : false
 
-    faceExists ? [this.radioChecked(changeImageEvent), this.addPhoto(), this.errorMessageElementTarget.classList.add('hidden')] : [this.radioChecked(changeImageEvent, "disable"), this.errorMessageElementTarget.classList.remove('hidden')]
+    faceExists ? [this.radioChecked(changeImageEvent), this.errorMessageElementTarget.classList.add('hidden')] : [this.radioChecked(changeImageEvent, "disable"), this.errorMessageElementTarget.classList.remove('hidden')]
     this.radioChecked(changeImageEvent)
   }
 
@@ -109,6 +109,7 @@ export default class extends Controller {
   }
 
   submit() {
+    this.addPhoto(),
     this.progress(this.questionElementTargets.length - 1);
     setTimeout(() => {
       this.surveyElementTarget.submit();

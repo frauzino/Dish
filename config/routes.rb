@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   get 'leaderboard', to: 'users#index'
   get 'project', to: 'pages#project'
   get 'account', to: 'users#show'
-  get 'search_date', to: 'pages#search_date'
+  # get 'search_date', to: 'pages#search_date'
+  get 'search_date', to: 'users#search_date'
+  get 'users/update_access', to: 'users#update_access'
 end

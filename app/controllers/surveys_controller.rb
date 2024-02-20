@@ -4,6 +4,7 @@ class SurveysController < ApplicationController
   def index
     @survey = Survey.find_by(uuid: params[:uuid])
     @photo_url = Cloudinary::Utils.cloudinary_url('development/' + @survey.photo.key)
+    # @photo_url = @survey ? Cloudinary::Utils.cloudinary_url('development/' + @survey.photo.key) : ''
     @result = { survey: @survey, photo_url: @photo_url }
     respond_to do |format|
       format.json { render json: @result }
@@ -25,8 +26,7 @@ class SurveysController < ApplicationController
                       else
                         [Question.first, Question.second]
                       end
-    # questions_sample = Question.all[2..].sample 15
-    questions_sample = Question.all[2..].sample 5
+    questions_sample = Question.all[2..].sample 15
     questions_array + questions_sample
   end
 

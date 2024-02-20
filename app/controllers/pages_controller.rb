@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home leaderboard project]
+  skip_before_action :authenticate_user!, only: %i[home leaderboard project search_date]
 
   def home
   end
