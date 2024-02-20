@@ -33,8 +33,10 @@ class UsersController < ApplicationController
 
   Warden::Manager.after_set_user do |user, _auth, _opts|
     user.search_date_accessed.each do |date|
-      user.search_date_accessed.delete(date) if (DateTime.now - date.to_datetime).to_f / 3600 > 24
-      user.save
+      if ((DateTime.now.to_time - date.to_time) / 1.hours) > 1
+        user.search_date_accessed.delete(date)
+        user.save
+      end
     end
   end
 

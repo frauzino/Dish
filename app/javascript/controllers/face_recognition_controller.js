@@ -10,7 +10,7 @@ export default class extends Controller {
     luxandApiKey: String
   }
 
-  static targets = ['fileUploadElement', 'imageElement', 'resultsScoreElement', 'resultsImagesContainerElement', 'inputLabelElement']
+  static targets = ['fileUploadElement', 'imageElement', 'resultsScoreElement', 'resultsImagesContainerElement', 'inputLabelElement', 'searchButtonElement', 'errorNotificationElement']
 
   connect() {
   }
@@ -51,6 +51,8 @@ export default class extends Controller {
     this.resultsScoreElementTarget.innerHTML = results.length ? `This person's Dish Date Score is: ${this.medianOfScores(surveys)}%` : "We don't have enough information on this person."
     this.inputLabelElementTarget.innerHTML = 'Search for another profile?'
 
+    this.checkUserSearchDateAccessed() // Updates search_date_accessed column with a timestamp. also checks if there are >1 timestamps already
+
     this.dispatch("searchGalleryForPerson") // calls swiper#connect(check search_date.html line: 4) to refresh the swiper_controller.js with the new DOM
   }
 
@@ -76,18 +78,20 @@ export default class extends Controller {
     return `<img src=${photo_url} class="survey-result-image profile-image swiper-slide animated" data-swiper-target="slideElement">`
   }
 
-  async updateUserSearchDateAccessed() {
-    event.preventDefault()
-    console.log('hello')
+  async checkUserSearchDateAccessed() { // calls users_controller.rb to update user's search_date_accessed array. Returns user.
     const url = '/users/update_access'
-    await fetch(url, {
+    const data = await fetch(url, {
       method: "GET",
       headers: {
         accept: "application/json"
       }
     })
     .then(response => response.json())
-    .then(data => console.log("updated", data))
     .catch(error => console.log("error", error))
+
+    if (data.search_date_accessed.length > 1 && !data.is_admin) { // checks to see if user has used the Search Date feature twice within 24 hrs and disables if true.
+      this.searchButtonElementTarget.classList.add('button-disabled')
+      this.errorNotificationElementTarget.innerHTML = "Sorry, you've already used this feature twice today, please try again tomorrow."
+    }
   }
 }
