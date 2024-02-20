@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index]
+  skip_before_action :authenticate_user!, only: %i[index, search_date]
 
   def index
     @top10_users = rank_users.take(10)
@@ -23,6 +23,28 @@ class UsersController < ApplicationController
     schools_controller.request = request
     schools_controller.response = response
     schools_controller.index
+  end
+
+  def search_date
+    @user = current_user
+  end
+
+  # Methods pertaining to user's search_date_accessed array of timestamps. for ensuring access to Search Date feature
+
+  Warden::Manager.after_set_user do |user, _auth, _opts|
+    user.search_date_accessed.each do |date|
+      user.search_date_accessed.delete(date) if (DateTime.now - date.to_datetime).to_f / 3600 > 24
+      user.save
+    end
+  end
+
+  def update_access
+    # current_user.search_date_accessed_will_change!
+    current_user.search_date_accessed << DateTime.now.to_s
+    current_user.save
+    respond_to do |format|
+      format.json { render json: current_user }
+    end
   end
 
   # Badge Methods

@@ -75,4 +75,19 @@ export default class extends Controller {
   buildImageElement(photo_url) { // builds img tag with the cloudinary photo url. ensures element is connected to swiper_controller.js through stimulus syntax
     return `<img src=${photo_url} class="survey-result-image profile-image swiper-slide animated" data-swiper-target="slideElement">`
   }
+
+  async updateUserSearchDateAccessed() {
+    event.preventDefault()
+    console.log('hello')
+    const url = '/users/update_access'
+    await fetch(url, {
+      method: "GET",
+      headers: {
+        accept: "application/json"
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log("updated", data))
+    .catch(error => console.log("error", error))
+  }
 }
