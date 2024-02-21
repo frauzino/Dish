@@ -26,7 +26,7 @@ class SurveysController < ApplicationController
                       else
                         [Question.first, Question.second]
                       end
-    questions_sample = current_user.is_admin ? (Question.all[2..].sample 5) : (Question.all[2..].sample 15)
+    questions_sample = user_signed_in? && current_user.is_admin ? (Question.all[2..].sample 5) : (Question.all[2..].sample 15)
     questions_array + questions_sample
   end
 
