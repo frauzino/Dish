@@ -19,16 +19,31 @@ export default class extends Controller {
 
   // Detect if selected image has a face, before continuing with the dish report and associating photo with this survey
   async faceDetect() {
-    const [file] = this.imageInputElementTarget.files
-    const formData = new FormData();
+
     const changeImageEvent = event
+    const [file] = this.imageInputElementTarget.files
+    const fileTypeError = 'Please ensure the uploaded image is of file type .jpg, .jpeg, or .png'
+    const noFaceError = 'Please ensure your screenshot matches the example above, including a clear view of the face.'
+
+
+    console.log('checkFileType', this.checkFileType(file)) // disables next button and shows user an error if wrong file format
+    if (this.checkFileType(file)) {
+      this.errorMessageElementTarget.classList.add('hidden')
+    } else {
+      this.errorMessageElementTarget.innerHTML = fileTypeError
+      this.radioChecked(changeImageEvent, "disable")
+      this.errorMessageElementTarget.classList.remove('hidden')
+      return
+    }
+
+    const formData = new FormData();
 
     formData.append("api_key", this.skybioApiKeyValue)
     formData.append("api_secret", this.skybioSecretKeyValue)
     formData.append("attributes", "all")
     formData.append("file", file)
 
-    const data = await fetch(skyBiometryUrlDetect, {
+    const data = await fetch(skyBiometryUrlDetect, { // calls skyBiometry API to check for face in uploaded image
       method: "POST",
       body: formData
     })
@@ -36,8 +51,17 @@ export default class extends Controller {
 
     const faceExists = data.photos[0].tags[0] ? true : false
 
-    faceExists ? [this.radioChecked(changeImageEvent), this.errorMessageElementTarget.classList.add('hidden')] : [this.radioChecked(changeImageEvent, "disable"), this.errorMessageElementTarget.classList.remove('hidden')]
+    // diables next button and shows user and error if image doesn't contain face
+    faceExists ? [this.radioChecked(changeImageEvent), this.errorMessageElementTarget.classList.add('hidden')] : [this.radioChecked(changeImageEvent, "disable"), this.errorMessageElementTarget.innerHTML = noFaceError, this.errorMessageElementTarget.classList.remove('hidden')]
     this.radioChecked(changeImageEvent)
+
+  }
+
+  checkFileType(file) { // Checks if file is acceptable format for upload to luxand
+    const fileName = file.name
+    const ext = fileName.slice(((fileName.lastIndexOf(".") - 1) >>> 0) + 2)
+    console.log(ext)
+    if (['jpg', 'jpeg', 'png', ].includes(ext)) {return true}
   }
 
   // Adds photo to Luxand cloud database for face recognition functionality
@@ -49,17 +73,14 @@ export default class extends Controller {
     const formData = new FormData();
     formData.append('photo', file)
 
-    const data = await fetch(luxandUrlAddPhoto, {
+    await fetch(luxandUrlAddPhoto, {
       method: 'POST',
       headers: headers,
       body: formData
     })
     .then(response => response.json())
+    .then(data => this.hiddenInputElementTarget.value = data.uuid)
     .catch(error => console.log('error', error))
-
-    const uuid = data.uuid
-    this.hiddenInputElementTarget.value = uuid
-    console.log('addPhoto Input element', this.hiddenInputElementTarget)
   }
 
   radioChecked(backupEvent, disable = false) {
@@ -108,12 +129,11 @@ export default class extends Controller {
     }
   }
 
-  submit() {
-    this.addPhoto(),
+  async submit() {
+    event.preventDefault()
     this.progress(this.questionElementTargets.length - 1);
-    setTimeout(() => {
-      this.surveyElementTarget.submit();
-    }, 500);
+    await this.addPhoto()
+    this.surveyElementTarget.submit()
   }
 
   toggleImageSize() {

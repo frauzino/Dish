@@ -22,8 +22,10 @@ export default class extends Controller {
     }
   }
 
-  async searchGalleryForPerson() { // searches Luxand database for matching photos, then updates the DOM with relelvant information
+  async searchGalleryForPerson() { // searches Luxand database for matching photos, then updates the DOM with relevant information
     event.preventDefault()
+    this.buttonLoading()
+
     this.resultsImagesContainerElementTarget.innerHTML = '' //removes any previously returned images from the DOM
 
     const [file] = this.fileUploadElementTarget.files
@@ -54,6 +56,8 @@ export default class extends Controller {
     this.checkUserSearchDateAccessed() // Updates search_date_accessed column with a timestamp. also checks if there are >1 timestamps already
 
     this.dispatch("searchGalleryForPerson") // calls swiper#connect(check search_date.html line: 4) to refresh the swiper_controller.js with the new DOM
+
+    this.buttonFinishedLoading()
   }
 
   async returnMatchingSurveys(uuid) { // returns surveys from our DB with uuids that match the photos returned from Luxand
@@ -93,5 +97,15 @@ export default class extends Controller {
       this.searchButtonElementTarget.classList.add('button-disabled')
       this.errorNotificationElementTarget.innerHTML = "Sorry, you've already used this feature twice today, please try again tomorrow."
     }
+  }
+
+  buttonLoading() {
+    this.searchButtonElementTarget.classList.add('loading')
+    this.searchButtonElementTarget.innerHTML = 'Loading'
+  }
+
+  buttonFinishedLoading() {
+    this.searchButtonElementTarget.classList.remove('loading')
+    this.searchButtonElementTarget.innerHTML = 'Search'
   }
 }
