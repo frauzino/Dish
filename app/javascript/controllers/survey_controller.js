@@ -19,6 +19,7 @@ export default class extends Controller {
 
   // Detect if selected image has a face, before continuing with the dish report and associating photo with this survey
   async faceDetect() {
+
     const [file] = this.imageInputElementTarget.files
     const formData = new FormData();
     const changeImageEvent = event
@@ -38,6 +39,7 @@ export default class extends Controller {
 
     faceExists ? [this.radioChecked(changeImageEvent), this.errorMessageElementTarget.classList.add('hidden')] : [this.radioChecked(changeImageEvent, "disable"), this.errorMessageElementTarget.classList.remove('hidden')]
     this.radioChecked(changeImageEvent)
+
   }
 
   // Adds photo to Luxand cloud database for face recognition functionality
@@ -49,17 +51,14 @@ export default class extends Controller {
     const formData = new FormData();
     formData.append('photo', file)
 
-    const data = await fetch(luxandUrlAddPhoto, {
+    await fetch(luxandUrlAddPhoto, {
       method: 'POST',
       headers: headers,
       body: formData
     })
     .then(response => response.json())
+    .then(data => this.hiddenInputElementTarget.value = data.uuid)
     .catch(error => console.log('error', error))
-
-    const uuid = data.uuid
-    this.hiddenInputElementTarget.value = uuid
-    console.log('addPhoto Input element', this.hiddenInputElementTarget)
   }
 
   radioChecked(backupEvent, disable = false) {
@@ -108,12 +107,11 @@ export default class extends Controller {
     }
   }
 
-  submit() {
-    this.addPhoto(),
+  async submit() {
+    event.preventDefault()
     this.progress(this.questionElementTargets.length - 1);
-    setTimeout(() => {
-      this.surveyElementTarget.submit();
-    }, 500);
+    await this.addPhoto()
+    this.surveyElementTarget.submit()
   }
 
   toggleImageSize() {
