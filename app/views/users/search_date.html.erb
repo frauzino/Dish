@@ -5,19 +5,6 @@
   data-face-recognition-luxand-api-key-value="<%=ENV['LUXAND_API_KEY']%>"
 >
 
-  <% unless @user.search_date_accessed.length < 2 || @user.is_admin %>
-    <%= render "shared/alert",
-      bg_color: "english-violet",
-      text_color: "white",
-      header_text: "Too many Searches",
-      header_size: "small",
-      content_text: "This feature is still in beta, we're currently limiting how often it may be used. Please check back later",
-       buttons: [
-        {text: "Log In", path: new_user_session_path, style: "btn button-primary"},
-       ]
-    %>
-  <% end %>
-
   <% unless user_signed_in? %>
     <%= render "shared/alert",
       bg_color: "english-violet",
@@ -29,6 +16,21 @@
         {text: "Log In", path: new_user_session_path, style: "btn button-primary"},
        ]
     %>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <% unless @user.search_date_accessed.length < 2 || @user.is_admin %>
+      <%= render "shared/alert",
+        bg_color: "english-violet",
+        text_color: "white",
+        header_text: "Too many Searches",
+        header_size: "small",
+        content_text: "This feature is still in beta, we're currently limiting how often it may be used. Please check back later",
+        buttons: [
+          {text: "Log In", path: new_user_session_path, style: "btn button-primary"},
+        ]
+      %>
+    <% end %>
   <% end %>
 
   <div class="content-container-inner">
@@ -75,7 +77,7 @@
         <label for="image-upload" data-face-recognition-target="inputLabelElement">Upload a screenshot of your date's profile. It should look something like this. </label>
         <input type="file" name="image-upload" data-face-recognition-target="fileUploadElement" data-action="change->face-recognition#previewImage">
         <button
-          class="btn button-secondary <% unless user_signed_in? && @user.search_date_accessed.length < 2 || @user.is_admin%> button-disabled <% end %>"
+          class="btn button-secondary <% unless user_signed_in? && @user.search_date_accessed.length < 2 || user_signed_in? && @user.is_admin%> button-disabled <% end %>"
           data-action="click->face-recognition#searchGalleryForPerson"
           data-face-recognition-target="searchButtonElement"
         >
