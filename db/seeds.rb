@@ -306,7 +306,10 @@ badge_unlock_reqs = [
   'Go on a date where both people are queer',
   'Go on a date where one person is male while the other is female',
   'Achieve rank one on the leaderboard',
-  'Attend a school that has achieved rank one on the leaderboard'
+  'Attend a school that has achieved rank one on the leaderboard',
+  'Use the Search a Date feature for the first time',
+  'Use the Search a Date feature 5 times',
+  'Use the Search a Date feature 10 times'
 ]
 
 Badge.create(
@@ -320,6 +323,7 @@ Badge.create(
   unlock_reqs: badge_unlock_reqs[1],
   icon: '5x_survey_badge.svg'
 )
+
 Badge.create(
   name: '10x Friends',
   unlock_reqs: badge_unlock_reqs[2],
@@ -402,6 +406,23 @@ Badge.create(
   name: 'Safest School',
   unlock_reqs: badge_unlock_reqs[15],
   icon: 'top_school_badge.svg'
+)
+
+Badge.create(
+  name: 'First Search',
+  unlock_reqs: badge_unlock_reqs[16],
+  icon: '1x_search_badge.svg'
+)
+
+Badge.create(
+  name: '5x Searches',
+  unlock_reqs: badge_unlock_reqs[17],
+  icon: '5x_search_badge.svg'
+)
+Badge.create(
+  name: '10x Searches',
+  unlock_reqs: badge_unlock_reqs[18],
+  icon: '10x_search_badge.svg'
 )
 
 puts 'created badges'
