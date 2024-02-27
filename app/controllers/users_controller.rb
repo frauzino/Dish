@@ -43,6 +43,7 @@ class UsersController < ApplicationController
   def update_access
     # current_user.search_date_accessed_will_change!
     current_user.search_date_accessed << DateTime.now.to_s
+    current_user.search_date_queries_count += 1
     current_user.save
     respond_to do |format|
       format.json { render json: current_user }
@@ -99,6 +100,12 @@ class UsersController < ApplicationController
     create_badge('First Friend') if @user.referral.uses_count >= 1
     create_badge('5x Friends') if @user.referral.uses_count >= 5
     create_badge('10x Friends') if @user.referral.uses_count >= 10
+  end
+
+  def check_friends_badges
+    create_badge('First Search') if @user.search_date_queries_count >= 1
+    create_badge('5x Searches') if @user.search_date_queries_count >= 5
+    create_badge('10x Searches') if @user.search_date_queries_count >= 10
   end
 
   def create_badge(name)
