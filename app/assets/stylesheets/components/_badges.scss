@@ -2,6 +2,8 @@
   background-color: white;
   border-radius: .5rem;
   padding: 1rem;
+  min-height: 6rem;
+  justify-content: flex-start;
 }
 
 .badge-wrapper {
@@ -37,6 +39,12 @@
 @media screen and (max-width: 749px) {
   .badge {
     width: 4rem;
-    margin: 1rem 0;
+  }
+
+  .achievements-container {
+    min-height: 5rem;
+    justify-content: space-between;
+    gap: 0;
+    row-gap: 1rem;
   }
 }

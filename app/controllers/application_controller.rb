@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     current_user.try(:is_admin?)
   end
 
+  def after_sign_in_path_for(resource)
+    account_path
+  end
+
   protected
 
   def configure_permitted_parameters

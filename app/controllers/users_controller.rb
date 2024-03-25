@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     check_dates_badges
     check_misc_badges
     check_friends_badges
+    check_searches_badges
   end
 
   def rank_users
@@ -102,7 +103,7 @@ class UsersController < ApplicationController
     create_badge('10x Friends') if @user.referral.uses_count >= 10
   end
 
-  def check_friends_badges
+  def check_searches_badges
     create_badge('First Search') if @user.search_date_queries_count >= 1
     create_badge('5x Searches') if @user.search_date_queries_count >= 5
     create_badge('10x Searches') if @user.search_date_queries_count >= 10
