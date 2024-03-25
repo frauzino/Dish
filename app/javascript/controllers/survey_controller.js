@@ -20,11 +20,11 @@ export default class extends Controller {
   // Detect if selected image has a face, before continuing with the dish report and associating photo with this survey
   async faceDetect() {
 
+    this.buttonLoading();
     const changeImageEvent = event
     const [file] = this.imageInputElementTarget.files
     const fileTypeError = 'Please ensure the uploaded image is of file type .jpg, .jpeg, or .png'
     const noFaceError = 'Please ensure your screenshot matches the example above, including a clear view of the face.'
-
 
     console.log('checkFileType', this.checkFileType(file)) // disables next button and shows user an error if wrong file format
     if (this.checkFileType(file)) {
@@ -51,7 +51,8 @@ export default class extends Controller {
 
     const faceExists = data.photos[0].tags[0] ? true : false
 
-    // diables next button and shows user and error if image doesn't contain face
+    this.buttonFinishedLoading();
+    // disables next button and shows user and error if image doesn't contain face
     faceExists ? [this.radioChecked(changeImageEvent), this.errorMessageElementTarget.classList.add('hidden')] : [this.radioChecked(changeImageEvent, "disable"), this.errorMessageElementTarget.innerHTML = noFaceError, this.errorMessageElementTarget.classList.remove('hidden')]
     this.radioChecked(changeImageEvent)
 
@@ -147,4 +148,14 @@ export default class extends Controller {
       this.blockerElementTarget.classList.remove('hidden');
     };
   };
+
+  buttonLoading() {
+    this.buttonElementTargets[0].classList.add('loading')
+    this.buttonElementTargets[0].innerHTML = 'Loading'
+  }
+
+  buttonFinishedLoading() {
+    this.buttonElementTargets[0].classList.remove('loading')
+    this.buttonElementTargets[0].innerHTML = 'Search'
+  }
 }

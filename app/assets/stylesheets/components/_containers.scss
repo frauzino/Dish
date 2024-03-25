@@ -91,6 +91,13 @@
 
   .content-container {
     flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .account-column {
+    gap: 2rem;
+    width: 100%;
   }
 
   .content-container-inner {
