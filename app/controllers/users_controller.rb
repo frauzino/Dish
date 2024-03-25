@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index, search_date]
+  skip_before_action :authenticate_user!, only: %i[index search_date]
 
   def index
     @top10_users = rank_users.take(10)

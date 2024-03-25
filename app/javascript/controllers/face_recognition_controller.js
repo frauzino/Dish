@@ -1,6 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
 
-const luxandUrlAddPhoto = "https://api.luxand.cloud/photo"
 const luxandUrlSearch = "https://api.luxand.cloud/photo/search2"
 
 // Connects to data-controller="face-recognition"
