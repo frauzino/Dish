@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[new create]
+  skip_before_action :authenticate_user!, only: %i[new create show]
 
   def index
     @survey = Survey.find_by(uuid: params[:uuid])
@@ -37,24 +37,29 @@ class SurveysController < ApplicationController
       create_survey_questions(@survey)
       survey_total_value(@survey)
       create_result(@survey)
-      if user_signed_in?
-        add_user_points
-        redirect_to survey_path(@survey)
-      else
-        redirect_to root_path
-      end
+      redirect_to survey_path(@survey)
+      # if user_signed_in?
+      #   add_user_points
+      #   redirect_to survey_path(@survey)
+      # else
+      #   redirect_to root_path
+      # end
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def show
-    @survey = current_user.surveys.last
-    max_value = 0.0
-    @survey.survey_questions.each do |sq|
-      max_value += sq.question.options.maximum('value')
+    if user_signed_in?
+      @survey = current_user.surveys.last
+      max_value = 0.0
+      @survey.survey_questions.each do |sq|
+        max_value += sq.question.options.maximum('value')
+      end
+      @survey_score = ((@survey.total_value / max_value) * 100).round(0)
+    else
+      @survey = nil
     end
-    @survey_score = ((@survey.total_value / max_value) * 100).round(0)
   end
 
   def create_result(survey)

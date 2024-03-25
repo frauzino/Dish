@@ -2,9 +2,13 @@
   <div class="survey-container" data-controller="survey">
     <div class="survey-question-container">
       <div class="content-panel result-panel bg-lilac">
-        <%= "Your Date Score: #{@survey_score}/100" %>
-        <%= image_tag @survey.result.image, loading: 'lazy', class: 'result-avatar'%>
-        <span class="result-text"><%= "We think your date might have been a #{@survey.result.image.chomp('.svg')}!" %></span>
+        <% if @survey %>
+          <%= "Your Date Score: #{@survey_score}/100" %>
+          <%= image_tag @survey.result.image, loading: 'lazy', class: 'result-avatar'%>
+          <span class="result-text"><%= "We think your date might have been a #{@survey.result.image.chomp('.svg')}!" %></span>
+        <% else %>
+          <p>Thanks for submitting a Dish Report! </p>
+        <% end %>
         <%= link_to "Check the leaderboards", leaderboard_path, class: " btn button-primary" %>
       </div>
     </div>

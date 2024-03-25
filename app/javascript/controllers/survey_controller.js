@@ -156,6 +156,6 @@ export default class extends Controller {
 
   buttonFinishedLoading() {
     this.buttonElementTargets[0].classList.remove('loading')
-    this.buttonElementTargets[0].innerHTML = 'Search'
+    this.buttonElementTargets[0].innerHTML = 'Next'
   }
 }
