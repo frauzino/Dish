@@ -32,8 +32,8 @@ export default class extends Controller {
     const fileTypeError = 'Please ensure the uploaded image is of file type .jpg, .jpeg, or .png'
 
     if (file) {
-      this.imageElementTarget.src = URL.createObjectURL(file)
       if (this.checkFileType(file)) {
+        this.imageElementTarget.src = URL.createObjectURL(file)
         this.errorMessageElementTarget.classList.add('hidden')
       } else {
         this.errorMessageElementTarget.innerHTML = fileTypeError
