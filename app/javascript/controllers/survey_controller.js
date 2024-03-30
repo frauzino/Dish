@@ -26,8 +26,7 @@ export default class extends Controller {
     const fileTypeError = 'Please ensure the uploaded image is of file type .jpg, .jpeg, or .png'
     const noFaceError = 'Please ensure your screenshot matches the example above, including a clear view of the face.'
 
-    console.log('checkFileType', this.checkFileType(file)) // disables next button and shows user an error if wrong file format
-    if (this.checkFileType(file)) {
+    if (this.checkFileType(file)) {  // disables next button and shows user an error if wrong file format
       this.errorMessageElementTarget.classList.add('hidden')
     } else {
       this.errorMessageElementTarget.innerHTML = fileTypeError

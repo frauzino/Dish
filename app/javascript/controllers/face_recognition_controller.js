@@ -1,24 +1,82 @@
 import { Controller } from "@hotwired/stimulus"
 
 const luxandUrlSearch = "https://api.luxand.cloud/photo/search2"
+const skyBiometryUrlDetect = 'https://api.skybiometry.com/fc/faces/detect.json'
 
 // Connects to data-controller="face-recognition"
 export default class extends Controller {
 
   static values = {
+    skybioApiKey: String,
+    skybioSecretKey: String,
     luxandApiKey: String
   }
 
-  static targets = ['fileUploadElement', 'imageElement', 'resultsScoreElement', 'resultsImagesContainerElement', 'inputLabelElement', 'searchButtonElement', 'errorNotificationElement']
+  static targets = [
+    'fileUploadElement',
+    'imageElement',
+    'resultsScoreElement',
+    'resultsImagesContainerElement',
+    'inputLabelElement',
+    'searchButtonElement',
+    'errorNotificationElement',
+    'errorMessageElement'
+  ]
 
   connect() {
   }
 
   previewImage() { //updates Dom with a preview of the search image
+    this.buttonLoading()
     const [file] = this.fileUploadElementTarget.files
+    const fileTypeError = 'Please ensure the uploaded image is of file type .jpg, .jpeg, or .png'
+
     if (file) {
       this.imageElementTarget.src = URL.createObjectURL(file)
+      if (this.checkFileType(file)) {
+        this.errorMessageElementTarget.classList.add('hidden')
+      } else {
+        this.errorMessageElementTarget.innerHTML = fileTypeError
+        this.buttonFinishedLoading(false)
+        this.errorMessageElementTarget.classList.remove('hidden')
+        return
+      }
+      this.faceDetect(file)
+    } else {
+      this.buttonFinishedLoading(false)
     }
+  }
+
+  async faceDetect (file) { // detect if selected image has face
+    const noFaceError = 'Please ensure your screenshot includes a clear view of the face.'
+    const formData = new FormData();
+
+    formData.append("api_key", this.skybioApiKeyValue)
+    formData.append("api_secret", this.skybioSecretKeyValue)
+    formData.append("attributes", "all")
+    formData.append("file", file)
+
+    const data = await fetch(skyBiometryUrlDetect, { // calls skyBiometry API to check for face in uploaded image
+      method: "POST",
+      body: formData
+    })
+    .then(res => res.json())
+
+    const faceExists = data.photos[0].tags[0] ? true : false
+    if (faceExists) {
+      this.errorMessageElementTarget.classList.add('hidden');
+      this.buttonFinishedLoading(true);
+    } else {
+      this.errorMessageElementTarget.innerHTML = noFaceError;
+      this.errorMessageElementTarget.classList.remove('hidden');
+      this.buttonFinishedLoading(false)
+    }
+  }
+
+  checkFileType(file) { // Checks if file is acceptable format for upload to luxand
+    const fileName = file.name
+    const ext = fileName.slice(((fileName.lastIndexOf(".") - 1) >>> 0) + 2)
+    if (['jpg', 'jpeg', 'png', ].includes(ext)) {return true}
   }
 
   async searchGalleryForPerson() { // searches Luxand database for matching photos, then updates the DOM with relevant information
@@ -56,7 +114,7 @@ export default class extends Controller {
 
     this.dispatch("searchGalleryForPerson") // calls swiper#connect(check search_date.html line: 4) to refresh the swiper_controller.js with the new DOM
 
-    this.buttonFinishedLoading()
+    this.buttonFinishedLoading(false)
   }
 
   async returnMatchingSurveys(uuid) { // returns surveys from our DB with uuids that match the photos returned from Luxand
@@ -72,7 +130,7 @@ export default class extends Controller {
   }
 
   medianOfScores(surveys) {
-    const scores = (surveys.map((survey) => survey.score))
+    const scores = (surveys.map((survey) => survey ? survey.score : 1))
     const half = Math.floor(scores.length / 2)
     return scores.length % 2 ? scores[half] : (scores[half - 1] + scores[half]) / 2
   }
@@ -99,12 +157,19 @@ export default class extends Controller {
   }
 
   buttonLoading() {
+    this.searchButtonElementTarget.classList.remove('button-disabled')
     this.searchButtonElementTarget.classList.add('loading')
     this.searchButtonElementTarget.innerHTML = 'Loading'
   }
 
-  buttonFinishedLoading() {
-    this.searchButtonElementTarget.classList.remove('loading')
-    this.searchButtonElementTarget.innerHTML = 'Search'
+  buttonFinishedLoading(enable) {
+    if (enable) {
+      this.searchButtonElementTarget.classList.remove('loading')
+      this.searchButtonElementTarget.innerHTML = 'Search'
+    } else {
+      this.searchButtonElementTarget.classList.remove('loading')
+      this.searchButtonElementTarget.classList.add('button-disabled')
+      this.searchButtonElementTarget.innerHTML = 'Search'
+    }
   }
 }
