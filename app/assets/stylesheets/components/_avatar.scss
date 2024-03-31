@@ -1,11 +1,13 @@
 .user-avatar {
   border-radius: 50%;
-  border: .1rem solid $safedate-red;
+  border: .25rem solid white;
   box-shadow: $avatar-shadow;
+  object-fit: cover;
 }
 
 .avatar-common {
   width: 2.5rem;
   aspect-ratio: 1/1;
-  object-fit: contain;
+  object-fit: cover;
+  border: .15rem solid white;
 }
