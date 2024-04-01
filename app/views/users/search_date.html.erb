@@ -82,7 +82,8 @@
           name="image-upload"
           data-face-recognition-target="fileUploadElement"
           data-action="change->face-recognition#previewImage"
-          <% unless user_signed_in? && @user.search_date_accessed.length < 2 || user_signed_in? && @user.is_admin%> disabled <% end %>
+          <%# disabled for time being, when ready to go live, uncomment "unless" statement" and "end" %>
+          <%# unless user_signed_in? && @user.search_date_accessed.length < 2 || user_signed_in? && @user.is_admin %> disabled <%# end %>
         >
         <div class="survey-image-error-message hidden" data-face-recognition-target="errorMessageElement">
           Please ensure your screenshot includes a clear view of the face.

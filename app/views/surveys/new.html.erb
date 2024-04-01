@@ -44,6 +44,13 @@
                       as: :file,
                       label: false,
                       input_html: {data: {action: "change->survey#faceDetect", "survey-target": 'imageInputElement', index: 0}} %>
+          <% if user_signed_in? && current_user.referral_input %>
+            <%= f.hidden_field :reference, value: current_user.referral_input %>
+          <% else %>
+            <%= f.input :reference,
+                        label: false,
+                        placeholder: 'Optional referral code' %>
+          <% end %>
           <%= f.hidden_field :uuid, data: {"survey-target": "hiddenInputElement"} %>
           <div class="survey-image-error-message hidden" data-survey-target="errorMessageElement">
             Please ensure your screenshot matches the example above, including a clear view of the face.
