@@ -37,6 +37,7 @@ class SurveysController < ApplicationController
       create_survey_questions(@survey)
       survey_total_value(@survey)
       create_result(@survey)
+      add_user_points if user_signed_in?
       redirect_to survey_path(@survey)
       # if user_signed_in?
       #   add_user_points
@@ -95,6 +96,6 @@ class SurveysController < ApplicationController
   private
 
   def survey_params
-    params.require(:survey).permit(:uuid, :score, :photo, survey_questions_attributes: [:id, :answer, :answer_value, :photo, :question_id, { question_attributes: [:id, :body] }])
+    params.require(:survey).permit(:uuid, :reference, :score, :photo, survey_questions_attributes: [:id, :answer, :answer_value, :photo, :question_id, { question_attributes: [:id, :body] }])
   end
 end
