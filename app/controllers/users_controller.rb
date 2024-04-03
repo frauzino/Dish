@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     check_misc_badges
     check_friends_badges
     check_searches_badges
+    @referral_count = Survey.where(reference: @user.referral.code).where.not(user: @user).count
   end
 
   def rank_users
