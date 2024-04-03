@@ -2,9 +2,8 @@
   class="content-container column"
   data-controller="face-recognition swiper"
   data-action="face-recognition:searchGalleryForPerson->swiper#connect"
-  data-face-recognition-skybio-api-key-value="<%=ENV['SKYBIOMETRY_API_KEY']%>"
-  data-face-recognition-skybio-secret-key-value="<%=ENV['SKYBIOMETRY_SECRET_KEY']%>"
   data-face-recognition-luxand-api-key-value="<%=ENV['LUXAND_API_KEY']%>"
+  data-survey-google-api-key-value="<%=ENV['GOOGLE_API_KEY']%>"
 >
 
   <% unless user_signed_in? %>

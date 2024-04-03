@@ -1,15 +1,14 @@
 import { Controller } from "@hotwired/stimulus"
 
 const luxandUrlSearch = "https://api.luxand.cloud/photo/search2"
-const skyBiometryUrlDetect = 'https://api.skybiometry.com/fc/faces/detect.json'
+const googleVisionApi = "https://vision.googleapis.com/v1/images:annotate"
 
 // Connects to data-controller="face-recognition"
 export default class extends Controller {
 
   static values = {
-    skybioApiKey: String,
-    skybioSecretKey: String,
-    luxandApiKey: String
+    luxandApiKey: String,
+    googleApiKey: String
   }
 
   static targets = [
@@ -49,27 +48,51 @@ export default class extends Controller {
 
   async faceDetect (file) { // detect if selected image has face
     const noFaceError = 'Please ensure your screenshot includes a clear view of the face.'
-    const formData = new FormData();
 
-    formData.append("api_key", this.skybioApiKeyValue)
-    formData.append("api_secret", this.skybioSecretKeyValue)
-    formData.append("attributes", "all")
-    formData.append("file", file)
+    const reader = new FileReader(); // turns image into a base64 string and removes path for Google Vision API
+    reader.onload = function(event) {
+      var base64String = event.target.result;
+      base64String = base64String.substring(base64String.indexOf(",") + 1)
+      sendBase64ToAPI(base64String)
+    };
+    reader.readAsDataURL(file)
 
-    const data = await fetch(skyBiometryUrlDetect, { // calls skyBiometry API to check for face in uploaded image
-      method: "POST",
-      body: formData
-    })
-    .then(res => res.json())
+    const sendBase64ToAPI = async (base64String) => {
+      const googleUrl = `${googleVisionApi}?key=${this.googleApiKeyValue}`
 
-    const faceExists = data.photos[0].tags[0] ? true : false
-    if (faceExists) {
-      this.errorMessageElementTarget.classList.add('hidden');
-      this.buttonFinishedLoading(true);
-    } else {
-      this.errorMessageElementTarget.innerHTML = noFaceError;
-      this.errorMessageElementTarget.classList.remove('hidden');
-      this.buttonFinishedLoading(false)
+      const data = await fetch(googleUrl, { // calls Google Vision API to check for face and text in uploaded image
+        method: "POST",
+        headers: {
+          "Content-Type": 'application/json'
+        },
+        body: JSON.stringify({
+          "requests": [
+            {
+              "image": {
+                "content": base64String
+              },
+              "features": [
+                {
+                  "maxResults": 5,
+                  "type": "FACE_DETECTION"
+                }
+              ]
+            }
+          ]
+        })
+      })
+      .then(res => res.json())
+
+      const faceExists = data.responses[0].faceAnnotations ? true : false
+
+      if (faceExists) {
+        this.errorMessageElementTarget.classList.add('hidden');
+        this.buttonFinishedLoading(true);
+      } else {
+        this.errorMessageElementTarget.innerHTML = noFaceError;
+        this.errorMessageElementTarget.classList.remove('hidden');
+        this.buttonFinishedLoading(false)
+      }
     }
   }
 

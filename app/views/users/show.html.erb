@@ -47,7 +47,7 @@
       <% if @user.ambassador %>
         <div class="account-detail">
           <span class="account-detail-title">Dish Reports using your Referral:</span>
-          <span><%= Survey.where(reference: @user.referral.code).count - Survey.where(user: @user).count %></span>
+          <span><%= @referral_count %></span>
         </div>
       <% end %>
       <%= link_to "Edit account details", edit_registration_path(@user), class: "btn button-primary" %>
