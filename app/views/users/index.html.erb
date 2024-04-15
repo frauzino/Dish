@@ -19,13 +19,13 @@
   <div class="content-container-inner">
     <ul class="content-panel leaderboard-panel animated bg-lilac" data-swiper-target="slideElement">
       <%= tag.h3 "User Rankings", class: "english-violet small text-center", style: "margin: 0;" %>
-      <div class="ranking-headers">
+      <%# <div class="ranking-headers">
         <span class="subheading">User</span>
         <span class="subheading">School</span>
         <span class="subheading">Dates</span>
         <span class="subheading">Pts</span>
-      </div>
-      <% @top10_users.each do |user| %>
+      </div> %>
+      <% @top10_users.each_with_index do |user, index| %>
         <li class="user-row">
           <% if user.photo.key %>
             <%= cl_image_tag user.photo.key, loading: 'lazy', class: "user-avatar avatar-common" %>
@@ -33,30 +33,35 @@
             <%= image_tag "placeholder.jpg", loading: 'lazy', class: "user-avatar avatar-common" %>
           <% end %>
           <div class="user-stats">
-            <span class="user-username subheading"><%= user.username %></span>
-            <span class="user-surveys subheading"><%= user.school.name %></span>
-            <span class="user-surveys subheading"><%= user.surveys.length %></span>
-            <span class="user-points subheading"><%= user.points %></span>
+            <span class="user-username subheading">@<%= user.username.downcase %></span>
+            <% if user.city != '' %>
+              <span class="user-surveys subheading"><%= user.city %></span>
+            <% else %>
+              <span class="user-surveys subheading"><%= user.school.name %></span>
+            <% end %>
+            <span class="user-points subheading"><%= index + 1 %></span>
           </div>
         </li>
       <% end %>
     </ul>
 
-    <ul class="content-panel leaderboard-panel animated bg-pale-yellow hidden" data-swiper-target="slideElement">
-      <%= tag.h3 "School Rankings", class: "english-violet small text-center", style: "margin: 0;" %>
-      <div class="ranking-headers school-headers">
-        <span class="subheading">School</span>
-        <span class="subheading">Pts</span>
-      </div>
-      <% @top10_schools.each do |school| %>
-        <li class="user-row">
-          <div class="user-stats">
-            <span class="user-username subheading"><%= school.name %></span>
-            <span class="user-points subheading"><%= school.points %>/100</span>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+    <% if user_signed_in? && current_user.ambassador %>
+      <ul class="content-panel leaderboard-panel animated bg-pale-yellow hidden" data-swiper-target="slideElement">
+        <%= tag.h3 "School Rankings", class: "english-violet small text-center", style: "margin: 0;" %>
+        <div class="ranking-headers school-headers">
+          <span class="subheading">School</span>
+          <span class="subheading">Ranking</span>
+        </div>
+        <% @top10_schools.each do |school| %>
+          <li class="user-row">
+            <div class="user-stats">
+              <span class="user-username subheading"><%= school.name %></span>
+              <span class="user-points subheading"><%= school.points %>/100</span>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
 
     <div class="left-arrow-wrapper">
       <%= image_tag "chevron_left.svg",
