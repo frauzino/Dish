@@ -4,7 +4,6 @@ class SurveysController < ApplicationController
   def index
     @survey = Survey.find_by(uuid: params[:uuid])
     @photo_url = Cloudinary::Utils.cloudinary_url('development/' + @survey.photo.key)
-    # @photo_url = @survey ? Cloudinary::Utils.cloudinary_url('development/' + @survey.photo.key) : ''
     @result = { survey: @survey, photo_url: @photo_url }
     respond_to do |format|
       format.json { render json: @result }
@@ -39,12 +38,6 @@ class SurveysController < ApplicationController
       create_result(@survey)
       add_user_points if user_signed_in?
       redirect_to survey_path(@survey)
-      # if user_signed_in?
-      #   add_user_points
-      #   redirect_to survey_path(@survey)
-      # else
-      #   redirect_to root_path
-      # end
     else
       render :new, status: :unprocessable_entity
     end

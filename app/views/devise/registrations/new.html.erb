@@ -1,6 +1,6 @@
 <div class="content-container">
   <div class="content-container-inner">
-    <div class="content-panel bg-pale-yellow devise-panel">
+    <div class="content-panel bg-pale-yellow devise-panel" data-controller="fetch-cities">
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
 
@@ -40,6 +40,25 @@
                       label: false,
                       placeholder: "Last Name",
                       input_html: { autocomplete: "last-name" } %>
+          <select
+                      data-fetch-cities-target="stateFieldElement"
+                      data-action="change->fetch-cities#fetchCities">
+            <option value=''>State</option>
+              <% @state_names.each do |state| %>
+              <option value='<%= state %>'><%= state %></option>
+              <% end %>
+          </select>
+          <%= f.input :city,
+                      collection: [],
+                      required: true,
+                      autofocus: true,
+                      label: false,
+                      include_blank: "City",
+                      input_html: {
+                        id: 'user_city',
+                        autocomplete: "true",
+                        data: { 'fetch-cities-target': 'citiesDropdownElement' }
+                      } %>
           <%= f.input :school,
                       collection: @school_names,
                       required: true,

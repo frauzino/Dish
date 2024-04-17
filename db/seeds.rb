@@ -1,14 +1,17 @@
 require 'faker'
 
-# puts 'deleting seed users'
-
-# 20.times do
-#   User.last.destroy
-# end
-
-# puts 'seed users deleted'
-
 puts 'creating seed users'
+
+cities = [
+  'New York City',
+  'Albany',
+  'Burlington',
+  'Columbus',
+  'Athens',
+  'Seattle',
+  'Anaheim',
+  'Detroit'
+]
 
 20.times do
   User.create(
@@ -17,18 +20,19 @@ puts 'creating seed users'
     password: '123456',
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
+    # photo: Faker::LoremFlickr.image,
     is_admin: false,
     ambassador: false,
     gender: ['Male', 'Female', 'Nonbinary'].sample,
     school: School.first,
-    city: Faker::Address.city,
+    city: cities.sample,
     points: 0,
     referral: Referral.new(code: SecureRandom.alphanumeric(8)),
     seed_user: true
   )
 end
 
-puts '10 seed users created'
+puts '20 seed users created'
 
 # puts 'cleaning database'
 

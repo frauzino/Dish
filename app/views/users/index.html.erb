@@ -1,6 +1,6 @@
 <%# Leaderboard %>
 
-<div class="content-container column" data-controller="swiper">
+<div class="content-container column" <% if user_signed_in? && current_user.ambassador %> data-controller="swiper" <% end %>>
   <% unless user_signed_in? %>
     <%= render "shared/alert",
       bg_color: "english-violet",
@@ -53,39 +53,41 @@
           <span class="subheading">Ranking</span>
         </div>
         <% @top10_schools.each do |school| %>
+        <% if school.name != ''%>
           <li class="user-row">
             <div class="user-stats">
               <span class="user-username subheading"><%= school.name %></span>
               <span class="user-points subheading"><%= school.points %>/100</span>
             </div>
           </li>
+          <% end %>
         <% end %>
       </ul>
+
+      <div class="left-arrow-wrapper">
+        <%= image_tag "chevron_left.svg",
+          loading: 'lazy',
+          data: {
+            action: "click->swiper#prev",
+            'swiper-target': "leftElement"
+            },
+          class: "chevron hidden"
+        %>
+      </div>
+
+      <div class="right-arrow-wrapper">
+        <%= image_tag "chevron_right.svg",
+          loading: 'lazy',
+          data: {
+            action: "click->swiper#next",
+            'swiper-target': "rightElement"
+            },
+          class: "chevron"
+        %>
+      </div>
+
+      <div class="multi-dots-container" data-swiper-target="multidotContainerElement"></div>
     <% end %>
-
-    <div class="left-arrow-wrapper">
-      <%= image_tag "chevron_left.svg",
-        loading: 'lazy',
-        data: {
-          action: "click->swiper#prev",
-          'swiper-target': "leftElement"
-          },
-        class: "chevron hidden"
-      %>
-    </div>
-
-    <div class="right-arrow-wrapper">
-      <%= image_tag "chevron_right.svg",
-        loading: 'lazy',
-        data: {
-          action: "click->swiper#next",
-          'swiper-target': "rightElement"
-          },
-        class: "chevron"
-      %>
-    </div>
-
-    <div class="multi-dots-container" data-swiper-target="multidotContainerElement"></div>
   </div>
 
 </div>

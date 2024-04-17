@@ -5,6 +5,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
   before_action :school_names, only: %i[new update create]
+  # before_action :get_cities, only: %i[new update create]
+  before_action :state_names, only: %i[new update create]
   after_action :generate_referral_code, only: %i[create]
   after_action :check_referrals, only: %i[create]
 
@@ -62,6 +64,29 @@ class Users::RegistrationsController < Devise::RegistrationsController
     reference_user.increment!(:points, 10)
     resource.increment!(:points, 5)
     Referral.find_by(code: referral_in).increment!(:uses_count)
+  end
+
+  def state_names
+    @state_names = Scraper.new.state_scraper
+  end
+
+  def get_cities()
+    state_code = params[:state]
+    url = 'http://api.geonames.org/searchJSON'
+    params = {
+      formatted: 'true',
+      country: 'US',
+      adminCode1: state_code,
+      featureClass: 'P',
+      featureCode: 'PPL',
+      username: 'frauzino',
+      style: 'full'
+    }
+
+    response = RestClient.get(url, { params: })
+    data = JSON.parse(response.body)
+    @city_names = data['geonames'].map { |city| city['name'] }
+    render json: @city_names
   end
 
   def school_names
