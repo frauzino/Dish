@@ -3,10 +3,16 @@ class SurveysController < ApplicationController
 
   def index
     @survey = Survey.find_by(uuid: params[:uuid])
-    @photo_url = Cloudinary::Utils.cloudinary_url('development/' + @survey.photo.key)
-    @result = { survey: @survey, photo_url: @photo_url }
-    respond_to do |format|
-      format.json { render json: @result }
+    if @survey
+      @photo_url = Cloudinary::Utils.cloudinary_url('development/' + @survey.photo.key)
+      @result = { survey: @survey, photo_url: @photo_url }
+      respond_to do |format|
+        format.json { render json: @result }
+      end
+    else
+      respond_to do |format|
+        format.json { head :no_content }
+      end
     end
   end
 

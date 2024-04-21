@@ -82,6 +82,7 @@ export default class extends Controller {
         })
       })
       .then(res => res.json())
+      .catch(error => { console.error(error)})
 
       const faceExists = data.responses[0].faceAnnotations ? true : false
 
@@ -125,7 +126,32 @@ export default class extends Controller {
     .catch(error => console.log('error occured', error))
     const photoUuids = data.map((photo) => photo.photo_uuid)
 
+    // const surveyPromises = photoUuids.map(uuid => this.returnMatchingSurveys(uuid));
+
+    // try {
+    //   const surveyResults = await Promise.all(surveyPromises);
+    //   const results = surveyResults.filter(r => !r.error);
+
+    //   results.forEach((result) => result ? this.resultsImagesContainerElementTarget.innerHTML += this.buildImageElement(result.photo_url) : '') // injects img element into DOM
+
+    //   const surveys = results.map((result) => result ? result.survey : '')
+    //   this.resultsScoreElementTarget.innerHTML = results.length ? `This person's Dish Date Score is: ${this.medianOfScores(surveys)}%` : "We don't have enough information on this person."
+    //   this.inputLabelElementTarget.innerHTML = 'Search for another profile?'
+
+    //   this.checkUserSearchDateAccessed() // Updates search_date_accessed column with a timestamp. also checks if there are >1 timestamps already
+
+    //   this.dispatch("searchGalleryForPerson") // calls swiper#connect(check search_date.html line: 4) to refresh the swiper_controller.js with the new DOM
+
+    //   this.buttonFinishedLoading(false)
+
+    // } catch (error) {
+    //   console.error(error)
+    //   this.resultsScoreElementTarget.innerHTML = "We don't have enough information on this person."
+    //   this.buttonFinishedLoading(false)
+    // }
+
     const results = (await Promise.all(photoUuids.map((uuid) => this.returnMatchingSurveys(uuid)))).filter((r) => r == 0 || r) // results are hashes with surveys with uuids that match returned Luxand photos and cloudinary photo urls {survey: survey, photo_url: cloudinary_photo_url}
+    console.log('results', results)
 
     results.forEach((result) => result ? this.resultsImagesContainerElementTarget.innerHTML += this.buildImageElement(result.photo_url) : '') // injects img element into DOM
 
@@ -142,14 +168,18 @@ export default class extends Controller {
 
   async returnMatchingSurveys(uuid) { // returns surveys from our DB with uuids that match the photos returned from Luxand
     const url = `/surveys?uuid=${uuid}`
-    return await fetch(url, {
-      method: "GET",
-      headers: {
-        accept: "application/json"
-      }
-    })
-    .then(response => response.json())
-    .catch(error => console.error(error))
+    try {
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          accept: "application/json"
+        }
+      });
+      console.log('response', response)
+      return await response.json();
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   medianOfScores(surveys) {
