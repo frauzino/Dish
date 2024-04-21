@@ -17,6 +17,10 @@ class UsersController < ApplicationController
   end
 
   def rank_users
+    @seed_users = User.where(seed_user: true) # randomizes points of seed users before sorting all users
+    @seed_users.each do |user|
+      user.update(points: rand(0..500))
+    end
     User.all.sort_by { |user| user[:points] }.reverse
   end
 

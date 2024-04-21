@@ -54,6 +54,7 @@ gem "devise"
 gem 'faker'
 gem "dotenv-rails"
 gem "cloudinary"
+gem "rest-client"
 # gem "face"
 # gem 'jquery-rails'
 

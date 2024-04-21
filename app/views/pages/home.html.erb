@@ -35,17 +35,17 @@
       header_text: "Search a Date",
       header_size: "large",
       header_color: "lilac",
-      content_text: "Got a date planned? Upload a screenshot for a full report. This feature is currently in development, check back soon!",
+      # content_text: "Got a date planned? Upload a screenshot for a full report. This feature is currently in development, check back soon!",
+      content_text: "Got a date planned? Upload a screenshot for a full report",
       image: "tinder_profile.jpg",
-      buttons: [{text: "Coming Soon!", path: search_date_path, style: "btn button-secondary button-disabled"}]
+      buttons: [{text: "Get the Scoop", path: search_date_path, style: "btn button-secondary"}]
     %>
 
-    <h3 class="header small text-center purple" style="margin-top: 10rem">Top ranked campuses for date culture</h3>
+    <h3 class="header small text-center purple" style="margin-top: 10rem">Top ranked cities for dating culture</h3>
     <div class="color-blocks-container">
-      <% top3_schools = School.all.sort_by { |school| school[:points]}.reverse.take 3 %>
-      <% top3_schools.each_with_index do |school, index| %>
+      <% @top_three_cities.each_with_index do |city, index| %>
         <%= render "components/color_block_element",
-          school: school.name,
+          element: city[:name],
           number: index + 1,
           color: case index
           when 0
@@ -61,9 +61,9 @@
 
     <%= render "components/text_with_image",
       reverse: false,
-      header_text: "How are campuses ranked?",
+      header_text: "How are cities ranked?",
       header_color: "",
-      content_text: "Campuses are ranked by the highest number of submissions and the aggregated overall objective scores of dates!",
+      content_text: "Cities are ranked by the highest number of submissions and the aggregated overall objective scores of dates!",
       image: "uni_campus.jpg",
       buttons: [{text: "Read More", path: project_path, style: "btn button-secondary"}]
     %>
@@ -74,7 +74,7 @@
       header_color: "",
       content_text: "Want to get a pulse on someone before going on a date? Just submit a screenshot of their profile and you'll see the fully anonymous report.",
       image: "woman_phone.jpg",
-      buttons: [{text: "Coming Soon!", path: "", style: "btn button-disabled"}]
+      buttons: [{text: "Let's Go!", path: search_date_path, style: "btn button-secondary"}]
     %>
   </div>
 </div>

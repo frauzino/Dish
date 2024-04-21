@@ -13,7 +13,9 @@ export default class extends Controller {
   static targets = ['slideElement', 'multidotContainerElement', 'multidotElement', 'rightElement', 'leftElement', 'slidesContainerElement']
 
   connect() {
-    this.slideElementTargets.length > 0 ? this.slidesContainerElementTarget.classList.remove('hidden') : this.slidesContainerElementTarget.classList.add('hidden')
+    if (this.hasSlidesContainerElementTarget) {
+      this.slideElementTargets.length > 0 ? this.slidesContainerElementTarget.classList.remove('hidden') : this.slidesContainerElementTarget.classList.add('hidden')
+    }
     this.multidotElementTargets.forEach((dot) => dot.remove())
     for(let i = 0; i < this.slideElementTargets.length; i++) {
       this.multidotContainerElementTarget.innerHTML += '<div class="multi-dot" data-swiper-target="multidotElement"></div>'
@@ -111,6 +113,6 @@ export default class extends Controller {
   }
 
   showSlidesContainer() {
-    this.slidesContainerElementTarget.classList.remove('hidden')
+    this.hasSlidesContainerElementTarget && this.slidesContainerElementTarget.classList.remove('hidden')
   }
 }

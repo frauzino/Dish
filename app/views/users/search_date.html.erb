@@ -3,7 +3,7 @@
   data-controller="face-recognition swiper"
   data-action="face-recognition:searchGalleryForPerson->swiper#connect"
   data-face-recognition-luxand-api-key-value="<%=ENV['LUXAND_API_KEY']%>"
-  data-survey-google-api-key-value="<%=ENV['GOOGLE_API_KEY']%>"
+  data-face-recognition-google-api-key-value="<%=ENV['GOOGLE_API_KEY']%>"
 >
 
   <% unless user_signed_in? %>
@@ -82,7 +82,7 @@
           data-face-recognition-target="fileUploadElement"
           data-action="change->face-recognition#previewImage"
           <%# disabled for time being, when ready to go live, uncomment "unless" statement" and "end" %>
-          <%# unless user_signed_in? && @user.search_date_accessed.length < 2 || user_signed_in? && @user.is_admin %> disabled <%# end %>
+          <% unless user_signed_in? && @user.search_date_accessed.length < 2 || user_signed_in? && @user.is_admin %> disabled <% end %>
         >
         <div class="survey-image-error-message hidden" data-face-recognition-target="errorMessageElement">
           Please ensure your screenshot includes a clear view of the face.
