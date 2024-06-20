@@ -1,80 +1,102 @@
 <div class="home-page-container">
 
-  <%= render "components/banner" %>
+  <%= render "components/banner",
+    image: "phone.png",
+    header: "Get the green light on your date before you grab a drink.",
+    text_content: "The first universal badge system for dating apps, powered by anonymous community feedback. Our API brings trust, empowerment, and peace of mind to every first date.",
+    buttons: [
+      {button_text: "Learn More", button_path: '#', button_variant: "primary"}
+    ]
+  %>
 
-  <div class="content-container-static column">
-    <%= render "components/text_with_image",
-      reverse: false,
-      header_text: "Get the full scoop before you date.",
-      header_color: "",
-      content_text: "Dish collects anonymous submissions to create a report card on your date. No more bad vibes.
-        Dish lets you see what others had to say about your date.",
-      image: "couple_phones.jpg",
-      buttons: [
-        {text: "Let's Dish!", path: new_survey_path, style: "btn button-secondary"},
-        {text: "Learn More", path: project_path, style: "btn button-tertiary"}
-      ]
-    %>
+  <%= render "components/stats_block",
+    stats: [
+      {number: "49", content: "of U.S. adults think dating apps <u>aren't safe</u>"},
+      {number: "66", content: "of women say they've encountered a <u>bad character</u> at least once while using a dating app. <span class='annotation'>*Pew Research</span>"}
+    ]
+  %>
 
-    <%= render "components/compatible_logos", images: ["hinge_logo.webp", "bumble_logo.webp", "tinder_logo.webp", "raya_logo.webp"]  %>
+  <%= render "components/halos_block",
+    header: "Get started with our API docs and give your users their Halo today.",
+    content: "Unlock our community verification badges and access to millions of feedback points for a better dating app experience for your users",
+    images: [
+      {src: "gold_halo.svg", alt: "Gold halo"},
+      {src: "diamond_halo.svg", alt: "Diamond halo"},
+      {src: "platinum_halo.svg", alt: "Platinum halo"}
+    ]
+  %>
 
-    <%= render "components/full_width_image", image: "couple_in_grass.jpg" %>
+  <%= render "components/text_with_image",
+    reverse: true,
+    direction: "row",
+    aspect_ratio: "0",
+    text_vertical_alignment: "center",
+    text_horizontal_alignment: "center",
+    header_text: "Universal anonymous feedback shared across every dating app.",
+    header_size: "large",
+    header_color: "",
+    content_text: "Every dating app taps into our badge system, so no matter where you have a profile, your badge will always be there to vouch for you.",
+    image: "messaging_interface.png",
+    image_width: "80%",
+    buttons: [
+    ]
+  %>
 
-    <%= render "components/text_with_element",
-      reverse: false,
-      header_text: "Submit a Date",
-      header_size: "large",
-      header_color: "pale-blue",
-      content_text: "Upload a screenshot and complete a Dish Report. Anonymously share how your date went.",
-      image: "male_tinder_profile.png",
-      buttons: [{text: "Get Started", path: new_survey_path, style: "btn button-secondary"}]
-    %>
+  <%= render "components/cards_block",
+    header: "How Let's Dish works",
+    cards: [
+      {
+        image: {src: "clipboard.svg", alt: "Clipboard"},
+        content: "Halo collects millions of anonymous responses"
+      },
+      {
+        image: {src: "halo.svg", alt: "Halo"},
+        content: "Profiles receive a Halo after meeting a positive response threshold"
+      },
+      {
+        image: {src: "letter.svg", alt: "Letter"},
+        content: "Our API delivers this data directly to you"
+      }
+    ]
+  %>
 
-    <%= render "components/text_with_element",
-      reverse: true,
-      header_text: "Search a Date",
-      header_size: "large",
-      header_color: "lilac",
-      # content_text: "Got a date planned? Upload a screenshot for a full report. This feature is currently in development, check back soon!",
-      content_text: "Got a date planned? Upload a screenshot for a full report",
-      image: "tinder_profile.jpg",
-      buttons: [{text: "Get the Scoop", path: search_date_path, style: "btn button-secondary"}]
-    %>
+  <%= render "components/text_with_image",
+    reverse: true,
+    direction: "column",
+    aspect_ratio: "0",
+    text_width: '50%',
+    text_vertical_alignment: "center",
+    text_horizontal_alignment: "center",
+    header_text: "Peace of mind is a must-have.",
+    header_size: "large",
+    header_color: "",
+    content_text: "With Halo, every potential match has already been vouched for by the community, so you can focus on being yourself and having a good time.",
+    image: "profile_portrait.png",
+    image_width: "80%",
+    buttons: [
+    ]
+  %>
 
-    <h3 class="header small text-center purple" style="margin-top: 10rem">Top ranked cities for dating culture</h3>
-    <div class="color-blocks-container">
-      <% @top_three_cities.each_with_index do |city, index| %>
-        <%= render "components/color_block_element",
-          element: city[:name],
-          number: index + 1,
-          color: case index
-          when 0
-            "pale-blue"
-          when 1
-            "lilac"
-          else
-            "pale-yellow"
-          end
-        %>
-      <% end %>
-    </div>
+  <%= render "components/compatible_logos",
+    greyscale: true,
+    images: [
+      {src: "tinder_logo.webp", alt: "Tinder logo"},
+      {src: "bumble_logo.webp", alt: "Bumble logo"},
+      {src: "raya_logo.webp", alt: "Raya logo"},
+      {src: "match_logo.png", alt: "Match logo"},
+      {src: "hinge_logo.webp", alt: "Hinge logo"}
+    ]
+  %>
 
-    <%= render "components/text_with_image",
-      reverse: false,
-      header_text: "How are cities ranked?",
-      header_color: "",
-      content_text: "Cities are ranked by the highest number of submissions and the aggregated overall objective scores of dates!",
-      image: "uni_campus.jpg",
-      buttons: [{text: "Read More", path: project_path, style: "btn button-secondary"}]
-    %>
+  <%= render "components/footer",
+    bg_color: "english-violet",
+    links: [
+      {text: "Dish", path: root_path},
+      {text: "Contact", path: "#"},
+      {text: "Copyright Info", path: "#"},
+    ],
+    socials: [
+    ]
+  %>
 
-    <%= render "components/text_with_image",
-      reverse: true,
-      header_text: "How do I search a date?",
-      header_color: "",
-      content_text: "Want to get a pulse on someone before going on a date? Just submit a screenshot of their profile and you'll see the fully anonymous report.",
-      image: "woman_phone.jpg",
-      buttons: [{text: "Let's Go!", path: search_date_path, style: "btn button-secondary"}]
-    %>
-  </div>
 </div>

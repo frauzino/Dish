@@ -1,15 +1,21 @@
 <%# Accepts:
+direction: string (row, column)
 reverse: reverses flow of content if true
+aspect_ratio: string ex:("1/1", "0", "1/2")
+text_width: string ex:("50%", "100%")
+text_vertical_alignment: string (flex-start, center, flex-end), for default, use empty string
+text_horizontal_alignment: string (left, center, right), for default, use empty string
 header_text: string
 header_color: string (lilac, pale-blue, pale-yellow), for default, use empty string
 content_text: string
 image: string
+image_width: string ex:("50%", "100%")
 buttons: array of buttons as hash ex:
   [{text: "foo", path: "foo_path", style: "btn button_primary" }, {text: "bar", path: "bar_path", style: "btn button_primary" }]
 %>
 
-<%= tag.div class: "page-width-container text-with-image #{"reverse" if reverse}" do %>
-  <div class="text-container">
+<%= tag.div class: "page-width-container text-with-image #{"reverse" if reverse}", style: "align-items: #{text_vertical_alignment}; flex-direction: #{direction}-#{'reverse' if reverse}" do %>
+  <div class="text-container" style="text-align: <%= text_horizontal_alignment %>; <%= 'width:' + text_width if local_assigns[:text_width] %>">
     <%= tag.h1 header_text, class: "header #{header_color}" %>
     <p class="text">
       <%= content_text %>
@@ -21,6 +27,6 @@ buttons: array of buttons as hash ex:
     </div>
   </div>
   <div class="image-container">
-    <%= image_tag image, loading: 'lazy', class: "twi-image" %>
+    <%= image_tag image, loading: 'lazy', class: "twi-image", style: "aspect-ratio: #{aspect_ratio}; #{'width:' + image_width if local_assigns[:image_width]}" %>
   </div>
 <% end %>

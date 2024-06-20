@@ -1,7 +1,8 @@
-<div class="page-width-container compatible-logos">
-      <div class="compatible-logos-wrapper">
-        <% images.each do |image| %>
-          <%= image_tag image, loading: 'lazy', class: "comp-logo" %>
-        <% end %>
-      </div>
-    </div>
+<div class="compatible-logos">
+  <h5>Compatible with</h5>
+  <div class="compatible-logos-wrapper">
+    <% images.each do |image| %>
+      <%= image_tag image[:src], alt: image[:alt], loading: 'lazy', class: "comp-logo #{greyscale && 'greyscale'}" %>
+    <% end %>
+  </div>
+</div>

@@ -1,14 +1,13 @@
 .btn {
-  font-size: 1.2rem;
   width: fit-content;
   display: inline-block;
-  padding: .65rem 1rem;
-  border-radius: .5rem;
+  padding: 1rem 3rem;
+  border-radius: 3rem;
   text-decoration: none;
   border: .15rem solid transparent;
-  font-size: 1rem;
-  font-weight: 700;
-  transition: all .25s;
+  font-family: $headers-font;
+  font-size: 1.25rem;
+  transition: all .2s;
 
   &:hover {
     cursor: pointer;
@@ -20,10 +19,12 @@
 }
 
 .button-primary {
-  background: white;
-  color: $english-violet;
+  background: $english-violet;
+  color: white;
 
   &:hover {
+    background: white;
+    color: $english-violet;
     border: .15rem solid $english-violet;
   }
 }

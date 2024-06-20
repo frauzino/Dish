@@ -1,0 +1,31 @@
+.stats-block-container {
+  display: flex;
+  justify-content: center;
+}
+
+.stats-block {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 0 5rem;
+  padding: 0 5rem;
+  background-image: linear-gradient($background-offwhite, $background-offwhite 35%, #f0ebf2 35%, #e1d2e7 );
+}
+
+.stat-element {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    font-size: 12rem;
+    margin: 0;
+  }
+}
+
+.annotation {
+  font-size: .75rem;
+}

@@ -1,15 +1,16 @@
-<div class="banner<% if current_page?(project_path) %> short-banner<% else %> full-banner<% end %>">
-  <% if current_page?(root_path) %>
-    <div class="banner-content-box">
-      <%# <h1 class="logo-text">Dish.</h1> %>
-      <%= image_tag "dish_logo_rev.svg", class: "banner-logo"  %>
-      <h4 class="sub-header">
-        Anonymous feedback for a better online dating experience
-      </h4>
-      <div class="banner-buttons">
-        <%= link_to "Let's Dish!", new_survey_path, class: "btn button-primary" %>
-        <%= link_to "Learn More", project_path, class: "btn button-secondary" %>
-      </div>
+<%# accepts: image: string, header: string, text_content: string, buttons: {button_text, button_path, button_variant}  %>
+
+<div class="banner">
+  <div class="banner-image-wrapper">
+    <%= image_tag image, alt: "Banner Image", class: "banner-image" %>
+  </div>
+  <div class="banner-content-box">
+    <h1 class="banner-header"><%= header %></h1>
+    <p class="banner-sub-header"><%= text_content %></p>
+    <div class="banner-buttons">
+      <% buttons.each do |button| %>
+        <%= link_to button[:button_text], button[:button_path], class: "btn button-#{button[:button_variant]}" %>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>

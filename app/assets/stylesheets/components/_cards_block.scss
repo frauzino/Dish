@@ -1,0 +1,46 @@
+.cards-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+
+  .header {
+    width: 100%;
+  }
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 5rem;
+  height: 40rem;
+  width: 90%;
+
+  :nth-child(2) {
+    align-self: center;
+  }
+
+  :nth-child(3) {
+    align-self: flex-end;
+  }
+
+}
+
+.card-wrapper {
+  position: relative;
+  width: 100%;
+
+  .zig-zag-arrow {
+    position: absolute;
+    top: 22rem;
+    right: -35%;
+    z-index: 1;
+  }
+
+  .return-arrow {
+    position: absolute;
+    bottom: 8rem;
+    right: -2rem;
+  }
+}

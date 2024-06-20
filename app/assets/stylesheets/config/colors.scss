@@ -18,7 +18,8 @@ $pale-blue: #c5f5ff;
 $lilac: #f9caf6;
 $purple: #e8b3f8;
 $pale-yellow: #f0f797;
-$english-violet: #5F4867;
+// $english-violet: #5F4867;
+$english-violet: #7c5687;
 
 $banner-background: linear-gradient(45deg, $pale-blue, $pale-blue 38%, $lilac 38%, $lilac 60%, $purple 60%, $purple 68%, $pale-yellow 68%, $pale-yellow 100%);
 
@@ -72,4 +73,10 @@ $banner-background: linear-gradient(45deg, $pale-blue, $pale-blue 38%, $lilac 38
 .english-violet {
   color: $english-violet;
   text-shadow: 0px 0.4px 1px $shadow-gray;
+}
+
+// filters
+
+.greyscale {
+  filter: grayscale(100%);
 }
