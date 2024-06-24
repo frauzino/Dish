@@ -3,7 +3,7 @@
   width: 100%;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 1000;
 }
 
 // .home-nav {
@@ -14,7 +14,8 @@
 
 .navbar-inner {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: flex-end;
   padding: 0rem $main-padding 0;
 }
 
@@ -57,15 +58,12 @@
 }
 
 .nav-item {
-  font-weight: 500;
   display: flex;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 1rem;
 
   .nav-link {
     text-decoration: none;
-    color: $english-violet;
-    font-weight: 600;
   }
 
   :hover {

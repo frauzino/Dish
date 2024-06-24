@@ -1,0 +1,45 @@
+.newsletter-signup {
+  padding: $main-padding 10rem;
+  background-color: $medium-gray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5rem
+}
+
+.newsletter-signup-content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  color: white;
+  flex: 1;
+
+  h1 {
+    margin: 0;
+    color: white;
+  }
+}
+
+.newsletter-signup-form-container {
+  flex: 1;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+#newsletter-signup-form {
+  width: 80%;
+}
+
+.newsletter-form-submit {
+  font-family: $body-font;
+}
+
+@media screen and (max-width: 749px) {
+  .newsletter-signup {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+}

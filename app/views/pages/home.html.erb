@@ -77,6 +77,11 @@
     ]
   %>
 
+   <%= render "components/newsletter_signup",
+    header: "Subscribe to keep updated",
+    content: "Stay ahead of the curve with our latest API updates and industry insights delivered straight to your inbox! Subscribe to our newsletter today and never miss a beat. Be the first to know about new features, tips, and exclusive offers tailored to enhance your API experience. Join our community of innovators and stay informed with the power of our newsletter!"
+  %>
+
   <%= render "components/compatible_logos",
     greyscale: true,
     images: [
@@ -87,16 +92,4 @@
       {src: "hinge_logo.webp", alt: "Hinge logo"}
     ]
   %>
-
-  <%= render "components/footer",
-    bg_color: "english-violet",
-    links: [
-      {text: "Dish", path: root_path},
-      {text: "Contact", path: "#"},
-      {text: "Copyright Info", path: "#"},
-    ],
-    socials: [
-    ]
-  %>
-
 </div>

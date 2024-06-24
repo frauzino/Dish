@@ -58,6 +58,12 @@
   flex: 1;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
 .account-column {
   align-self: flex-start;
 }

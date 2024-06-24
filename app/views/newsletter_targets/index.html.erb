@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Newsletter targets</h1>
+
+<div id="newsletter_targets">
+  <% @newsletter_targets.each do |newsletter_target| %>
+    <%= render newsletter_target %>
+    <p>
+      <%= link_to "Show this newsletter target", newsletter_target %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New newsletter target", new_newsletter_target_path %>

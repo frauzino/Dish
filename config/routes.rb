@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'get_cities', to: 'users/registrations#get_cities', as: :get_cities
   end
+  resources :contact, only: [:new, :create]
+  resources :newsletter_targets, only: %i[new create index destroy]
   resources :users, only: [:index]
   resources :surveys, only: %i[new create show index]
   get 'leaderboard', to: 'users#index'

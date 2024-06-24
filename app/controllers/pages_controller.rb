@@ -12,6 +12,8 @@ class PagesController < ApplicationController
       { name: city[0], points: city[1] }
     end
     @top3_schools = School.all.sort_by { |school| school[:points] }.reverse.take 3
+
+    @newsletter_target = NewsletterTarget.new
   end
 
   def survey

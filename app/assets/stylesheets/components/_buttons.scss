@@ -30,24 +30,28 @@
 }
 
 .button-secondary {
-  background: $english-violet;
-  color: white;
+  background: white;
+  border: .15rem solid $english-violet;
+  color: $english-violet;
 
   &:hover {
+    background: $english-violet;
+    color: white;
     border: .15rem solid $english-violet;
-    color: $english-violet;
-    background: transparent;
-
   }
 }
 
 .button-tertiary {
-  background: $button-gray;
-  color: $english-violet;
+  background: transparent;
 
   &:hover {
-    border: .15rem solid $english-violet;
+    border: .15rem solid $text-gray;
   }
+}
+
+.nav-button {
+  font-size: 1rem;
+  padding: .5rem 2rem;
 }
 
 .button-disabled {
