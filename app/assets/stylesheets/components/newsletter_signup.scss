@@ -43,3 +43,9 @@
     padding: 1rem;
   }
 }
+
+@media screen and (max-width: 749px){
+  .newsletter-signup-form-container {
+    justify-content: center;
+  }
+}

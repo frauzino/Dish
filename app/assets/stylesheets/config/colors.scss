@@ -15,7 +15,8 @@ $safedate-red: #b60809;
 $content-box-gray: #F2F1F2;
 $background-offwhite: #FAF6F4;
 
-$pale-blue: #c5f5ff;
+// $pale-blue: #c5f5ff;
+$pale-blue: #a2efff;
 $lilac: #f9caf6;
 $purple: #e8b3f8;
 $pale-yellow: #f0f797;
@@ -66,6 +67,12 @@ $banner-background: linear-gradient(45deg, $pale-blue, $pale-blue 38%, $lilac 38
   color: $pale-yellow;
   text-shadow: 0px 0.4px 1px $shadow-gray;
 }
+
+.gold-yellow {
+  color: #fad411;
+  text-shadow: 0px 0.4px 1px $shadow-gray;
+}
+
 .purple {
   color: $purple;
   text-shadow: 0px 0.4px 1px $shadow-gray;

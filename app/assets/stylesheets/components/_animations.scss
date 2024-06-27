@@ -1,6 +1,10 @@
-.animated {
+.animated, .animated-text {
   animation-duration: .5s;
   animation-timing-function: ease-in-out;
+}
+
+.animated-text {
+  display: inline-block;
 }
 
 // Survey Questions/slides Fade in/out
@@ -25,9 +29,15 @@
   animation-name: slideOutTop;
 }
 
+.slide-in-bottom {
+  animation-name: slideInBottom;
+
+}
+
 .slide-out-bottom {
   animation-name: slideOutBottom;
 }
+
 
 @keyframes slideInLeft {
   0% {
@@ -78,7 +88,16 @@
     transform: translateY(0%);
   }
   100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes slideInBottom {
+  0% {
     transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
   }
 }
 

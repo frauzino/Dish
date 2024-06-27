@@ -12,6 +12,7 @@ class ContactController < ApplicationController
     if @contact.deliver
       render turbo_stream: turbo_stream.replace('contact-form', partial: 'contact/contact_thank_you')
     else
+      @errors = @contact.errors
       render turbo_stream: turbo_stream.replace('contact-form', partial: 'contact/contact_form')
     end
   end

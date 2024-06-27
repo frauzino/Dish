@@ -29,3 +29,15 @@
 .annotation {
   font-size: .75rem;
 }
+
+@media screen and (max-width: 749px) {
+  .stats-block {
+    width: 100%;
+    padding: 0 1rem;
+    margin: 0;
+    background-image: linear-gradient($background-offwhite, $background-offwhite 25%, #f0ebf2 25%, #e1d2e7 );
+  }
+  .stat-element > h1 {
+    font-size: 5rem;
+  }
+}

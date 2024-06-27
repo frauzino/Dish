@@ -37,9 +37,17 @@
 
 @media screen and (max-width: 749px) {
   .text-with-image {
-    flex-direction: column;
-    padding: 0;
+    flex-direction: column !important;
+    padding: 0 1rem;
     gap: 0;
-    margin: 3rem 0;
+    margin: 0;
+  }
+
+  .text-container {
+    width: 100% !important;
+  }
+
+  .image-container {
+    padding: 0;
   }
 }
