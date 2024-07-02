@@ -4,7 +4,7 @@
     class: current_page?(root_path) ? "mobile-nav-wrapper" : "mobile-nav-wrapper bg-offwhite"
   ) do
 %>
-  <div class="navbar<% unless current_page?(root_path) || current_page?(project_path) %> navbar-border<% end %>">
+  <div class="navbar navbar-border">
     <div class="mobile-nav-inner">
       <div
         class="mobile-nav-item hidden"
@@ -52,16 +52,7 @@
     </div>
     <ul class="mobile-menu-links">
       <li class="nav-item">
-        <%= link_to "Dish Report", new_survey_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Search a Date", search_date_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Leaderboard", leaderboard_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Project", project_path, class: "nav-link" %>
+        <%= link_to "About Us", about_us_path, class: "nav-link" %>
       </li>
     </ul>
   </div>

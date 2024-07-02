@@ -58,10 +58,16 @@
 
   .nav-link {
     text-decoration: none;
+    color: $text-gray;
+    font-family: $headers-font;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all .2s;
+    cursor: pointer;
   }
 
   :hover {
-    border-bottom: 1px solid;
+    opacity: .8;
   }
 }
 

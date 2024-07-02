@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   resources :users, only: [:index]
   resources :surveys, only: %i[new create show index]
   get 'leaderboard', to: 'users#index'
-  get 'project', to: 'pages#project'
+  get 'about_us', to: 'pages#about_us'
+  get 'copyright', to: 'pages#copyright'
+  get 'privacy', to: 'pages#privacy'
+  get 'legal', to: 'pages#legal'
   get 'account', to: 'users#show'
   get 'search_date', to: 'users#search_date'
   get 'users/update_access', to: 'users#update_access'

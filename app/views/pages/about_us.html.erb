@@ -1,0 +1,48 @@
+<div class="static-page-container">
+
+    <%= render "components/text_with_image",
+    reverse: true,
+    direction: "row",
+    aspect_ratio: "0",
+    text_vertical_alignment: "center",
+    text_horizontal_alignment: "left",
+    header_text: "Who we are",
+    header_size: "large",
+    header_color: "",
+    content_text: "<p>Let’s Dish’s team is comprised of industry experts in risk mitigation, mobile dating, and mental health.
+      We are passionate about building trust and positive user interactions for dating app users everywhere.</p>
+      </break>
+      <p>Since our inception in 2021, our team of engineers, clinical researchers, and double board certified mental health
+      experts have been working to give dating apps the tools necessary to foster trust and positive user experience.</p>
+      </break>
+      <p>As record usage makes mobile dating the new norm in 2024, our platform tools are used across dating apps everywhere.</p>".html_safe,
+    image: "orange_mobile_profile.png",
+    image_width: "80%",
+    buttons: []
+  %>
+
+  <%= render "components/text_block",
+    text_alignment: "center",
+    header: "Our mission",
+    content_text: "<p>Jumping on a dating app can be like the Wild-West. Inaccurate profile information can lead to a disappointing date.
+      A single bad character can leave you distrustful of others. When you need someone to vouch for a new connection,
+      dating apps simply don’t have the tools.</p>
+      </break>
+      <p>Let’s Dish intends to change that. When you see our Halo on a profile, you can rest assured that the community has
+      given their thumbs up on that person. Whether it’s accuracy, safety, or authenticity, a Halo badge give you peace of
+      mind before you meet up with a new date.</p>
+      </break>
+      <p>Our platform enables optional, objective, and positive feedback from users across all dating apps. Our Halo is
+      a new standard measure intended to make the dating app community wholesome, trustful, and positive</p>".html_safe
+  %>
+
+  <%= render "components/halos_block",
+    header: "Halo badges: coming soon to your favorite dating app.",
+    content: "",
+    images: [
+      {src: "gold_halo.png", alt: "Gold halo"},
+      {src: "diamond_halo.png", alt: "Diamond halo"},
+      {src: "platinum_halo.png", alt: "Platinum halo"}
+    ]
+  %>
+</div>
