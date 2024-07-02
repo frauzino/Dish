@@ -1,12 +1,13 @@
 <%= content_tag(
     :div,
-    data: current_page?(root_path) ? {"navbar-target": "navbarElement"} : {},
-    class: current_page?(root_path) ? "navbar" : "navbar bg-offwhite"
+    # data: current_page?(root_path) ? {"navbar-target": "navbarElement"} : {},
+    # class: current_page?(root_path) ? "navbar" : "navbar bg-offwhite"
+    class: "navbar bg-offwhite"
   ) do
 %>
   <div class="navbar-inner">
   <% if user_signed_in? %>
-    <div class="account-dropdown" data-controller="dropdown">
+    <div class="account-dropdown hidden" data-controller="dropdown">
       <div class="account-icon-wrapper" data-action="click->dropdown#openDropdown">
         <% if current_user.photo.key %>
           <%= cl_image_tag current_user.photo.key, loading: 'lazy', class: "user-avatar avatar-common" %>
@@ -22,14 +23,14 @@
       </div>
     </div>
   <% else %>
-    <div class="nav-item">
+    <div class="nav-item hidden">
       <%= link_to "Login", new_user_session_path, class: "nav-link" %>
     </div>
   <% end %>
     <%= content_tag(
         :div,
-        data: current_page?(root_path) ? {"navbar-target": "logoElement"} : {},
-        class: current_page?(root_path) ? "logo-container hidden" : "logo-container"
+        # data: current_page?(root_path) ? {"navbar-target": "logoElement"} : {},
+        class: current_page?(root_path) ? "logo-container" : "logo-container"
       ) do
     %>
       <%= link_to image_tag("dish_logo.svg", loading: 'lazy', class: "logo"), root_path %>
@@ -37,16 +38,10 @@
     <div class="links-container">
       <ul class="nav-links">
         <li class="nav-item">
-          <%= link_to "Dish Report", new_survey_path, class: "nav-link" %>
-        </li>
-         <li class="nav-item">
-          <%= link_to "Search a Date", search_date_path, class: "nav-link"  %>
+          <%= link_to "about us", about_us_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "Leaderboard", leaderboard_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Project", project_path, class: "nav-link" %>
+          <%= link_to "contact", new_contact_path, class: "btn button-primary nav-button" %>
         </li>
       </ul>
     </div>

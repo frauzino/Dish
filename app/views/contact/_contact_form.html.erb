@@ -1,0 +1,47 @@
+<div id="contact-form">
+  <%= simple_form_for(@contact, url: contact_index_path, remote: true) do |f| %>
+
+    <h2 class="contact-form-title">Questions or feedback? We'd love to hear from you.</h2>
+
+    <div class="form-inputs contact-inputs">
+      <div class="identifiers-container">
+        <%= f.text_field  :name,
+          class: "contact-form-input",
+          required: true,
+          placeholder: "Name"
+        %>
+        <% if @contact.errors[:name].any? %>
+          <span class="error"><%= @contact.errors[:name].join(', ') %></span>
+        <% end %>
+
+        <%= f.text_field :email,
+          class: "contact-form-input",
+          required: true,
+          placeholder: "Email"
+        %>
+        <% if @contact.errors[:email].any? %>
+          <span class="error"><%= @contact.errors[:email].join(', ') %></span>
+        <% end %>
+      </div>
+
+      <%= f.text_area :message,
+        class: "contact-form-input contact-form-text-area",
+        rows: 3,
+        cols: 40,
+        required: true,
+        placeholder: "Message"
+      %>
+      <% if @contact.errors[:message].any? %>
+        <span class="error"><%= @contact.errors[:message].join(', ') %></span>
+      <% end %>
+    </div>
+
+
+    <div class= "hidden">
+      <%= f.label :nickname %>
+      <%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
+    </div>
+
+    <%= f.submit 'Send', class: 'btn button-secondary contact-form-submit' %>
+  <% end %>
+</div>

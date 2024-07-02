@@ -1,0 +1,35 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  aspect-ratio: 4/6;
+  padding: 4rem;
+  background-color: $light-gray;
+  border-radius: 1rem;
+  box-shadow: $content-box-shadow;
+  text-align: center;
+}
+
+.card-image {
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.card-header, .card-content {
+  margin: 0;
+}
+
+@media screen and (max-width: 749px){
+  .card {
+    gap: 1rem;
+    padding: 1rem;
+    font-size: .8rem;
+  }
+
+  .card-image {
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
+}

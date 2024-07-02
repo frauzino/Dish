@@ -23,12 +23,28 @@
     <div class="desktop-navbar">
       <%= render "shared/navbar" %>
     </div>
+
     <div class="mobile-navbar">
       <%= render "shared/mobile_navbar" %>
     </div>
+
     <%= render "shared/flashes" %>
-    <div class="master-container">
+
+    <%# <div class="master-container"> %>
       <%= yield %>
-    </div>
+    <%# </div> %>
+
+    <%= render "components/footer",
+      bg_color: "english-violet",
+      links: [
+        {text: "About Us", path: about_us_path},
+        {text: "Privacy", path: privacy_path},
+        {text: "About Us", path: about_us_path},
+        {text: "Legal", path: legal_path},
+        {text: "Copyright Info", path: copyright_path},
+        {text: "Contact", path: new_contact_path},
+      ],
+      socials: []
+    %>
   </body>
 </html>

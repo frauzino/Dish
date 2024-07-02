@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_15_191225) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_24_175514) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_15_191225) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "unlocked", default: false
+  end
+
+  create_table "newsletter_targets", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "options", force: :cascade do |t|

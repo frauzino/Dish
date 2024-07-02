@@ -1,0 +1,12 @@
+<%# accepts: stat: {number, content} %>
+
+<div class="stats-block-container">
+  <div class="stats-block">
+    <% stats.each do |stat| %>
+      <div class="stat-element">
+        <h1><%= stat[:number] %>%</h1>
+        <h5><%= stat[:content].html_safe %></h5>
+      </div>
+    <% end %>
+  </div>
+</div>

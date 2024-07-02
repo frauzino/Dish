@@ -1,0 +1,15 @@
+<div class="cards-block page-width-container">
+  <h1 class="header"><%= header %></h1>
+  <div class="cards">
+    <% cards.each_with_index do |card, index| %>
+      <div class="card-wrapper">
+        <%= render "components/card", card %>
+        <% if index == 2 %>
+          <%= render "svgs/return_arrow" %>
+        <% else %>
+          <%= render "svgs/zig_zag_arrow" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

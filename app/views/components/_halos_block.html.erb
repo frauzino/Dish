@@ -1,0 +1,13 @@
+<div class="halos-block">
+  <div class="halos-block-inner">
+    <div class="halos-images-wrapper">
+      <% images.each do |image| %>
+        <%= image_tag image[:src], alt: image[:alt], class: "halos-image" %>
+      <% end %>
+    </div>
+    <div class="halos-content-wrapper">
+      <h1 class="halos-header"><%= header %></h1>
+      <p class="halos-text-content"><%= content %></p>
+    </div>
+  </div>
+  </div>

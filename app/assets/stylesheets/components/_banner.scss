@@ -1,45 +1,43 @@
 // Home page banner
 
 .banner {
-  width: calc(100% + 10rem);
-  margin-left: -5rem;
+  position: relative;
   height: 100vh;
-  background-image: $banner-background;
-  background-position: 50% 40%;
-  background-size: cover;
+  padding: 0 10rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  background-image: linear-gradient($background-offwhite 30%, #ebe4f9 80%);
+  background-size: 120%;
+  background-position: center;
 }
 
-.short-banner {
-  height: 60vh;
+.banner-image-wrapper {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  margin-left: 10rem;
 }
 
 .banner-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 30%;
-}
-
-.image-lower {
-  object-position: 50% 25%;
+  height: 110%;
 }
 
 .banner-content-box {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 28rem;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
+  margin-left: -10rem;
+  margin-top: -10rem;
+  padding: 5rem;
+  z-index: 1;
+  max-width: 35rem;
 
-  .sub-header {
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin: 0 0 1rem;
-    color: $background-offwhite;
-    text-shadow: 0px .4px 1px rgba(0,0,0,.25);
+  .banner-header {
+    margin: 0;
+    font-size: 4rem;
+    font-weight: lighter;
   }
 }
 
@@ -55,22 +53,47 @@
   width: 10rem;
 }
 
+.animated-text-wrapper {
+  display: inline;
+  overflow: clip;
+}
+
 @media screen and (max-width: 749px) {
   .banner {
-    width: calc(100% + 2rem);
-    margin-left: -1rem;
+    width: 100%;
+    height: fit-content;
+    margin-top: 2rem;
+    flex-direction: column-reverse;
+    gap: 2rem;
+    padding: 0;
+    overflow: hidden;
   }
 
-  .short-banner {
-    height: 40vh;
+  .banner-image-wrapper {
+    margin-left: 0;
+    width: auto;
+  }
+
+  .banner-image {
+    width: 100%;
+    height: 100%;
+    transform: translateX(4rem);
   }
 
   .banner-content-box {
-    height: 23rem;
-    padding: 2rem 2rem;
+    margin: 0;
+    padding: 0 2rem;
     justify-content: inherit;
+    align-items: center;
+    gap: 1rem;
 
-    .sub-header {
+    .banner-header {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
+
+    .banner-sub-header {
+      display: none;
       font-size: 1.55rem
     }
 
@@ -78,50 +101,5 @@
       align-self: center;
       font-size: 1rem;
     }
-  }
-}
-
-// alt banner
-
-.alt-banner {
-  display: flex;
-  margin: 2rem 0 5rem;
-}
-
-.alt-banner-text-container {
-  display: flex;
-  align-items: center;
-  flex: 1;
-}
-
-.alt-banner-image-container {
-  flex: 1;
-}
-
-.alt-banner-image {
-  object-fit: cover;
-  width: 100%;
-  border-radius: 5%;
-  height: 80vh;
-}
-
-@media screen and (max-width: 749px) {
-  .alt-banner {
-    flex-direction: column;
-  }
-
-  .alt-banner-text-container {
-    order: 2;
-    text-align: center;
-  }
-
-  .alt-banner-image-container {
-    width: 100vw;
-    margin-left: -1rem;
-  }
-
-  .alt-banner-image {
-    border-radius: 0;
-    height: 50vh;
   }
 }

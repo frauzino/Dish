@@ -1,0 +1,11 @@
+<%# accepts: text_alignment: string (left, right, center), header: string, content_text: string %>
+
+<div class="text-block page-width-container">
+  <div class="text-block-content text-<%= text_alignment %>">
+    <h1 class="text-block-header"><%= header %></h1>
+
+    <div class="text-block-text">
+      <%= content_text %>
+    </div>
+  </div>
+</div>

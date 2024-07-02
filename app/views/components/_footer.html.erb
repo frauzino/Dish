@@ -1,0 +1,17 @@
+<div class="footer bg-<%= bg_color %>">
+  <div class="footer-content">
+    <div class="footer-links">
+      <% links.each do |link| %>
+        <%= link_to link[:text], link[:path], class: "footer-link" %>
+      <% end %>
+    </div>
+    <div class="footer-socials">
+      <% socials.each do |social| %>
+        <%= link_to image_tag(social[:image], alt: social[:alt]), social[:path], class: "social" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p>&copy; 2024 Dish. All rights reserved.</p>
+  </div>
+</div>

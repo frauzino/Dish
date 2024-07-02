@@ -4,7 +4,8 @@
   gap: 1rem;
   margin-bottom: 2rem;
 
-  input, select {
+  input, select, textarea {
+    font-family: $body-font;
     font-size: 1.4rem;
     width: -moz-available;
     background: white;

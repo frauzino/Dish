@@ -9,7 +9,7 @@
 }
 
 .page-width-container {
-  padding: 2rem 6rem;
+  padding: 0 6rem;
 }
 
 .content-container {
@@ -58,6 +58,12 @@
   flex: 1;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
 .account-column {
   align-self: flex-start;
 }
@@ -86,7 +92,7 @@
   }
 
   .page-width-container {
-    padding: 0;
+    padding: 0 1rem;
   }
 
   .content-container-static {

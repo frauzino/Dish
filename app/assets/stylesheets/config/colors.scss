@@ -8,17 +8,20 @@ $green: #1EDD88;
 $gray: #333333;
 $text-gray: #646464;
 $light-gray: #F4F4F4;
-$button-gray: #dadada;
+$medium-gray: #d9d9d9;
+$button-gray: #f2f2f2;
 $shadow-gray: #b7b7b794;
 $safedate-red: #b60809;
 $content-box-gray: #F2F1F2;
 $background-offwhite: #FAF6F4;
 
-$pale-blue: #c5f5ff;
+// $pale-blue: #c5f5ff;
+$pale-blue: #a2efff;
 $lilac: #f9caf6;
 $purple: #e8b3f8;
 $pale-yellow: #f0f797;
-$english-violet: #5F4867;
+// $english-violet: #5F4867;
+$english-violet: #7c5687;
 
 $banner-background: linear-gradient(45deg, $pale-blue, $pale-blue 38%, $lilac 38%, $lilac 60%, $purple 60%, $purple 68%, $pale-yellow 68%, $pale-yellow 100%);
 
@@ -64,6 +67,12 @@ $banner-background: linear-gradient(45deg, $pale-blue, $pale-blue 38%, $lilac 38
   color: $pale-yellow;
   text-shadow: 0px 0.4px 1px $shadow-gray;
 }
+
+.gold-yellow {
+  color: #fad411;
+  text-shadow: 0px 0.4px 1px $shadow-gray;
+}
+
 .purple {
   color: $purple;
   text-shadow: 0px 0.4px 1px $shadow-gray;
@@ -72,4 +81,10 @@ $banner-background: linear-gradient(45deg, $pale-blue, $pale-blue 38%, $lilac 38
 .english-violet {
   color: $english-violet;
   text-shadow: 0px 0.4px 1px $shadow-gray;
+}
+
+// filters
+
+.greyscale {
+  filter: grayscale(100%);
 }
