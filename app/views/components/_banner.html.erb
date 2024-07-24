@@ -8,10 +8,8 @@
     <h1 class="banner-header"><%= header %>
       <% if local_assigns[:animated_text] %>
         <div class="animated-text-wrapper">
-          <div class="test-wrapper">
-            <span class="animated-text" data-banner-target="scrollingText">
-              <%= animated_text.join(',') %>
-          </div>
+          <span class="animated-text" data-banner-target="scrollingText">
+            <%= animated_text.join(',') %>
           <span>
         </div>
       <% end %>
