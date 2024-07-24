@@ -33,6 +33,7 @@
   padding: 5rem;
   z-index: 1;
   max-width: 35rem;
+  width: 100%;
 
   .banner-header {
     margin: 0;
@@ -57,6 +58,25 @@
   display: inline;
   overflow: clip;
 }
+
+// // testing for safari < 15.6
+// .animated-text-wrapper {
+//   display: inline;
+//   // overflow: clip;
+//   position: relative;
+// }
+
+// .test-wrapper {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   overflow: hidden;
+//   max-width: 100%;
+//   max-height: 100%;
+//   z-index: -1;
+// }
+
+
 
 @media screen and (max-width: 749px) {
   .banner {

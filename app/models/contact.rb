@@ -6,9 +6,10 @@ class Contact < MailForm::Base
   def headers
     {
       # this is the subject for the email generated, it can be anything you want
-      subject: 'Email from Dish Contact Form',
-      to: 'contact@letsdish.io', # put your email adrress here
-      from: %("#{name}" <#{email}>)
+      subject: "Email from Dish Contact Form. from: #{name}",
+      to: 'contact@letsdish.io', # target email adrress
+      reply_to: %("#{name}" <#{email}>),
+      from: 'no-reply@letsdish.io' # this is the email address the generated email will be sent from, verified through SendGrid
       # the form will display the name entered by the user followed by the email
     }
   end
