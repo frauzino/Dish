@@ -54,27 +54,22 @@
   width: 10rem;
 }
 
-.animated-text-wrapper {
-  display: inline;
-  overflow: clip;
+.animated-text-container {
+  display: inline-block;
+  position: relative;
+  height: 53px;
 }
 
-// // testing for safari < 15.6
-// .animated-text-wrapper {
-//   display: inline;
-//   // overflow: clip;
-//   position: relative;
-// }
+.animated-text-wrapper {
+  position: absolute;
+  height: 60px;
+  overflow: hidden;
+  text-wrap: nowrap;
+}
 
-// .test-wrapper {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   overflow: hidden;
-//   max-width: 100%;
-//   max-height: 100%;
-//   z-index: -1;
-// }
+.animated-text {
+  display: inline-block;
+}
 
 
 
@@ -82,10 +77,9 @@
   .banner {
     width: 100%;
     height: fit-content;
-    margin-top: 2rem;
+    // margin-top: 2rem;
     flex-direction: column-reverse;
-    gap: 2rem;
-    padding: 0;
+    padding: 0 0 0;
     overflow: hidden;
   }
 
@@ -97,15 +91,16 @@
   .banner-image {
     width: 100%;
     height: 100%;
-    transform: translateX(4rem);
+    transform: translateX(4rem) translateY(-2rem);
   }
 
   .banner-content-box {
     margin: 0;
-    padding: 0 2rem;
+    padding: 0 1rem;
     justify-content: inherit;
     align-items: center;
     gap: 1rem;
+    width: auto;
 
     .banner-header {
       font-size: 2.25rem;
@@ -121,5 +116,13 @@
       align-self: center;
       font-size: 1rem;
     }
+  }
+
+  .animated-text-container {
+    height: 32px;
+  }
+
+  .animated-text-wrapper {
+    height: 40px;
   }
 }

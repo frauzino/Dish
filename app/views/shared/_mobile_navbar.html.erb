@@ -22,7 +22,9 @@
         <%= link_to image_tag("lets_dish_logo.svg", loading: 'lazy', class: "mobile-logo"), root_path %>
       <% end %>
 
-      <%= link_to 'Contact', new_contact_path, class: "btn button-primary nav-button" %>
+      <div class="mobile-nav-button-wrapper">
+        <%= link_to 'Contact', new_contact_path, class: "btn button-primary nav-button" %>
+      </div>
 
       <div
         class="mobile-nav-item hidden"
