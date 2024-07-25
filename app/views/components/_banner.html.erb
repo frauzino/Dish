@@ -7,10 +7,12 @@
   <div class="banner-content-box">
     <h1 class="banner-header"><%= header %>
       <% if local_assigns[:animated_text] %>
-        <div class="animated-text-wrapper">
-          <span class="animated-text" data-banner-target="scrollingText">
-            <%= animated_text.join(',') %>
-          <span>
+        <div class="animated-text-container">
+          <div class="animated-text-wrapper">
+            <span class="animated-text" data-banner-target="scrollingText">
+              <p><%= animated_text.join(',') %></p>
+            <span>
+          </div>
         </div>
       <% end %>
     </h1>
