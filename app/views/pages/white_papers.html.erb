@@ -1,0 +1,28 @@
+<div class="static-page-container">
+  <%= render "components/text_block",
+    text_alignment: "center",
+    header: "White Papers",
+    content_text: "<ul class='links-list'>
+                    <li>
+                      #{link_to 'Trust Issues with Dating Apps: A Comprehensive Analysis',
+                        'https://docs.google.com/document/d/1eYFPobH-oN8w9tsX3FJLvLc_DGqX67It/edit?usp=sharing&ouid=100948799633084785771&rtpof=true&sd=true',
+                        target: '_blank'
+                      }
+                    </li>
+                  </ul>
+
+                  <h3 class='white-papers-header'>
+                    3rd Party White Papers
+                  </h3>
+                  <ul class='links-list'>
+                    <li>
+                      #{link_to 'The Impact of Trustworthiness in the Dating App Experience: A Trust-Inducing Model Proposal',
+                        'https://mail.google.com/mail/u/0/popout?ver=2tsp4k4vw4km#attid%253Datt_1911ecd868fe2513_0.2_20b74ed4_d6bcf815_2d7a4627_8c08e1ff_d68a4c21%25252FThe_Impact_of_Trustworthiness_in_the_Dating_App_Ex.pdf',
+                        target: '_blank'
+                      }
+                    </li>
+                  </ul>".html_safe
+  %>
+
+
+</div>

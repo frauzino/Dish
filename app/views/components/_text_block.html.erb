@@ -5,7 +5,9 @@
     <h1 class="text-block-header"><%= header %></h1>
 
     <div class="text-block-text">
-      <%= content_text %>
+      <% if local_assigns[:content_text] %>
+        <%= content_text %>
+      <% end %>
     </div>
   </div>
 </div>
