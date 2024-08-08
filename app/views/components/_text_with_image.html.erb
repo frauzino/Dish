@@ -17,9 +17,11 @@ buttons: array of buttons as hash ex:
 <%= tag.div class: "page-width-container text-with-image #{"reverse" if reverse}", style: "align-items: #{text_vertical_alignment}; flex-direction: #{direction}-#{'reverse' if reverse}" do %>
   <div class="text-container" style="text-align: <%= text_horizontal_alignment %>; <%= 'width:' + text_width if local_assigns[:text_width] %>">
     <%= tag.h1 header_text, class: "header #{header_color}" %>
-    <p class="text">
-      <%= content_text %>
-    </p>
+    <% if local_assigns[:content_text] %>
+      <p class="text">
+        <%= content_text %>
+      </p>
+    <% end %>
     <div class="twi-button-container">
       <% buttons.each do |button| %>
         <%= link_to button[:text], button[:path], class: button[:style] %>

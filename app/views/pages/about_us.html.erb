@@ -44,4 +44,11 @@
       {src: "halo_diamond.svg", alt: "Diamond halo"}
     ]
   %>
+
+  <%= render "components/text_block",
+    text_alignment: "center",
+    header: "How We're Changing the Scene",
+    content_text: "<p>The advent of dating apps has revolutionized the search for romantic connections, offering unprecedented convenience and access to a wide pool of potential partners. However, these benefits come with significant trust issues, including concerns about user authenticity, privacy, and the prevalence of scams...</p>
+    #{link_to 'Read More', white_papers_path, class: 'btn button-secondary'}".html_safe
+  %>
 </div>

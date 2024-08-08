@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'copyright', to: 'pages#copyright'
   get 'privacy', to: 'pages#privacy'
   get 'legal', to: 'pages#legal'
+  get 'white_papers', to: 'pages#white_papers'
   get 'account', to: 'users#show'
   get 'search_date', to: 'users#search_date'
   get 'users/update_access', to: 'users#update_access'
